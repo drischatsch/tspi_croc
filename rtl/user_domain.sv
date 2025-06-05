@@ -20,7 +20,7 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   input  mgr_obi_rsp_t user_mgr_obi_rsp_i,
 
   input  logic [      GpioCount-1:0] gpio_in_sync_i, // synchronized GPIO inputs
-  output logic [NumExternalIrqs-1:0] interrupts_o // interrupts to core
+  output logic [NumExternalIrqs-1:0] interrupts_o, // interrupts to core
 
   // SPI interface
   output logic      tspi_clk_o,
