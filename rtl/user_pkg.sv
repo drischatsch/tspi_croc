@@ -43,8 +43,8 @@ package user_pkg;
     UserBlockSwap = 3
   } user_demux_outputs_e;
 
-  // Address rules given to address decoder
-  localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '0;
+  // // Address rules given to address decoder
+  // localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '0;
 
   // Address rules given to address decoder
     localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '{
