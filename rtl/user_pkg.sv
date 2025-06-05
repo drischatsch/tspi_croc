@@ -21,20 +21,37 @@ package user_pkg;
   // User Subordinate Address maps ////
   /////////////////////////////////////
 
-  localparam int unsigned NumUserDomainSubordinates = 0;
+  localparam int unsigned NumUserDomainSubordinates = 3;
 
   localparam bit [31:0] UserRomAddrOffset   = croc_pkg::UserBaseAddr; // 32'h2000_0000;
   localparam bit [31:0] UserRomAddrRange    = 32'h0000_1000;          // every subordinate has at least 4KB
+
+  localparam bit [31:0] UserBlockSwapAddrOffset   = croc_pkg::UserBaseAddr + 32'h0001_0000; // 32'h2001_0000;
+  localparam bit [31:0] UserBlockSwapAddrRange    = 32'h0000_0100;          
+
+  localparam bit [31:0] UserTransparentSpiAddrOffset   = croc_pkg::UserBaseAddr + 32'h2000_0000; // 32'h4000_0000;
+  localparam bit [31:0] UserTransparentSPIAddrRange    = 32'h4000_0000;          // every subordinate has at least 4KB
 
   localparam int unsigned NumDemuxSbrRules  = NumUserDomainSubordinates; // number of address rules in the decoder
   localparam int unsigned NumDemuxSbr       = NumDemuxSbrRules + 1; // additional OBI error, used for signal arrays
 
   // Enum for bus indices
   typedef enum int {
-    UserError = 0
+    UserError = 0,
+    UserRom = 1,
+    UserTransparentSpi = 2,
+    UserBlockSwap = 3
   } user_demux_outputs_e;
 
   // Address rules given to address decoder
   localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '0;
+
+  // Address rules given to address decoder
+    localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '{
+      '{ idx:UserRom, start_addr: UserRomAddrOffset, end_addr: UserRomAddrOffset + UserRomAddrRange},
+      '{ idx:UserTransparentSpi, start_addr: UserTransparentSpiAddrOffset, end_addr: UserTransparentSpiAddrOffset + UserTransparentSPIAddrRange},
+      '{ idx:UserBlockSwap, start_addr: UserBlockSwapAddrOffset, end_addr: UserBlockSwapAddrOffset + UserBlockSwapAddrRange}
+    };
+
 
 endpackage

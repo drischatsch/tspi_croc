@@ -26,7 +26,13 @@ module croc_soc import croc_pkg::*; #(
 
   input  logic [GpioCount-1:0] gpio_i,       // Input from GPIO pins
   output logic [GpioCount-1:0] gpio_o,       // Output to GPIO pins
-  output logic [GpioCount-1:0] gpio_out_en_o // Output enable signal; 0 -> input, 1 -> output
+  output logic [GpioCount-1:0] gpio_out_en_o, // Output enable signal; 0 -> input, 1 -> output
+
+  // TSPI interface
+  output logic      tspi_clk_o,
+  output logic      tspi_mosi_o,
+  input  logic      tspi_miso_i,
+  output logic      tspi_cs_no
 );
 
   logic synced_rst_n, synced_fetch_en;
@@ -60,6 +66,12 @@ mgr_obi_rsp_t user_mgr_obi_rsp;
 logic [NumExternalIrqs-1:0] interrupts;
 logic [GpioCount-1:0] gpio_in_sync;
 
+// Block Swap Interface
+logic [NUM_REQ_BLOCKS-1:0][20:0] req_addr;
+logic [NUM_REQ_BLOCKS-1:0] valid;
+logic [NUM_REQ_BLOCKS-1:0][$clog2(NUM_SRAM_ADDRESSES)-1:0] sram_addr_idx;
+logic block;
+
 croc_domain #(
   .GpioCount( GpioCount ) 
 ) i_croc (
@@ -91,7 +103,12 @@ croc_domain #(
   .user_mgr_obi_rsp_o  ( user_mgr_obi_rsp ),
 
   .interrupts_i ( interrupts  ),
-  .core_busy_o  ( status_o    )
+  .core_busy_o  ( status_o    ),
+
+  .req_addr_o(req_addr),
+  .valid_o(valid),
+  .sram_addr_idx_i(sram_addr_idx),
+  .block_i(block) 
 );
 
 user_domain #(
@@ -109,7 +126,18 @@ user_domain #(
   .user_mgr_obi_rsp_i ( user_mgr_obi_rsp ),
 
   .gpio_in_sync_i ( gpio_in_sync ),
-  .interrupts_o   ( interrupts   )
+  .interrupts_o   ( interrupts   ),
+
+  .tspi_clk_o,
+  .tspi_mosi_o,
+  .tspi_miso_i,
+  .tspi_cs_no,
+
+  // Request Blocker interface
+  .req_addr_i(req_addr),
+  .valid_i(valid),
+  .sram_addr_idx_o(sram_addr_idx),
+  .block_o(block)
 );
 
 endmodule
