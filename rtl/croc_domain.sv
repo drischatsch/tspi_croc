@@ -40,7 +40,13 @@ module croc_domain import croc_pkg::*; #(
   output mgr_obi_rsp_t user_mgr_obi_rsp_o,
 
   input  logic [NumExternalIrqs-1:0] interrupts_i,
-  output logic core_busy_o
+  output logic core_busy_o,
+
+  // Block Swap Interface
+  output logic [NUM_REQ_BLOCKS-1:0][20:0] req_addr_o,
+  output logic [NUM_REQ_BLOCKS-1:0] valid_o,
+  input logic [NUM_REQ_BLOCKS-1:0][$clog2(NUM_SRAM_ADDRESSES)-1:0] sram_addr_idx_i,
+  input logic block_i
 );
 
   // -----------------
@@ -89,6 +95,73 @@ module croc_domain import croc_pkg::*; #(
   mgr_obi_rsp_t dbg_req_obi_rsp;
   assign dbg_req_obi_req.a.aid = '0;
   assign dbg_req_obi_req.a.a_optional = '0;
+
+
+  // ----------------------------------
+  // Block Swap buses into crossbar
+  // ----------------------------------
+
+
+  // Core instr bus
+  mgr_obi_req_t req_blocker_from_core_instr_obi_req;
+  mgr_obi_rsp_t req_blocker_from_core_instr_obi_rsp;
+
+  assign req_blocker_from_core_instr_obi_req = core_instr_obi_req;
+  assign  core_instr_obi_rsp = req_blocker_from_core_instr_obi_rsp;
+  // ???
+
+  mgr_obi_req_t req_blocker_to_obi_core_instr_obi_req;
+  mgr_obi_rsp_t req_blocker_to_obi_core_instr_obi_rsp;
+
+
+  // Core data bus
+  mgr_obi_req_t req_blocker_from_core_data_obi_req;
+  mgr_obi_rsp_t req_blocker_from_core_data_obi_rsp;
+
+  assign req_blocker_from_core_data_obi_req = core_data_obi_req;
+  assign  core_data_obi_rsp = req_blocker_from_core_data_obi_rsp;
+
+  mgr_obi_req_t req_blocker_to_obi_core_data_obi_req;
+  mgr_obi_rsp_t req_blocker_to_obi_core_data_obi_rsp;
+
+  req_blocker #(
+  ) i_core_instr_req_blocker (
+    .clk_i,
+    .rst_ni,
+
+    // OBI request interface
+    .in_obi_req_i(req_blocker_from_core_instr_obi_req),
+    .in_obi_rsp_o(req_blocker_from_core_instr_obi_rsp),
+
+    .out_obi_req_o(req_blocker_to_obi_core_instr_obi_req),
+    .out_obi_rsp_i(req_blocker_to_obi_core_instr_obi_rsp),
+    
+
+    .req_addr_o(req_addr_o[0]),
+    .valid_o(valid_o[0]),
+    .sram_addr_idx_i(sram_addr_idx_i[0]),
+    .block_i(block_i)
+
+  );
+
+  req_blocker #(
+  ) i_core_data_req_blocker (
+    .clk_i,
+    .rst_ni,
+
+    // OBI request interface
+    .in_obi_req_i(req_blocker_from_core_data_obi_req),
+    .in_obi_rsp_o(req_blocker_from_core_data_obi_rsp),
+
+    .out_obi_req_o(req_blocker_to_obi_core_data_obi_req),
+    .out_obi_rsp_i(req_blocker_to_obi_core_data_obi_rsp),
+
+    .req_addr_o(req_addr_o[1]),
+    .valid_o(valid_o[1]),
+    .sram_addr_idx_i(sram_addr_idx_i[1]),
+    .block_i(block_i)
+
+  );
 
   // ----------------------------------
   // Subordinate buses out of crossbar
@@ -325,8 +398,9 @@ module croc_domain import croc_pkg::*; #(
     .rst_ni,
     .testmode_i,
 
-    .sbr_ports_req_i  ( {core_instr_obi_req, core_data_obi_req, dbg_req_obi_req, user_mgr_obi_req_i } ), // from managers towards subordinates
-    .sbr_ports_rsp_o  ( {core_instr_obi_rsp, core_data_obi_rsp, dbg_req_obi_rsp, user_mgr_obi_rsp_o } ),
+    // Changed for the block swap
+    .sbr_ports_req_i  ( {req_blocker_to_obi_core_instr_obi_req, req_blocker_to_obi_core_data_obi_req, dbg_req_obi_req, user_mgr_obi_req_i } ), // from managers towards subordinates
+    .sbr_ports_rsp_o  ( {req_blocker_to_obi_core_instr_obi_rsp, req_blocker_to_obi_core_data_obi_rsp, dbg_req_obi_rsp, user_mgr_obi_rsp_o } ),
     .mgr_ports_req_o  ( all_sbr_obi_req ), // connections to subordinates
     .mgr_ports_rsp_i  ( all_sbr_obi_rsp ),
 
