@@ -33,7 +33,11 @@ yosys read_slang --top $top_design -F $sv_flist \
 # <module-name>$<instance-name> -> match for t:<module-name>$$
 yosys setattr -set keep_hierarchy 1 "t:croc_soc$*"
 yosys setattr -set keep_hierarchy 1 "t:croc_domain$*"
-yosys setattr -set keep_hierarchy 1 "t:user_domain$*"
+# yosys setattr -set keep_hierarchy 1 "t:user_domain$*"
+yosys setattr -set keep_hierarchy 1 "t:tspi_host$*"
+yosys setattr -set keep_hierarchy 1 "t:req_blocker_ctrl$*"
+yosys setattr -set keep_hierarchy 1 "t:user_rom$*"
+yosys setattr -set keep_hierarchy 1 "t:bootrom$*"
 yosys setattr -set keep_hierarchy 1 "t:core_wrap$*"
 yosys setattr -set keep_hierarchy 1 "t:cve2_register_file_ff$*"
 yosys setattr -set keep_hierarchy 1 "t:cve2_cs_registers$*"

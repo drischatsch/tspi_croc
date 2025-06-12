@@ -52,6 +52,8 @@ SW_HEX := sw/bin/helloworld.hex
 
 $(SW_HEX): sw/*.c sw/*.h sw/*.S sw/*.ld
 	$(MAKE) -C sw/ compile
+	$(MAKE) -C sw/bootrom
+	$(PYTHON3) sw/bootrom/gen_bootrom.py sw/bootrom/build/bootrom.hex -o sw/bootrom/build/bootrom_embed.hex
 
 ## Build all top-level programs in sw/
 software: $(SW_HEX)

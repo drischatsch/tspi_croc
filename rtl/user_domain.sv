@@ -5,6 +5,8 @@
 // Authors:
 // - Philippe Sauter <phsauter@iis.ee.ethz.ch>
 
+`include "common_cells/registers.svh"
+
 module user_domain import user_pkg::*; import croc_pkg::*; #(
   parameter int unsigned GpioCount = 16
 ) (
@@ -62,8 +64,6 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   sbr_obi_req_t tspi_obi_req; // Dependent on if block_swap_on is set
   sbr_obi_rsp_t tspi_obi_rsp; // Dependent on if block_swap_on is set
 
-
-
   assign interrupts_o = '0;  
 
 
@@ -71,9 +71,9 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   // User Manager MUX //
   /////////////////////
 
+  // No manager so we don't need a obi_mux module and just terminate the request properly
   assign user_mgr_obi_req_o = sram_obi_req;
   assign sram_obi_rsp = user_mgr_obi_rsp_i;
-
 
   ////////////////////////////
   // User Subordinate DEMUX //
@@ -87,7 +87,11 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   sbr_obi_req_t [NumDemuxSbr-1:0] all_user_sbr_obi_req;
   sbr_obi_rsp_t [NumDemuxSbr-1:0] all_user_sbr_obi_rsp;
 
-  // User ROM Subordinate Bus
+  // Error Subordinate Bus
+  sbr_obi_req_t user_error_obi_req;
+  sbr_obi_rsp_t user_error_obi_rsp;
+
+  // ROM Subordinate Bus
   sbr_obi_req_t user_rom_obi_req;
   sbr_obi_rsp_t user_rom_obi_rsp;
 
@@ -95,29 +99,40 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   sbr_obi_req_t user_transparentspi_obi_req;
   sbr_obi_rsp_t user_transparentspi_obi_rsp;
 
-    // SPI Subordinate Bus
+  // Block Swapping Subordinate Bus
   sbr_obi_req_t user_block_swap_obi_req;
   sbr_obi_rsp_t user_block_swap_obi_rsp;
-
-
-  // Error Subordinate Bus
-  sbr_obi_req_t user_error_obi_req;
-  sbr_obi_rsp_t user_error_obi_rsp;
 
   // Fanout into more readable signals
   assign user_error_obi_req              = all_user_sbr_obi_req[UserError];
   assign all_user_sbr_obi_rsp[UserError] = user_error_obi_rsp;
 
-  assign user_transparentspi_obi_req                = all_user_sbr_obi_req[UserTransparentSpi];
-  assign all_user_sbr_obi_rsp[UserTransparentSpi]   = user_transparentspi_obi_rsp;
-
-  assign user_block_swap_obi_req                = all_user_sbr_obi_req[UserBlockSwap];
-  assign all_user_sbr_obi_rsp[UserBlockSwap]   = user_block_swap_obi_rsp;
-
   assign user_rom_obi_req                = all_user_sbr_obi_req[UserRom];
   assign all_user_sbr_obi_rsp[UserRom]   = user_rom_obi_rsp;
 
+  // assign user_transparentspi_obi_req              = all_user_sbr_obi_req[UserTransparentSpi];
+  // assign all_user_sbr_obi_rsp[UserTransparentSpi] = user_transparentspi_obi_rsp;
 
+
+  // Transparent SPI OBI Cut (Only without Block Swap else direct access)
+  obi_cut #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t ),
+    .Bypass      ( 1'b0          )
+  ) i_user_transparentspi_obi_cut (
+    .clk_i,
+    .rst_ni,
+
+    .sbr_port_req_i(all_user_sbr_obi_req[UserTransparentSpi]),
+    .sbr_port_rsp_o(all_user_sbr_obi_rsp[UserTransparentSpi]),
+    .mgr_port_req_o(user_transparentspi_obi_req),
+    .mgr_port_rsp_i(user_transparentspi_obi_rsp)
+    
+    );
+
+  assign user_block_swap_obi_req             = all_user_sbr_obi_req[UserBlockSwap];
+  assign all_user_sbr_obi_rsp[UserBlockSwap] = user_block_swap_obi_rsp;
 
   //-----------------------------------------------------------------------------------------------
   // Demultiplex to User Subordinates according to address map
@@ -160,7 +175,83 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   );
 
 
-  //-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
+// User Subordinates
+//-------------------------------------------------------------------------------------------------
+
+  // Error Subordinate
+  obi_err_sbr #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t ),
+    .NumMaxTrans ( 1             ),
+    .RspData     ( 32'hBADCAB1E  )
+  ) i_user_err (
+    .clk_i,
+    .rst_ni,
+    .testmode_i ( testmode_i      ),
+    .obi_req_i  ( user_error_obi_req ),
+    .obi_rsp_o  ( user_error_obi_rsp )
+  );
+
+  // User ROM
+  user_rom #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t )
+  ) i_user_rom (
+    .clk_i,
+    .rst_ni,
+    .obi_req_i  ( user_rom_obi_req ),
+    .obi_rsp_o  ( user_rom_obi_rsp )
+  );
+
+  // Transparent SPI
+  tspi_host #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t )
+  ) i_user_transparentspi (
+    .clk_i,
+    .rst_ni,
+
+    // // OBI request interface
+    // .obi_req_i(user_transparentspi_obi_req), // Changed for testing
+    // .obi_rsp_o(user_transparentspi_obi_rsp), // Changed for testing
+    .obi_req_i(tspi_obi_req),
+    .obi_rsp_o(tspi_obi_rsp),
+
+    //SPI interface
+    .tspi_clk_o(tspi_clk_o),
+    .tspi_cs_no(tspi_cs_no),
+    .tspi_mosi_o(tspi_mosi_o),
+    .tspi_miso_i(tspi_miso_i),
+
+    // Block swap interface
+    .write_data_i(write_data),
+    .read_data_o(read_data),
+    .signal_next_write_data_o(signal_next_write_data),
+    .signal_next_read_data_o(signal_next_read_data)
+  );
+
+  // Block Swapping Configuration
+  block_swap_config #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t )
+  ) i_user_block_swap_config (
+    .clk_i,
+    .rst_ni,
+
+    // OBI request interface
+    .obi_req_i(user_block_swap_obi_req), // Changed for testing
+    .obi_rsp_o(user_block_swap_obi_rsp),  // Changed for testing
+    
+    .block_only_load_on_o(block_only_load_on),
+    .block_swap_on_o(block_swap_on)
+  );
+
+//-------------------------------------------------------------------------------------------------
 // Block Swapping
 //-------------------------------------------------------------------------------------------------
 req_blocker_ctrl  #(
@@ -246,81 +337,5 @@ always_comb begin
   end
    
 end
-
-//-------------------------------------------------------------------------------------------------
-// User Subordinates
-//-------------------------------------------------------------------------------------------------
-
-// Transparent SPI
-  tspi_host #(
-    .ObiCfg      ( SbrObiCfg     ),
-    .obi_req_t   ( sbr_obi_req_t ),
-    .obi_rsp_t   ( sbr_obi_rsp_t )
-  ) i_user_transparentspi (
-    .clk_i,
-    .rst_ni,
-
-    // // OBI request interface
-    // .obi_req_i(user_transparentspi_obi_req), // Changed for testing
-    // .obi_rsp_o(user_transparentspi_obi_rsp), // Changed for testing
-    .obi_req_i(tspi_obi_req),
-    .obi_rsp_o(tspi_obi_rsp),
-
-    //SPI interface
-    .tspi_clk_o(tspi_clk_o),
-    .tspi_cs_no(tspi_cs_no),
-    .tspi_mosi_o(tspi_mosi_o),
-    .tspi_miso_i(tspi_miso_i),
-
-    // Block swap interface
-    .write_data_i(write_data),
-    .read_data_o(read_data),
-    .signal_next_write_data_o(signal_next_write_data),
-    .signal_next_read_data_o(signal_next_read_data)
-  );
-
-  block_swap_config #(
-    .ObiCfg      ( SbrObiCfg     ),
-    .obi_req_t   ( sbr_obi_req_t ),
-    .obi_rsp_t   ( sbr_obi_rsp_t )
-  ) i_user_block_swap_config (
-    .clk_i,
-    .rst_ni,
-
-    // OBI request interface
-    .obi_req_i(user_block_swap_obi_req), // Changed for testing
-    .obi_rsp_o(user_block_swap_obi_rsp),  // Changed for testing
-    
-    .block_only_load_on_o(block_only_load_on),
-    .block_swap_on_o(block_swap_on)
-  );
-
-  // User ROM
-  user_rom #(
-    .ObiCfg      ( SbrObiCfg     ),
-    .obi_req_t   ( sbr_obi_req_t ),
-    .obi_rsp_t   ( sbr_obi_rsp_t )
-  ) i_user_rom (
-    .clk_i,
-    .rst_ni,
-    .obi_req_i  ( user_rom_obi_req ),
-    .obi_rsp_o  ( user_rom_obi_rsp )
-  );
-
-
-  // Error Subordinate
-  obi_err_sbr #(
-    .ObiCfg      ( SbrObiCfg     ),
-    .obi_req_t   ( sbr_obi_req_t ),
-    .obi_rsp_t   ( sbr_obi_rsp_t ),
-    .NumMaxTrans ( 1             ),
-    .RspData     ( 32'hBADCAB1E  )
-  ) i_user_err (
-    .clk_i,
-    .rst_ni,
-    .testmode_i ( testmode_i      ),
-    .obi_req_i  ( user_error_obi_req ),
-    .obi_rsp_o  ( user_error_obi_rsp )
-  );
 
 endmodule

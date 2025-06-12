@@ -64,5 +64,23 @@ int main() {
     sleep_ms(10);
     printf("Tock\n");
     uart_write_flush();
+
+    // print contents of the user ROM
+    printf("User ROM contents:\n");
+    /* for (uint8_t i = 0; i < 8; i++)
+    {
+        volatile uint32_t *word = reg32(USER_ROM_BASE_ADDR, i * 4);
+        printf("0x%x (", *word);
+        for (int j = 0; j < 4; j++)
+        {
+            printf("0x%x ", (*word >> (j * 8)) & 0xFF);
+        }
+        printf(") ");
+    }
+    printf("\n");
+    uart_write_flush(); */
+    printf("%s\n", USER_ROM_BASE_ADDR);
+    uart_write_flush();
+
     return 1;
 }

@@ -38,7 +38,6 @@ package croc_pkg;
   // Number of additional interrupts coming into croc_domain and going to the core
   localparam int unsigned NumExternalIrqs = 4;
 
-
   ///////////////////////////////////
   // Constants for Block Swapping ///
   ///////////////////////////////////
@@ -46,7 +45,6 @@ package croc_pkg;
   localparam int unsigned NUM_REQ_BLOCKS = 2;
 
   localparam int unsigned FIRST_USABLE_SRAM_ADDR = 32'h1000_0800;
-
 
   ///////////////////////
   // Address Maps     ///
@@ -132,7 +130,10 @@ package croc_pkg;
   localparam bit [31:0] TimerAddrOffset   = 32'h0300_A000;
   localparam bit [31:0] TimerAddrRange    = 32'h0000_1000;
 
-  localparam int unsigned NumPeriphRules  = 5;
+  localparam bit [31:0] BootromAddrOffset = 32'h0300_D000;
+  localparam bit [31:0] BootromAddrRange  = 32'h0000_1000;
+
+  localparam int unsigned NumPeriphRules  = 6;
   localparam int unsigned NumPeriphs      = NumPeriphRules + 1; // additional OBI error
 
   // Enum for bus indices
@@ -142,7 +143,8 @@ package croc_pkg;
     PeriphSocCtrl  = 2,
     PeriphUart     = 3,
     PeriphGpio     = 4,
-    PeriphTimer    = 5
+    PeriphTimer    = 5,
+    PeriphBootrom  = 6
   } periph_outputs_e;
 
   localparam addr_map_rule_t [NumPeriphRules-1:0] periph_addr_map = '{                                       // 0: OBI Error (default)
@@ -150,7 +152,8 @@ package croc_pkg;
     '{ idx: PeriphSocCtrl,  start_addr: SocCtrlAddrOffset,  end_addr: SocCtrlAddrOffset + SocCtrlAddrRange}, // 2: SoC control
     '{ idx: PeriphUart,     start_addr: UartAddrOffset,     end_addr: UartAddrOffset    + UartAddrRange},    // 3: UART
     '{ idx: PeriphGpio,     start_addr: GpioAddrOffset,     end_addr: GpioAddrOffset    + GpioAddrRange},    // 4: GPIO
-    '{ idx: PeriphTimer,    start_addr: TimerAddrOffset,    end_addr: TimerAddrOffset   + TimerAddrRange}    // 5: Timer
+    '{ idx: PeriphTimer,    start_addr: TimerAddrOffset,    end_addr: TimerAddrOffset   + TimerAddrRange},   // 5: Timer
+    '{ idx: PeriphBootrom,  start_addr: BootromAddrOffset,  end_addr: BootromAddrOffset + BootromAddrRange}  // 6: Bootrom
   };
 
   // OBI is configured as 32 bit data, 32 bit address width
