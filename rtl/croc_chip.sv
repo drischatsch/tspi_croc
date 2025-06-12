@@ -59,18 +59,17 @@ module croc_chip import croc_pkg::*; #() (
   inout  wire gpio28_io,
   inout  wire gpio29_io,
   inout  wire gpio30_io,
-  inout  wire gpio31_io,
-  output wire unused0_o,
-  output wire unused1_o,
-  output wire unused2_o,
-  output wire unused3_o
+  inout  wire gpio31_io
+  // output wire unused0_o,
+  // output wire unused1_o,
+  // output wire unused2_o,
+  // output wire unused3_o
 ); 
     logic soc_clk_i;
     logic soc_rst_ni;
     logic soc_ref_clk_i;
     logic soc_testmode;
 
-    // TSPI interface
     logic soc_tspi_clk_o;
     logic soc_tspi_mosi_o;
     logic soc_tspi_miso_i;
@@ -105,7 +104,6 @@ module croc_chip import croc_pkg::*; #() (
     sg13g2_IOPadIn        pad_uart_rx_i    (.pad(uart_rx_i),    .p2c(soc_uart_rx_i));
     sg13g2_IOPadOut16mA   pad_uart_tx_o    (.pad(uart_tx_o),    .c2p(soc_uart_tx_o));
 
-// TSPI interface
     sg13g2_IOPadOut16mA   pad_tspi_clk_o   (.pad(tspi_clk_o), .c2p(soc_tspi_clk_o));
     sg13g2_IOPadOut16mA   pad_tspi_mosi_o  (.pad(tspi_mosi_o), .c2p(soc_tspi_mosi_o));
     sg13g2_IOPadIn        pad_tspi_miso_i  (.pad(tspi_miso_i), .p2c(soc_tspi_miso_i));
@@ -192,9 +190,9 @@ module croc_chip import croc_pkg::*; #() (
     .uart_tx_o      ( soc_uart_tx_o ),
 
     .tspi_clk_o     ( soc_tspi_clk_o ),
-    .tspi_mosi_o     ( soc_tspi_mosi_o ),
-    .tspi_miso_i     ( soc_tspi_miso_i ),
-    .tspi_cs_no      ( soc_tspi_cs_no ),
+    .tspi_mosi_o    ( soc_tspi_mosi_o ),
+    .tspi_miso_i    ( soc_tspi_miso_i ),
+    .tspi_cs_no     ( soc_tspi_cs_no ),
 
     .gpio_i         ( soc_gpio_i        ),             
     .gpio_o         ( soc_gpio_o        ),            

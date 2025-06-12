@@ -182,6 +182,16 @@ module tb_croc_soc #(
 
     task automatic jtag_resume;
       dm::dmstatus_t status;
+      logic [31:0] boot_addr;
+
+      // Read boot address and print it
+      jtag_read_reg32(BootAddrAddr, boot_addr);
+      $display("@%t | [JTAG] Boot address: 0x%h", $time, boot_addr);
+
+      // Read word from boot address
+      jtag_read_reg32(boot_addr, boot_addr);
+      $display("@%t | [JTAG] Boot word: 0x%h", $time, boot_addr);
+
       // Halt hart 0
       jtag_write(dm::DMControl, dm::dmcontrol_t'{resumereq: 1, dmactive: 1, default: '0});
       $display("@%t | [JTAG] Resumed hart 0 ", $time);
@@ -469,7 +479,7 @@ module tb_croc_soc #(
         // write test value to sram
         jtag_write_reg32(croc_pkg::SramBaseAddr, 32'h1234_5678, 1'b1);
         // load binary to sram
-        jtag_load_hex(binary_path);
+        // jtag_load_hex(binary_path);
 
         $display("@%t | [CORE] Start fetching instructions", $time);
         fetch_en_i = 1'b1;

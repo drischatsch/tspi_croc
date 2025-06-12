@@ -24,8 +24,8 @@ module croc_soc import croc_pkg::*; #(
   input  logic uart_rx_i,
   output logic uart_tx_o,
 
-  input  logic [GpioCount-1:0] gpio_i,       // Input from GPIO pins
-  output logic [GpioCount-1:0] gpio_o,       // Output to GPIO pins
+  input  logic [GpioCount-1:0] gpio_i,        // Input from GPIO pins
+  output logic [GpioCount-1:0] gpio_o,        // Output to GPIO pins
   output logic [GpioCount-1:0] gpio_out_en_o, // Output enable signal; 0 -> input, 1 -> output
 
   // TSPI interface
@@ -105,10 +105,10 @@ croc_domain #(
   .interrupts_i ( interrupts  ),
   .core_busy_o  ( status_o    ),
 
-  .req_addr_o(req_addr),
-  .valid_o(valid),
-  .sram_addr_idx_i(sram_addr_idx),
-  .block_i(block) 
+  .req_addr_o      (req_addr),
+  .valid_o         (valid),
+  .sram_addr_idx_i (sram_addr_idx),
+  .block_i         (block)
 );
 
 user_domain #(

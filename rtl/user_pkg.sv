@@ -43,15 +43,11 @@ package user_pkg;
     UserBlockSwap = 3
   } user_demux_outputs_e;
 
-  // // Address rules given to address decoder
-  // localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '0;
-
   // Address rules given to address decoder
-    localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '{
-      '{ idx:UserRom, start_addr: UserRomAddrOffset, end_addr: UserRomAddrOffset + UserRomAddrRange},
-      '{ idx:UserTransparentSpi, start_addr: UserTransparentSpiAddrOffset, end_addr: UserTransparentSpiAddrOffset + UserTransparentSPIAddrRange},
-      '{ idx:UserBlockSwap, start_addr: UserBlockSwapAddrOffset, end_addr: UserBlockSwapAddrOffset + UserBlockSwapAddrRange}
-    };
-
+  localparam croc_pkg::addr_map_rule_t [NumDemuxSbrRules-1:0] user_addr_map = '{
+    '{ idx:UserRom, start_addr: UserRomAddrOffset, end_addr: UserRomAddrOffset + UserRomAddrRange},
+    '{ idx:UserTransparentSpi, start_addr: UserTransparentSpiAddrOffset, end_addr: UserTransparentSpiAddrOffset + UserTransparentSPIAddrRange},
+    '{ idx:UserBlockSwap, start_addr: UserBlockSwapAddrOffset, end_addr: UserBlockSwapAddrOffset + UserBlockSwapAddrRange}
+  };
 
 endpackage
