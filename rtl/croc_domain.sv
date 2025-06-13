@@ -210,8 +210,25 @@ module croc_domain import croc_pkg::*; #(
     assign all_sbr_obi_rsp[XbarBank0+i] = xbar_mem_bank_obi_rsp[i];
   end
 
-  assign user_sbr_obi_req_o          = all_sbr_obi_req[XbarUser];
-  assign all_sbr_obi_rsp[XbarUser]   = user_sbr_obi_rsp_i;
+  // assign user_sbr_obi_req_o          = all_sbr_obi_req[XbarUser];
+  // assign all_sbr_obi_rsp[XbarUser]   = user_sbr_obi_rsp_i;
+
+  obi_cut #(
+    .ObiCfg      ( SbrObiCfg     ),
+    .obi_req_t   ( sbr_obi_req_t ),
+    .obi_rsp_t   ( sbr_obi_rsp_t ),
+    .Bypass      ( 1'b0          )
+  ) i_user_obi_cut (
+    .clk_i,
+    .rst_ni,
+
+    .sbr_port_req_i(all_sbr_obi_req[XbarUser]),
+    .sbr_port_rsp_o(all_sbr_obi_rsp[XbarUser]),
+    .mgr_port_req_o(user_sbr_obi_req_o),
+    .mgr_port_rsp_i(user_sbr_obi_rsp_i)
+
+  );
+
 
 
   // -----------------

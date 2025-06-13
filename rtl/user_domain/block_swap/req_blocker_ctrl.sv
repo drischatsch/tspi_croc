@@ -45,6 +45,7 @@ logic [NUM_REQ_BLOCKS-1:0] match_found;
 for (genvar i = 0; i < NUM_REQ_BLOCKS; i++) begin  
     always_comb begin
         match_found[i] = 1'b0;
+        sram_addr_idx_o[i] = '0; // Default value
         for (int j = 0; j < NUM_SRAM_ADDRESSES; j++) begin // Why int?
             if (valid_i[i]) begin
                 if (req_addr_i[i] == sram_addr_q[j]) begin
@@ -78,6 +79,7 @@ assign old_addr_o = sram_addr_q[idx_to_be_swapped_d];
 
 // Inversed order to have the lowest index with the highest priority
 always_comb begin
+    new_addr_o = 'b0;
     for (int i = NUM_REQ_BLOCKS; i > 0; i--) begin
         if (match_found[i - 1] == 1'b0) begin
             new_addr_o = req_addr_i[i - 1];

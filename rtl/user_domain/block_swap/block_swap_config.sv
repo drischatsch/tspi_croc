@@ -43,6 +43,7 @@ assign block_only_load_on_o = config_reg_q.block_only_load_on;
 assign block_swap_on_o = config_reg_q.block_swap_on;
 
 always_comb begin
+    config_reg_d = config_reg_q; // Default to keep the current value
     if (obi_req_i.req && obi_req_i.a.addr[3:0] == 4'h0 && obi_req_i.a.we == 1'b1) begin
         config_reg_d.block_only_load_on = obi_req_i.a.wdata[1];
         config_reg_d.block_swap_on = obi_req_i.a.wdata[0];
