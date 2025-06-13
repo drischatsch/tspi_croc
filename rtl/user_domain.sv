@@ -110,29 +110,12 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   assign user_rom_obi_req                = all_user_sbr_obi_req[UserRom];
   assign all_user_sbr_obi_rsp[UserRom]   = user_rom_obi_rsp;
 
-  // assign user_transparentspi_obi_req              = all_user_sbr_obi_req[UserTransparentSpi];
-  // assign all_user_sbr_obi_rsp[UserTransparentSpi] = user_transparentspi_obi_rsp;
-
-
-  // Transparent SPI OBI Cut (Only without Block Swap else direct access)
-  obi_cut #(
-    .ObiCfg      ( SbrObiCfg     ),
-    .obi_req_t   ( sbr_obi_req_t ),
-    .obi_rsp_t   ( sbr_obi_rsp_t ),
-    .Bypass      ( 1'b0          )
-  ) i_user_transparentspi_obi_cut (
-    .clk_i,
-    .rst_ni,
-
-    .sbr_port_req_i(all_user_sbr_obi_req[UserTransparentSpi]),
-    .sbr_port_rsp_o(all_user_sbr_obi_rsp[UserTransparentSpi]),
-    .mgr_port_req_o(user_transparentspi_obi_req),
-    .mgr_port_rsp_i(user_transparentspi_obi_rsp)
-    
-    );
+  assign user_transparentspi_obi_req              = all_user_sbr_obi_req[UserTransparentSpi];
+  assign all_user_sbr_obi_rsp[UserTransparentSpi] = user_transparentspi_obi_rsp;
 
   assign user_block_swap_obi_req             = all_user_sbr_obi_req[UserBlockSwap];
   assign all_user_sbr_obi_rsp[UserBlockSwap] = user_block_swap_obi_rsp;
+
 
   //-----------------------------------------------------------------------------------------------
   // Demultiplex to User Subordinates according to address map
