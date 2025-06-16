@@ -506,3 +506,553 @@ dismissDialog("Program Device"); // aP (dialog11)
 // Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
 // 'D' command handler elapsed time: 4 seconds
 dismissDialog("Program Device"); // bq (Program Device Progress)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 27m:44s
+// Elapsed time: 282 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (RDIResource.BaseDialog_YES)
+// Elapsed Time for: 'L.f': 27m:46s
+dismissDialog("Synthesis is Out-of-date"); // u (dialog12)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: INFO: [Project 1-1160] Copying file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp to /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1 and adding it to utils fileset 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// 'cu' command handler elapsed time: 4 seconds
+dismissDialog("Launch Runs"); // cx (dialog13)
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 24 
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun 16 17:34:22 2025] Launched synth_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log [Mon Jun 16 17:34:22 2025] Launched impl_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bq (Generate Bitstream Progress)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 199 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+dismissDialog("Bitstream Generation Completed"); // Q.a (dialog14)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog15)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 132 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton("OptionPane.button", "Cancel"); // JButton (OptionPane.button)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 35m:28s
+// Elapsed time: 115 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// Elapsed Time for: 'L.f': 35m:30s
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (RDIResource.BaseDialog_YES)
+dismissDialog("Synthesis is Out-of-date"); // u (dialog16)
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp 
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// 'cu' command handler elapsed time: 3 seconds
+dismissDialog("Launch Runs"); // cx (dialog17)
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 24 
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun 16 17:42:06 2025] Launched synth_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log [Mon Jun 16 17:42:06 2025] Launched impl_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bq (Generate Bitstream Progress)
+// TclEventType: RUN_STATUS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 3,549 MB. GUI used memory: 169 MB. Current time: 6/16/25, 5:42:47 PM CEST
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 204 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+dismissDialog("Bitstream Generation Completed"); // Q.a (dialog18)
+// Elapsed time: 12 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog19)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 97 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog20)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 3 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 56 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Add Configuration Memory Device]", 35, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_ADD_CONFIG_MEMORY
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog21)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 79 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog22)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 62 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog23)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 68 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog24)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 862 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog25)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 129 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Open Target]", 33, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HW_TARGET
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog26)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// HMemoryUtils.trashcanNow. Engine heap size: 3,510 MB. GUI used memory: 153 MB. Current time: 6/16/25, 6:12:47 PM CEST
+// Elapsed time: 275 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog27)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// Elapsed time: 74 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog28)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 201 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+// Elapsed Time for: 'L.f': 01h:12m:00s
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (RDIResource.BaseDialog_YES)
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // u (dialog29)
+// TclEventType: RUN_RESET
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp 
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 01h:12m:02s
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// 'cu' command handler elapsed time: 3 seconds
+dismissDialog("Launch Runs"); // cx (dialog30)
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 24 
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun 16 18:18:36 2025] Launched synth_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log [Mon Jun 16 18:18:36 2025] Launched impl_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bq (Generate Bitstream Progress)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 180 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+dismissDialog("Bitstream Generation Completed"); // Q.a (dialog31)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog32)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 01h:16m:54s
+// Elapsed Time for: 'L.f': 01h:16m:56s
+// Elapsed time: 104 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 30, true); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug]", 30, true); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Node
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Generate Bitstream]", 31, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_YES, "Yes"); // a (RDIResource.BaseDialog_YES)
+// TclEventType: RUN_MODIFY
+dismissDialog("Synthesis is Out-of-date"); // u (dialog33)
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp 
+// TclEventType: FILE_SET_CHANGE
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// 'cu' command handler elapsed time: 6 seconds
+dismissDialog("Launch Runs"); // cx (dialog34)
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 24 
+// TclEventType: RUN_LAUNCH
+// TclEventType: DESIGN_STALE
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: [Mon Jun 16 18:23:37 2025] Launched synth_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log [Mon Jun 16 18:23:37 2025] Launched impl_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log 
+dismissDialog("Generate Bitstream"); // bq (Generate Bitstream Progress)
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// Elapsed time: 176 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_REPORTS_WINDOW
+dismissDialog("Bitstream Generation Completed"); // Q.a (dialog35)
+collapseTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+expandTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager]", 32); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Program and Debug, Open Hardware Manager, Program Device]", 34, false); // f (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectMenuItem((HResource) null, "xc7z020_1"); // ao (xc7z020_1)
+// Run Command: PAResourceCommand.PACommandNames_OPEN_HARDWARE_MANAGER
+// Tcl (Dont Echo) Command: 'rdi::info_commands get_hw_probes'
+// Run Command: PAResourceCommand.PACommandNames_PROGRAM_FPGA
+selectButton(PAResourceOtoP.ProgramFpgaDialog_PROGRAM, "Program"); // a (PAResourceOtoP.ProgramFpgaDialog_PROGRAM, RDIResource.BaseDialog_OK)
+dismissDialog("Program Device"); // aP (dialog36)
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// Tcl Message: set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1] 
+// Tcl Message: program_hw_devices [get_hw_devices xc7z020_1] 
+// TclEventType: HW_DEVICE_CHANGE
+// Tcl Message: INFO: [Labtools 27-3164] End of startup status: HIGH 
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_SYSMON_CHANGE
+// TclEventType: HW_DEVICE_UPDATE
+// TclEventType: HW_DEVICE_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: HW_DEVICE_PROBES_CHANGE
+// Tcl Message: refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0] 
+// Tcl Message: INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it. 
+// 'D' command handler elapsed time: 4 seconds
+dismissDialog("Program Device"); // bq (Program Device Progress)
