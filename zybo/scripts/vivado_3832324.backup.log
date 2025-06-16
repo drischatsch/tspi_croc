@@ -1,0 +1,29 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.1 (64-bit)
+# SW Build 2580384 on Sat Jun 29 08:04:45 MDT 2019
+# IP Build 2579722 on Sat Jun 29 11:35:40 MDT 2019
+# Start of session at: Tue May 13 14:31:42 2025
+# Process ID: 3832324
+# Current directory: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts
+# Command line: vivado
+# Log file: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts/vivado.log
+# Journal file: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /usr/scratch/badile38/sem25f15/croc_tspi/zybo/vivado/test.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/pack/vivado-2019.1.1-bt/Vivado/2019.1/data/ip'.
+open_project: Time (s): cpu = 00:00:19 ; elapsed = 00:00:09 . Memory (MB): peak = 6886.031 ; gain = 161.965 ; free physical = 201672 ; free virtual = 673181
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Tue May 13 14:32:59 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/vivado/test.runs/synth_1/runme.log
+[Tue May 13 14:32:59 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/vivado/test.runs/impl_1/runme.log
+launch_runs: Time (s): cpu = 00:00:03 ; elapsed = 00:00:27 . Memory (MB): peak = 6925.488 ; gain = 0.000 ; free physical = 201369 ; free virtual = 673139
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue May 13 15:34:02 2025...

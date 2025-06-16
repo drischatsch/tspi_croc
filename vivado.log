@@ -1,0 +1,149 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Jun 16 14:40:25 2025
+# Process ID: 1348207
+# Current directory: /usr/scratch/badile38/sem25f15/tspi_croc
+# Command line: vivado
+# Log file: /usr/scratch/badile38/sem25f15/tspi_croc/vivado.log
+# Journal file: /usr/scratch/badile38/sem25f15/tspi_croc/vivado.jou
+# Running On: badile39.ee.ethz.ch, OS: Linux, CPU Frequency: 5453.958 MHz, CPU Physical cores: 24, Host memory: 64780 MB
+#-----------------------------------------------------------
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+open_project /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/ip'.
+update_compile_order -fileset sources_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 14:41:50 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.06 . Memory (MB): peak = 8549.527 ; gain = 0.000 ; free physical = 38125 ; free virtual = 102783
+INFO: [Netlist 29-17] Analyzing 829 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 8576.527 ; gain = 2.000 ; free physical = 38097 ; free virtual = 102755
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 9163.820 ; gain = 0.000 ; free physical = 37562 ; free virtual = 102220
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9163.820 ; gain = 0.000 ; free physical = 37560 ; free virtual = 102218
+Read PlaceDB: Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 9165.820 ; gain = 2.000 ; free physical = 37552 ; free virtual = 102210
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9165.820 ; gain = 0.000 ; free physical = 37552 ; free virtual = 102210
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.08 . Memory (MB): peak = 9169.820 ; gain = 4.000 ; free physical = 37548 ; free virtual = 102206
+Read Physdb Files: Time (s): cpu = 00:00:00.27 ; elapsed = 00:00:00.43 . Memory (MB): peak = 9169.820 ; gain = 6.000 ; free physical = 37548 ; free virtual = 102206
+Restored from archive | CPU: 0.270000 secs | Memory: 16.904755 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.28 ; elapsed = 00:00:00.5 . Memory (MB): peak = 9179.824 ; gain = 16.004 ; free physical = 37548 ; free virtual = 102206
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9179.824 ; gain = 0.000 ; free physical = 37548 ; free virtual = 102206
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+export_ip_user_files -of_objects  [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_1/clk_wiz_0.xci] -no_script -reset -force -quiet
+remove_files  -fileset clk_wiz_0 /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_1/clk_wiz_0.xci
+INFO: [Project 1-386] Moving file '/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_1/clk_wiz_0.xci' from fileset 'clk_wiz_0' to fileset 'sources_1'.
+create_ip -name clk_wiz -vendor xilinx.com -library ip -version 6.0 -module_name clk_wiz_0
+set_property -dict [list \
+  CONFIG.CLKIN1_JITTER_PS {80.000} \
+  CONFIG.CLKIN1_UI_JITTER {80.000} \
+  CONFIG.CLKIN2_JITTER_PS {100.000} \
+  CONFIG.CLKIN2_UI_JITTER {100.000} \
+  CONFIG.CLKOUT1_JITTER {318.435} \
+  CONFIG.CLKOUT1_PHASE_ERROR {137.956} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {6.2500} \
+  CONFIG.JITTER_OPTIONS {PS} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {15.125} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {121.000} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+  CONFIG.MMCM_REF_JITTER1 {0.008} \
+  CONFIG.MMCM_REF_JITTER2 {0.010} \
+] [get_ips clk_wiz_0]
+generate_target {instantiation_template} [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'clk_wiz_0'...
+generate_target all [get_files  /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'clk_wiz_0'...
+catch { config_ip_cache -export [get_ips -all clk_wiz_0] }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0
+export_ip_user_files -of_objects [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci]
+launch_runs clk_wiz_0_synth_1 -jobs 24
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0
+[Mon Jun 16 14:44:30 2025] Launched clk_wiz_0_synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/clk_wiz_0_synth_1/runme.log
+export_simulation -of_objects [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci] -directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files/sim_scripts -ip_user_files_dir /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files -ipstatic_source_dir /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/modelsim} {questa=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/questa} {xcelium=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/xcelium} {vcs=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/vcs} {riviera=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 14:45:41 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 14:45:41 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2023.2
+  **** Build date : Oct 13 2023 at 20:26:23
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-06:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351A78390A
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1435] Device xc7z020 (JTAG device index = 1) is not programmed (DONE status = 0).
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 16:00:54 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 16 16:05:39 2025...

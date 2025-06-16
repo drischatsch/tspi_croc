@@ -1,0 +1,17 @@
+#-----------------------------------------------------------
+# Vivado v2019.1.1 (64-bit)
+# SW Build 2580384 on Sat Jun 29 08:04:45 MDT 2019
+# IP Build 2579722 on Sat Jun 29 11:35:40 MDT 2019
+# Start of session at: Tue May 13 14:31:42 2025
+# Process ID: 3832324
+# Current directory: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts
+# Command line: vivado
+# Log file: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts/vivado.log
+# Journal file: /usr/scratch/badile38/sem25f15/croc_tspi/zybo/scripts/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /usr/scratch/badile38/sem25f15/croc_tspi/zybo/vivado/test.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+wait_on_run impl_1
