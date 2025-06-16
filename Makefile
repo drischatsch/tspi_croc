@@ -109,6 +109,14 @@ verilator: verilator/obj_dir/Vtb_croc_soc
 
 
 ####################
+# Bootrom          #
+####################
+bootrom:
+	make -C sw/bootrom
+
+.PHONY: bootrom
+
+####################
 # Open Source Flow #
 ####################
 # Bender manages the different IPs and can be used to generate file-lists for synthesis
@@ -118,11 +126,13 @@ BENDER_TARGETS ?= asic ihp13 rtl synthesis
 SV_DEFINES     ?= VERILATOR SYNTHESIS COMMON_CELLS_ASSERTS_OFF
 
 ## Generate croc.flist used to read design in yosys
-yosys-flist: Bender.lock Bender.yml rtl/*/Bender.yml
+yosys-flist: Bender.lock Bender.yml rtl/*/Bender.yml bootrom
 	$(BENDER) script flist-plus $(foreach t,$(BENDER_TARGETS),-t $(t)) $(foreach d,$(SV_DEFINES),-D $(d)=1) > $(PROJ_DIR)/croc.flist
 
 include yosys/yosys.mk
 include openroad/openroad.mk
+
+yosys: yosys-flist yosys_synth
 
 klayout/croc_chip.gds: $(OR_OUT)/croc.def klayout/*.sh klayout/*.py
 	./klayout/def2gds.sh

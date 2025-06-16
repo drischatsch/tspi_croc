@@ -71,16 +71,16 @@ module user_rom #(
   end
 
   // Load the response data into a buffer from rom.hex
-  logic [31:0] rom_data [0:ROM_SIZE_WORDS-1];
-  initial begin
-    // $display(">> Loading User ROM from: \"%s\"", ROM_HEX_FILE);
-
-    $readmemh(ROM_HEX_FILE, rom_data);
-
-    // for (int i = 0; i < ROM_SIZE_WORDS; i++) begin
-    //   $display("   rom_data[%0d] = %08X", i, rom_data[i]);
-    // end
-  end
+  logic [31:0] rom_data [0:ROM_SIZE_WORDS-1] = {
+    32'h656D7544,
+    32'h4326696E,
+    32'h69726465,
+    32'h20732763,
+    32'h43495341,
+    32'h2E307620,
+    32'h00302E31,
+    32'h00000000
+  };
 
   // Assign the response data
   logic [ROM_SIZE_WORDS_LOG2-1:0] word_addr;
