@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param xicom.use_bs_reader 1
+set_param chipscope.maxJobs 6
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg400-1
 
@@ -221,6 +223,8 @@ read_xdc /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z
 set_property used_in_implementation false [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }

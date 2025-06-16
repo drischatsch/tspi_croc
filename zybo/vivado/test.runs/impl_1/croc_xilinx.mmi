@@ -12,7 +12,7 @@
 <MemInfo Version="1" Minor="9">
   <MemoryArray InstPath="i_croc_soc/i_croc/gen_sram_bank[1].i_sram/i_tc_sram/gen_1_ports.i_xpm_memory_spram/xpm_memory_base_inst" MemoryPrimitive="auto" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="i_croc_soc/i_croc/gen_sram_bank[1].i_sram/i_tc_sram/gen_1_ports.i_xpm_memory_spram/xpm_memory_base_inst" CoreMemory_Width="32" MemoryType="RAM_SP">
-      <BRAM MemType="RAMB36" Placement="X3Y6" Read_Width_A="36" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X3Y4" Read_Width_A="36" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="31" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p0_d8_p0_d8_p0_d8_p0_d8"/>
@@ -25,7 +25,7 @@
   </MemoryArray>
   <MemoryArray InstPath="i_croc_soc/i_croc/gen_sram_bank[0].i_sram/i_tc_sram/gen_1_ports.i_xpm_memory_spram/xpm_memory_base_inst" MemoryPrimitive="auto" MemoryConfiguration="enabled_configuration">
     <MemoryLayout Name="i_croc_soc/i_croc/gen_sram_bank[0].i_sram/i_tc_sram/gen_1_ports.i_xpm_memory_spram/xpm_memory_base_inst" CoreMemory_Width="32" MemoryType="RAM_SP">
-      <BRAM MemType="RAMB36" Placement="X3Y7" Read_Width_A="36" Read_Width_B="0" SLR_INDEX="0">
+      <BRAM MemType="RAMB36" Placement="X3Y5" Read_Width_A="36" Read_Width_B="0" SLR_INDEX="0">
         <DataWidth_PortA MSB="31" LSB="0"/>
         <AddressRange_PortA Begin="0" End="511"/>
         <BitLayout_PortA pattern="p0_d8_p0_d8_p0_d8_p0_d8"/>
