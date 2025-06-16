@@ -53,7 +53,6 @@ SW_HEX := sw/bin/helloworld.hex
 $(SW_HEX): sw/*.c sw/*.h sw/*.S sw/*.ld
 	$(MAKE) -C sw/ compile
 	$(MAKE) -C sw/bootrom
-	$(PYTHON3) sw/bootrom/gen_bootrom.py sw/bootrom/build/bootrom.hex -o sw/bootrom/build/bootrom_embed.hex
 
 ## Build all top-level programs in sw/
 software: $(SW_HEX)
@@ -77,7 +76,7 @@ vsim/compile_netlist.tcl: Bender.lock Bender.yml
 	$(BENDER) script vsim -t ihp13 -t vsim -t simulation -t verilator -t netlist_yosys -DSYNTHESIS -DSIMULATION > $@
 
 ## Simulate RTL using Questasim/Modelsim/vsim
-vsim: vsim/compile_rtl.tcl $(SW_HEX)
+vsim: vsim/compile_rtl.tcl $(SW_HEX) bootrom
 	rm -rf vsim/work
 	cd vsim; $(VSIM) -c -do "source compile_rtl.tcl; exit"
 	cd vsim; $(VSIM) +binary="$(realpath $(SW_HEX))" -gui tb_croc_soc $(VSIM_ARGS)
@@ -98,7 +97,7 @@ VERILATOR_ARGS +=  --unroll-count 1 --unroll-stmts 1
 verilator/croc.f: Bender.lock Bender.yml
 	$(BENDER) script verilator -t rtl -t verilator -DSYNTHESIS -DVERILATOR > $@
 
-verilator/obj_dir/Vtb_croc_soc: verilator/croc.f $(SW_HEX)
+verilator/obj_dir/Vtb_croc_soc: verilator/croc.f $(SW_HEX) bootrom
 	cd verilator; $(VERILATOR) $(VERILATOR_ARGS) -O3 -CFLAGS "-O1 -march=native" --top tb_croc_soc -f croc.f
 
 ## Simulate RTL using Verilator
