@@ -191,6 +191,8 @@ module croc_domain import croc_pkg::*; #(
 
   obi_cut #(
     .ObiCfg      ( SbrObiCfg     ),
+    .obi_a_chan_t ( sbr_obi_a_chan_t ),
+    .obi_r_chan_t ( sbr_obi_r_chan_t ),
     .obi_req_t   ( sbr_obi_req_t ),
     .obi_rsp_t   ( sbr_obi_rsp_t ),
     .Bypass      ( 1'b0          )
@@ -215,6 +217,8 @@ module croc_domain import croc_pkg::*; #(
 
   obi_cut #(
     .ObiCfg      ( SbrObiCfg     ),
+    .obi_a_chan_t ( sbr_obi_a_chan_t ),
+    .obi_r_chan_t ( sbr_obi_r_chan_t ),
     .obi_req_t   ( sbr_obi_req_t ),
     .obi_rsp_t   ( sbr_obi_rsp_t ),
     .Bypass      ( 1'b0          )
@@ -620,8 +624,8 @@ module croc_domain import croc_pkg::*; #(
   soc_ctrl_reg_top #(
     .reg_req_t       ( reg_req_t    ),
     .reg_rsp_t       ( reg_rsp_t    ),
-    .BootAddrDefault ( SramBaseAddr )
-    // .BootAddrDefault ( BootromAddrOffset )
+    // .BootAddrDefault ( SramBaseAddr )
+    .BootAddrDefault ( BootromAddrOffset )
   ) i_soc_ctrl (
     .clk_i,
     .rst_ni,

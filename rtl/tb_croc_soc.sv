@@ -479,7 +479,7 @@ module tb_croc_soc #(
         // write test value to sram
         jtag_write_reg32(croc_pkg::SramBaseAddr, 32'h1234_5678, 1'b1);
         // load binary to sram
-        // jtag_load_hex(binary_path);
+        jtag_load_hex(binary_path);
 
         $display("@%t | [CORE] Start fetching instructions", $time);
         fetch_en_i = 1'b1;
