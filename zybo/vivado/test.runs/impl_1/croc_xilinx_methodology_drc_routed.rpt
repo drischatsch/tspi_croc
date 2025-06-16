@@ -1,0 +1,683 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
+| Date         : Mon Jun 16 17:11:36 2025
+| Host         : badile39.ee.ethz.ch running 64-bit AlmaLinux release 8.10 (Cerulean Leopard)
+| Command      : report_methodology -file croc_xilinx_methodology_drc_routed.rpt -pb croc_xilinx_methodology_drc_routed.pb -rpx croc_xilinx_methodology_drc_routed.rpx
+| Design       : croc_xilinx
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 124
++-----------+------------------+--------------------------------------------------------+------------+
+| Rule      | Severity         | Description                                            | Violations |
++-----------+------------------+--------------------------------------------------------+------------+
+| TIMING-14 | Critical Warning | LUT on the clock tree                                  | 1          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                            | 59         |
+| LUTAR-1   | Warning          | LUT drives async reset alert                           | 1          |
+| TIMING-9  | Warning          | Unknown CDC Logic                                      | 1          |
+| TIMING-18 | Warning          | Missing input or output delay                          | 1          |
+| TIMING-20 | Warning          | Non-clocked latch                                      | 44         |
+| TIMING-28 | Warning          | Auto-derived clock referenced by a timing constraint   | 6          |
+| XDCC-1    | Warning          | Scoped Clock constraint overwritten with the same name | 1          |
+| XDCH-2    | Warning          | Same min and max delay values on IO port               | 7          |
+| LATCH-1   | Advisory         | Existing latches in the design                         | 1          |
+| XDCB-6    | Advisory         | Timing constraint pointing to hierarchical pins        | 2          |
++-----------+------------------+--------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-14#1 Critical Warning
+LUT on the clock tree  
+The LUT i_croc_soc/i_croc/i_dmi_jtag/i_dmi_jtag_tap/i_dft_tck_mux/i_BUFGMUX_i_1 has been found on the clock tree. Run opt_design to optimize the clock trees, then re-run report_methodology. If LUT(s) are still present in the clock trees, modify the RTL or the synthesis options accordingly to move the clock gating logic to dedicated clock enable resources. Keep in mind that post-opt_design database cannot be used for pin-planning tasks
+Related violations: <none>
+
+TIMING-17#1 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#5 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#6 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#7 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#8 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/cnt_cmd_q_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#9 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#10 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#11 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#12 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#13 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#14 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_counter/i_baudrate_counter/i_counter/counter_q_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#15 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#16 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#17 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#18 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#19 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#20 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#21 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#22 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_q_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#23 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/resp_type_q_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#24 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/resp_type_q_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#25 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/resp_type_q_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#26 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/en_write_q_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#27 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[0].data_q_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#28 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[10].data_q_reg[10]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#29 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[11].data_q_reg[11]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#30 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[12].data_q_reg[12]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#31 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[13].data_q_reg[13]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#32 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[14].data_q_reg[14]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#33 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[15].data_q_reg[15]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#34 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[16].data_q_reg[16]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#35 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[17].data_q_reg[17]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#36 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[18].data_q_reg[18]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#37 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[19].data_q_reg[19]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#38 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[1].data_q_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#39 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[20].data_q_reg[20]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#40 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[21].data_q_reg[21]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#41 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[22].data_q_reg[22]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#42 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[23].data_q_reg[23]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#43 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[24].data_q_reg[24]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#44 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[25].data_q_reg[25]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#45 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[26].data_q_reg[26]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#46 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[27].data_q_reg[27]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#47 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[28].data_q_reg[28]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#48 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[29].data_q_reg[29]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#49 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[2].data_q_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#50 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[30].data_q_reg[30]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#51 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[31].data_q_reg[31]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#52 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[3].data_q_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#53 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[4].data_q_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#54 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[5].data_q_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#55 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[6].data_q_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#56 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[7].data_q_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#57 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[8].data_q_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#58 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/gen_regs[9].data_q_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#59 Critical Warning
+Non-clocked sequential cell  
+The clock pin i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/waiting_for_start_bit_q_reg/C is not reached by a timing clock
+Related violations: <none>
+
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell i_croc_soc/i_user/i_user_transparentspi/i_shift_reg/data_is_read_d_reg_i_2, with 2 or more inputs, drives asynchronous preset/clear pin(s) i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/data_is_read_d_reg/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-9#1 Warning
+Unknown CDC Logic  
+One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An output delay is missing on jtag_tdo_o relative to the rising and/or falling clock edge(s) of clk_jtag.
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_block_swap_ctrl/edge2_d_reg cannot be properly analyzed as its control pin i_croc_soc/i_user/i_block_swap_ctrl/edge2_d_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_cmd_ctrl/signal_next_write_data_o_reg cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_cmd_ctrl/signal_next_write_data_o_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[0] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[1] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[2] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[3] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[4] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[5] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[6] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[7] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/block_swap_first_read_word_d_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/data_is_read_d_reg cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/data_is_read_d_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[0] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[10] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[10]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[11] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[11]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[12] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[12]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[13] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[13]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#17 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[14] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[14]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#18 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[15] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[15]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#19 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[16] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[16]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#20 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[17] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[17]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#21 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[18] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[18]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#22 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[19] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[19]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#23 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[1] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#24 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[20] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[20]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#25 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[21] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[21]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#26 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[22] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[22]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#27 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[23] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[23]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#28 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[24] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[24]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#29 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[25] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[25]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#30 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[26] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[26]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#31 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[27] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[27]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#32 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[28] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[28]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#33 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[29] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[29]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#34 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[2] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#35 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[30] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[30]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#36 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[31] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[31]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#37 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[3] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#38 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[4] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#39 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[5] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#40 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[6] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#41 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[7] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#42 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[8] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[8]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#43 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[9] cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/read_data_o_reg[9]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#44 Warning
+Non-clocked latch  
+The latch i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/signal_next_read_data_o_reg cannot be properly analyzed as its control pin i_croc_soc/i_user/i_user_transparentspi/i_resp_checker/signal_next_read_data_o_reg/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-28#1 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_out1_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 4 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#2 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_out1_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 6 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#3 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clk_out1_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 8 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKOUT0]
+Related violations: <none>
+
+TIMING-28#4 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clkfbout_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 4 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKFBOUT]
+Related violations: <none>
+
+TIMING-28#5 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clkfbout_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 6 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKFBOUT]
+Related violations: <none>
+
+TIMING-28#6 Warning
+Auto-derived clock referenced by a timing constraint  
+The auto-derived clock clkfbout_clk_wiz_0 is referenced by name inside timing constraint (see constraint position 8 in the Timing Constraint window in Vivado IDE). It is recommended to reference an auto-derived clock by the pin name attached to the clock: get_clocks -of_objects [get_pins i_clkwiz/inst/mmcm_adv_inst/CLKFBOUT]
+Related violations: <none>
+
+XDCC-1#1 Warning
+Scoped Clock constraint overwritten with the same name  
+A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
+New: create_clock -period 8.000 -name sys_clk -waveform {0.000 4.000} -add [get_ports sys_clk] (Source: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 9))
+Previous: create_clock -period 10.000 [get_ports sys_clk] (Source: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc (Line: 53))
+Related violations: <none>
+
+XDCH-2#1 Warning
+Same min and max delay values on IO port  
+The same input delay of 0.000 ns has been defined on port 'gpio_i[0]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock sys_clk 0.000 [get_ports gpio_i*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 23)
+Related violations: <none>
+
+XDCH-2#2 Warning
+Same min and max delay values on IO port  
+The same input delay of 0.000 ns has been defined on port 'gpio_i[1]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock sys_clk 0.000 [get_ports gpio_i*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 23)
+Related violations: <none>
+
+XDCH-2#3 Warning
+Same min and max delay values on IO port  
+The same input delay of 0.000 ns has been defined on port 'gpio_i[2]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_input_delay -clock sys_clk 0.000 [get_ports gpio_i*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 23)
+Related violations: <none>
+
+XDCH-2#4 Warning
+Same min and max delay values on IO port  
+The same output delay of 0.000 ns has been defined on port 'gpio_o[0]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock sys_clk 0.000 [get_ports gpio_o*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 46)
+Related violations: <none>
+
+XDCH-2#5 Warning
+Same min and max delay values on IO port  
+The same output delay of 0.000 ns has been defined on port 'gpio_o[1]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock sys_clk 0.000 [get_ports gpio_o*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 46)
+Related violations: <none>
+
+XDCH-2#6 Warning
+Same min and max delay values on IO port  
+The same output delay of 0.000 ns has been defined on port 'gpio_o[2]' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock sys_clk 0.000 [get_ports gpio_o*]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 46)
+Related violations: <none>
+
+XDCH-2#7 Warning
+Same min and max delay values on IO port  
+The same output delay of 0.000 ns has been defined on port 'status_o' relative to clock sys_clk for both max and min. Make sure this reflects the design intent.
+set_output_delay -clock sys_clk 0.000 [get_ports status_o]
+/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 43)
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 44 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
+Related violations: <none>
+
+XDCB-6#1 Advisory
+Timing constraint pointing to hierarchical pins  
+A timing constraint 'set_false_path' has a single -through that points to hierarchical pins (see constraint position '26' in the Timing Constraint window in Vivado IDE). With such constraint, it is recommended to have a DONT_TOUCH or KEEP_HIERARCHY on the hierarchical module to avoid the risk of pin names changing during synthesis.
+Current XDC: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 315)
+Related violations: <none>
+
+XDCB-6#2 Advisory
+Timing constraint pointing to hierarchical pins  
+A timing constraint 'set_false_path' has a single -through that points to hierarchical pins (see constraint position '27' in the Timing Constraint window in Vivado IDE). With such constraint, it is recommended to have a DONT_TOUCH or KEEP_HIERARCHY on the hierarchical module to avoid the risk of pin names changing during synthesis.
+Current XDC: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/constraints/zybo-z7.xdc (Line: 317)
+Related violations: <none>
+
+

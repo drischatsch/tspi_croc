@@ -6,6 +6,9 @@
 //  - Provides default clk and rst options to simplify code
 //  - Provides boiler plate template for common assertions
 
+// For FPGA
+`define COMMON_CELLS_ASSERTS_OFF
+
 `ifndef COMMON_CELLS_ASSERTIONS_SVH
 `define COMMON_CELLS_ASSERTIONS_SVH
 

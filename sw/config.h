@@ -15,8 +15,8 @@
 #define USER_ROM_BASE_ADDR 0x20000000
 
 // Frequencies
-#define TB_FREQUENCY 20000000
-#define TB_BAUDRATE    115200
+#define TB_FREQUENCY 10000000
+#define TB_BAUDRATE    38400
 
 // Peripheral configs
 // UART
