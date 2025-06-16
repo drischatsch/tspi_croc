@@ -70,7 +70,7 @@ $(BUILDDIR)/%.o: %.c $(BUILDDIR)
 
 $(BUILDDIR)/bootrom_embed.hex: $(BUILDDIR)/bootrom.hex
 	$(info [GEN] bootrom_embed.hex)
-	@echo "Please run\n\n\tpython $(PWD)/sw/bootrom/gen_bootrom.py $(PWD)/sw/bootrom/$(BUILDDIR)/bootrom.hex -o $(PWD)/sw/bootrom/$(BUILDDIR)/bootrom_embed.hex\n"
+	python3 gen_bootrom.py
 
 clean:
 	$(info Cleaning)

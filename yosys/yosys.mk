@@ -27,7 +27,7 @@ NETLIST_DEBUG	:= $(YOSYS_OUT)/$(TOP_DESIGN)_debug_yosys.v
 
 
 ## Synthesize netlist using Yosys
-yosys: $(NETLIST)
+yosys_synth: $(NETLIST)
 
 $(NETLIST) $(NETLIST_DEBUG):  $(SV_FLIST)
 	@mkdir -p $(YOSYS_OUT)
