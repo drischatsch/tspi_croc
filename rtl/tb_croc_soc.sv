@@ -395,12 +395,12 @@ module tb_croc_soc #(
                         uart_str = {uart_str, uart_read_buf[i]};
                     end
                     
-                    $display("@%t | [UART] %s", $time, uart_str);
+                    $display("@%t | [UART]   %s", $time, uart_str);
                     uart_read_buf.push_back(bite);
-                    $display("@%t | [UART] raw: %p", $time, uart_read_buf);
+                    // $display("@%t | [UART] raw: %p", $time, uart_read_buf);
   
                 end else begin
-                    $display("@%t | [UART] ???", $time);
+                    $display("@%t | [UART]   ???", $time);
                 end
 
                 uart_read_buf.delete();
