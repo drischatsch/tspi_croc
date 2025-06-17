@@ -176,5 +176,7 @@ clean:
 	rm -f verilator/croc.vcd
 	$(MAKE) ys_clean
 	$(MAKE) or_clean
+	$(MAKE) -C sw clean
+	$(MAKE) -C sw/bootrom clean
 
 .PHONY: clean
