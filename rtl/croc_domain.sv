@@ -214,7 +214,7 @@ module croc_domain import croc_pkg::*; #(
 
  assign user_sbr_obi_req_o          = all_sbr_obi_req[XbarUser];
  assign all_sbr_obi_rsp[XbarUser]   = user_sbr_obi_rsp_i;
- 
+
 /*
   obi_cut #(
     .ObiCfg      ( SbrObiCfg     ),
@@ -222,7 +222,8 @@ module croc_domain import croc_pkg::*; #(
     .obi_r_chan_t ( sbr_obi_r_chan_t ),
     .obi_req_t   ( sbr_obi_req_t ),
     .obi_rsp_t   ( sbr_obi_rsp_t ),
-    .Bypass      ( 1'b0          )
+    .BypassReq ( 1'b0          ),
+    .BypassRsp ( 1'b1          )
   ) i_user_obi_cut (
     .clk_i,
     .rst_ni,
@@ -625,8 +626,8 @@ module croc_domain import croc_pkg::*; #(
   soc_ctrl_reg_top #(
     .reg_req_t       ( reg_req_t    ),
     .reg_rsp_t       ( reg_rsp_t    ),
-    .BootAddrDefault ( SramBaseAddr )
-    // .BootAddrDefault ( BootromAddrOffset )
+    // .BootAddrDefault ( SramBaseAddr )
+    .BootAddrDefault ( BootromAddrOffset )
   ) i_soc_ctrl (
     .clk_i,
     .rst_ni,

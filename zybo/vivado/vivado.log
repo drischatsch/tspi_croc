@@ -465,3 +465,37 @@ program_hw_devices [get_hw_devices xc7z020_1]
 INFO: [Labtools 27-3164] End of startup status: HIGH
 refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
 INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Tue Jun 17 13:06:57 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Tue Jun 17 13:06:57 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Tue Jun 17 13:27:21 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Tue Jun 17 13:27:21 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
