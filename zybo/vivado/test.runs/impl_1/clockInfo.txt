@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Mon Jun 16 18:25:38 2025
+| Date         : Tue Jun 17 13:02:12 2025
 | Host         : badile39.ee.ethz.ch
 | Design       : design_1
 | Device       : xc7z020-clg400-1--

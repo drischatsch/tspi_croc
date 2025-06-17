@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Jun 16 18:23:38 2025
-# Process ID: 1842566
+# Start of session at: Tue Jun 17 13:00:02 2025
+# Process ID: 2841687
 # Current directory: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
 # Command line: vivado -log croc_xilinx.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source croc_xilinx.tcl
 # Log file: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.vds
 # Journal file: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/vivado.jou
-# Running On: badile39.ee.ethz.ch, OS: Linux, CPU Frequency: 600.000 MHz, CPU Physical cores: 24, Host memory: 64780 MB
+# Running On: badile39.ee.ethz.ch, OS: Linux, CPU Frequency: 5394.166 MHz, CPU Physical cores: 24, Host memory: 64780 MB
 #-----------------------------------------------------------
 source croc_xilinx.tcl -notrace

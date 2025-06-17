@@ -1,25 +1,20 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="1600183" HostCore="24" HostMemory="63262136">
+    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="2663535" HostCore="24" HostMemory="63262136">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="1660732" HostCore="24" HostMemory="63262136">
+    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="2723911" HostCore="24" HostMemory="63262136">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="1721219" HostCore="24" HostMemory="63262136">
+    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="2780240" HostCore="24" HostMemory="63262136">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="1785319" HostCore="24" HostMemory="63262136">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="1842884" HostCore="24" HostMemory="63262136">
+    <Process Command="vivado" Owner="sem25f15" Host="badile39.ee.ethz.ch" Pid="2842759" HostCore="24" HostMemory="63262136">
     </Process>
 </ProcessHandle>

@@ -1,0 +1,200 @@
+/*
+
+AMD Vivado v2023.2 (64-bit) [Major: 2023, Minor: 2]
+SW Build: 4029153 on Fri Oct 13 20:13:54 MDT 2023
+IP Build: 4028589 on Sat Oct 14 00:45:43 MDT 2023
+IP Build: 4028589 on Sat Oct 14 00:45:43 MDT 2023
+
+Process ID (PID): 2658087
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Tue Jun 17 12:22:43 CEST 2025
+Time zone: 	Central European Standard Time (Europe/Zurich)
+
+OS: AlmaLinux release 8.10 (Cerulean Leopard)
+OS Version: 4.18.0-553.40.1.el8_10.x86_64
+OS Architecture: amd64
+Available processors (cores): 24
+LSB Release Description: AlmaLinux release 8.10 (Cerulean Leopard)
+
+Display: 1
+Screen size: 2560x1440
+Local screen bounds: x = 0, y = 27, width = 2560, height = 1413
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+OS font scaling: 100%
+Anti-Alias Enabled: false
+
+Java version: 	17.0.7 64-bit
+JavaFX version: 17.0.1
+Java home: 	/usr/pack/vitis-2023.2-zr/Vivado/2023.2/tps/lnx64/jre17.0.7_7
+Java executable: 	/usr/pack/vitis-2023.2-zr/Vivado/2023.2/tps/lnx64/jre17.0.7_7/bin/java
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Djdk.gtk.version=2, -Dsun.java2d.uiScale.enabled=false, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, -XX:+UseStringDeduplication, -XX:MaxGCPauseMillis=200, -XX:+ParallelRefProcEnabled, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED, -XX:NewSize=80m, -XX:MaxNewSize=80m, -Xms512m, -Xmx4072m, -Xss10m, -Xrs]
+Java initial memory (-Xms): 	512 MB
+Java maximum memory (-Xmx):	 3 GB
+
+User name: 	sem25f15
+User home directory: /home/sem25f15
+User working directory: /usr/scratch/badile38/sem25f15/tspi_croc
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: /usr/pack/vitis-2023.2-zr/Vivado
+HDI_APPROOT: /usr/pack/vitis-2023.2-zr/Vivado/2023.2
+RDI_DATADIR: /usr/pack/vitis-2023.2-zr/SharedData/2023.2/data:/usr/pack/vitis-2023.2-zr/Vivado/2023.2/data
+RDI_BINDIR: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/bin
+
+Vivado preferences file: /home/sem25f15/.Xilinx/Vivado/2023.2/vivado.xml
+Vivado preferences directory: /home/sem25f15/.Xilinx/Vivado/2023.2/
+Vivado layouts directory: /home/sem25f15/.Xilinx/Vivado/2023.2/data/layouts
+PlanAhead jar file: 	/usr/pack/vitis-2023.2-zr/Vivado/2023.2/lib/classes/planAhead.jar
+Vivado log file: 	/usr/scratch/badile38/sem25f15/tspi_croc/vivado.log
+Vivado journal file: 	/usr/scratch/badile38/sem25f15/tspi_croc/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-2658087-badile39.ee.ethz.ch
+Non-Default Parameters:	[]
+
+Xilinx & AMD Environment Variables
+--------------------------------------------------------------------------------------------
+RDI_APPROOT: /usr/pack/vitis-2023.2-zr/Vivado/2023.2
+RDI_BASEROOT: /usr/pack/vitis-2023.2-zr/Vivado
+RDI_BINROOT: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/bin
+RDI_BUILD: yes
+RDI_DATADIR: /usr/pack/vitis-2023.2-zr/SharedData/2023.2/data:/usr/pack/vitis-2023.2-zr/Vivado/2023.2/data
+RDI_INSTALLROOT: /usr/pack/vitis-2023.2-zr
+RDI_INSTALLVER: 2023.2
+RDI_JAVA_PLATFORM: 
+RDI_JAVA_VERSION: 17.0.7_7
+RDI_LIBDIR: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/lib/lnx64.o/Default:/usr/pack/vitis-2023.2-zr/Vivado/2023.2/lib/lnx64.o
+RDI_OPT_EXT: .o
+RDI_PATCHROOT: 
+RDI_PLATFORM: lnx64
+RDI_PREPEND_PATH: /usr/pack/vitis-2023.2-zr/Vitis/2023.2/bin:/usr/pack/vitis-2023.2-zr/Vivado/2023.2/ids_lite/ISE/bin/lin64
+RDI_PROG: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/bin/unwrapped/lnx64.o/vivado
+RDI_SESSION_INFO: /usr/scratch/badile38/sem25f15/tspi_croc:badile39.ee.ethz.ch_1750155751_2657402
+RDI_SHARED_DATA: /usr/pack/vitis-2023.2-zr/SharedData/2023.2/data
+RDI_TPS_ROOT: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/tps/lnx64
+RDI_USE_JDK17: True
+SHELL: /bin/tcsh
+XILINX: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/ids_lite/ISE
+XILINX_DSP: /usr/pack/vitis-2023.2-zr/Vivado/2023.2/ids_lite/ISE
+XILINX_HLS: /usr/pack/vitis-2023.2-zr/Vitis_HLS/2023.2
+XILINX_PLANAHEAD: /usr/pack/vitis-2023.2-zr/Vivado/2023.2
+XILINX_SDK: /usr/pack/vitis-2023.2-zr/Vitis/2023.2
+XILINX_VITIS: /usr/pack/vitis-2023.2-zr/Vitis/2023.2
+XILINX_VIVADO: /usr/pack/vitis-2023.2-zr/Vivado/2023.2
+XILINX_VIVADO_HLS: /usr/pack/vitis-2023.2-zr/Vivado/2023.2
+XILINX_XRT: /usr/pack/vitis-2023.2-zr/xrt
+
+
+GUI allocated memory:	512 MB
+GUI max memory:		4,072 MB
+Engine allocated memory: 1,820 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.xpr", 1); // b.c (PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS)
+// [GUI Memory]: 94 MB (+96562kb) [00:00:07]
+// [Engine Memory]: 1,575 MB (+1499527kb) [00:00:07]
+// Opening Vivado Project: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.xpr. Version: Vivado v2023.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: open_project /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.xpr 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 147 MB (+50120kb) [00:00:08]
+// [Engine Memory]: 1,747 MB (+98655kb) [00:00:08]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,873 MB. GUI used memory: 77 MB. Current time: 6/17/25, 12:22:44 PM CEST
+// Project name: test; location: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado; part: xc7z020clg400-1
+// Tcl Message: open_project /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/ip'. 
+dismissDialog("Open Project"); // bq (Open Project Progress)
+// [Engine Memory]: 1,874 MB (+41109kb) [00:00:10]
+// [Engine Memory]: 2,384 MB (+436174kb) [00:00:10]
+// [GUI Memory]: 155 MB (+911kb) [00:00:10]
+// Tcl Message: update_compile_order -fileset sources_1 
+expandTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, croc_xilinx (croc_xilinx.sv)]", 2); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, croc_xilinx (croc_xilinx.sv), i_clkwiz : clk_wiz_0 (clk_wiz_0.xci)]", 3, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, croc_xilinx (croc_xilinx.sv), i_clkwiz : clk_wiz_0 (clk_wiz_0.xci)]", 3, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+// Run Command: PAResourceCommand.PACommandNames_RECUSTOMIZE_CORE
+// TclEventType: LOAD_FEATURE
+// Tcl Message: INFO: [Device 21-403] Loading part xc7z020clg400-1 
+dismissDialog("Re-customize IP"); // C (Re-customize IP Progress)
+// [Engine Memory]: 2,696 MB (+202006kb) [00:00:23]
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Output Clocks", 1); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+setText("CLKOUT1 REQUESTED OUT FREQ", "5.00", true); // v (CLKOUT1 REQUESTED OUT FREQ)
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Port Renaming", 2); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "MMCM Settings", 3); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Summary", 4); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "MMCM Settings", 3); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+selectTab(PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE, (HResource) null, "Clocking Options", 0); // cI (PAResourceTtoZ.XPG_TabbedPane_TABBED_PANE)
+selectButton(RDIResource.BaseDialog_OK, "OK"); // a (RDIResource.BaseDialog_OK)
+// [GUI Memory]: 170 MB (+7767kb) [00:00:37]
+dismissDialog("Re-customize IP"); // m (dialog0)
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_OBJECT_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILESET_UPDATE_IP
+// Tcl Message: set_property -dict [list \   CONFIG.CLKOUT1_JITTER {611.532} \   CONFIG.CLKOUT1_PHASE_ERROR {346.848} \   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {5.00} \   CONFIG.MMCM_CLKFBOUT_MULT_F {32.000} \   CONFIG.MMCM_CLKOUT0_DIVIDE_F {128.000} \   CONFIG.MMCM_DIVCLK_DIVIDE {5} \ ] [get_ips clk_wiz_0] 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Elapsed Time for: 'L.f': 30s
+// HMemoryUtils.trashcanNow. Engine heap size: 2,781 MB. GUI used memory: 92 MB. Current time: 6/17/25, 12:23:14 PM CEST
+selectButton(PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY, "Generate"); // a (PAResourceQtoS.SimpleOutputProductDialog_GENERATE_OUTPUT_PRODUCTS_IMMEDIATELY)
+// Tcl Message: generate_target all [get_files  /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci] 
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'clk_wiz_0'... INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'clk_wiz_0'... 
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'clk_wiz_0'... INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'clk_wiz_0'... INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'clk_wiz_0'... 
+// Tcl Message: catch { config_ip_cache -export [get_ips -all clk_wiz_0] } 
+// Tcl Message: INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0 
+// Tcl Message: export_ip_user_files -of_objects [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0_2/clk_wiz_0.xci] -no_script -sync -force -quiet 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run clk_wiz_0_synth_1 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RUN_LAUNCH
+// Tcl Message: launch_runs clk_wiz_0_synth_1 -jobs 24 
+// Tcl Message: INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0 
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Jun 17 12:23:18 2025] Launched clk_wiz_0_synth_1... Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/clk_wiz_0_synth_1/runme.log 
+// TclEventType: PROJECT_CHANGE

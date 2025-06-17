@@ -63,19 +63,6 @@
     assign tspi_mosi = tspi_mosi_o;
     assign tspi_miso = tspi_miso_i;
 
-    // OBI request
-    logic [31:0] addr_offset_temp;
-    logic [AddressBits-1:0] addr_offset_d, addr_offset_q;
-    logic req_d, req_q;
-    logic we_d, we_q;
-    `FF(addr_offset_q, addr_offset_d, '0, clk_i, rst_ni)
-    `FF(req_q, req_d, '0, clk_i, rst_ni)
-    `FF(we_q, we_d, '0, clk_i, rst_ni)
-    assign addr_offset_temp = obi_req_i.a.addr;
-    assign addr_offset_d = addr_offset_temp[AddressBits-1:0];
-    assign req_d = obi_req_i.req;
-    assign we_d = obi_req_i.a.we;
-
 
 
     // assign config_reg = 8'h19; // 25
@@ -90,7 +77,7 @@
         .config_reg_i(config_reg)
     );
 
-    tspi_cmd_ctrl #(
+    tspi_cmd_ctrl #(// TODO: No parameters?
     .ObiCfg(ObiCfg),
     .obi_req_t(obi_req_t), 
     .obi_rsp_t(obi_rsp_t)
@@ -98,9 +85,6 @@
         .clk_i(clk_i),
         .rst_ni(rst_ni),
         .obi_req_i(obi_req_i),
-        .addr_offset_i(addr_offset_d),
-        .req_i(req_d),
-        .we_i(we_d),
         .en_write_o(en_write),
         .data_o(data_cmd_controller),
         .new_req_o(new_req),
@@ -165,9 +149,6 @@
         .tspi_clk_i(tspi_clk),
         .rst_ni(rst_ni),
         .obi_req_i(obi_req_i),
-        .addr_offset_i(addr_offset_d),
-        .req_i(req_d),
-        .we_i(we_d),
         .obi_rsp_o(obi_rsp_o),
         .data_i(data_cmd_shift_reg),
         .len_cmd_i(len_cmd_counter),

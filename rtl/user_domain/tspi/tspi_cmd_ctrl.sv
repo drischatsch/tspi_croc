@@ -23,9 +23,7 @@ module tspi_cmd_ctrl import tspi_pkg::*; #(
 
     // OBI request interface
     input  obi_req_t obi_req_i,
-    input logic [AddressBits-1:0] addr_offset_i,
-    input logic req_i,
-    input logic we_i,
+
 
     // Shift register interface
     output logic en_write_o,
@@ -50,32 +48,25 @@ module tspi_cmd_ctrl import tspi_pkg::*; #(
     input logic done_i //initial part DONE: Implement
 );
 
-// logic [31:0] addr_offset_temp;
-// logic [AddressBits-1:0] addr_offset;
-
-
-
-// logic [AddressBits-1:0] addr_offset_d, addr_offset_q;
-// `FF(addr_offset_q, addr_offset_d, '0, clk_i, rst_ni)
-// assign addr_offset_d = addr_offset;
-
+logic [31:0] addr_offset_temp;
+logic [AddressBits-1:0] addr_offset;
 logic tspi_on_d, tspi_on_q;
 config_reg_t config_reg_d, config_reg_q;
 // Detect positive edge of request
 logic prev_req_q;
 
-// assign addr_offset_temp = obi_req_i.a.addr;
-// assign addr_offset = addr_offset_temp[AddressBits-1:0]; // DONE: Change to be variable dependent
+assign addr_offset_temp = obi_req_i.a.addr;
+assign addr_offset = addr_offset_temp[AddressBits-1:0]; // DONE: Change to be variable dependent
 
 
 
-assign new_req_o = req_i && !prev_req_q;
+assign new_req_o = obi_req_i.req && !prev_req_q;
 
 assign config_reg_o = config_reg_q;
 
 // Signal next write data
 always_comb begin
-    if(addr_offset_i >= BLOCK_READWRITE_MIN_OFFSET && addr_offset_i <= BLOCK_READWRITE_MAX_OFFSET && req_i && we_i) begin
+    if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req && obi_req_i.a.we) begin
         if(8'd68 < cnt_cmd_i && cnt_cmd_i <= 8'd196) begin
             if(new_cmd_i) begin
                 signal_next_write_data_o = 1'b1;
@@ -88,7 +79,7 @@ end
 
 //DONE: Add port control
 always_comb begin
-    if(req_i) begin
+    if(obi_req_i.req) begin
         tspi_on_d = 1'b1;
     end
     if(done_i) begin
@@ -97,14 +88,14 @@ always_comb begin
     
 end
 
-assign en_port_ctrl_o = req_i;
+assign en_port_ctrl_o = obi_req_i.req;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // COMMAND SEQUENCE //
 ////////////////////////////////////////////////////////////////////////////////////////////////
 always_comb begin : cmdSeq
     config_reg_d = config_reg_q;
-    case(addr_offset_i)
+    case(addr_offset)
         BEGINNING_OFFSET: begin
             data_o = 32'hFFFF_FFFF;
             en_write_o = 1'b0;
@@ -231,16 +222,16 @@ always_comb begin : cmdSeq
         //DONE: Add read, write commands
         default: begin
             // Transparent command
-            if(addr_offset_i <= READWRITE_MAX_OFFSET && req_i) begin
-                if(we_i) begin
+            if(addr_offset <= READWRITE_MAX_OFFSET && obi_req_i.req) begin
+                if(obi_req_i.a.we) begin
                     // Write command
                     case(cnt_cmd_i)
                         8'd200: begin
-                            data_o = 32'hFF58_0000 | {21'd0, addr_offset_i[28:18]};
+                            data_o = 32'hFF58_0000 | {21'd0, addr_offset[28:18]};
                             en_write_o = 1'b1;
                         end
                         8'd199: begin
-                            data_o = 32'h0000_01FF | {addr_offset_i[17:2], 16'd0}; // Shifted by 2
+                            data_o = 32'h0000_01FF | {addr_offset[17:2], 16'd0}; // Shifted by 2
                             en_write_o = 1'b1;
                         end
                         8'd198: begin
@@ -277,11 +268,11 @@ always_comb begin : cmdSeq
                     // Read command
                     case(cnt_cmd_i)
                         8'd132: begin
-                            data_o = 32'hFF51_0000 | {21'd0, addr_offset_i[28:18]};
+                            data_o = 32'hFF51_0000 | {21'd0, addr_offset[28:18]};
                             en_write_o = 1'b1;
                         end
                         8'd131: begin
-                            data_o = 32'h0000_01FF | {addr_offset_i[17:2], 16'd0}; // Shifted by 2
+                            data_o = 32'h0000_01FF | {addr_offset[17:2], 16'd0}; // Shifted by 2
                             en_write_o = 1'b1;
                         end
                         8'd129: begin
@@ -295,17 +286,17 @@ always_comb begin : cmdSeq
                     endcase
                 end
 
-            end else if(addr_offset_i >= BLOCK_READWRITE_MIN_OFFSET && addr_offset_i <= BLOCK_READWRITE_MAX_OFFSET && req_i) begin
+            end else if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req) begin
                 // Block swap command
-                if(we_i) begin
+                if(obi_req_i.a.we) begin
                     // Write command
                     case(cnt_cmd_i)
                         8'd200: begin
-                            data_o = 32'hFF58_0000 | {18'd0, addr_offset_i[28:16]}; // TODO: Check
+                            data_o = 32'hFF58_0000 | {18'd0, addr_offset[28:16]}; // TODO: Check
                             en_write_o = 1'b1;
                         end
                         8'd199: begin
-                            data_o = 32'h0000_01FF | {addr_offset_i[15:0], 16'd0}; // Shifted by 2
+                            data_o = 32'h0000_01FF | {addr_offset[15:0], 16'd0}; // Shifted by 2
                             en_write_o = 1'b1;
                         end
                         8'd198: begin
@@ -342,11 +333,11 @@ always_comb begin : cmdSeq
                     // Read command
                     case(cnt_cmd_i)
                         8'd200: begin
-                            data_o = 32'hFF51_0000 | {18'd0, addr_offset_i[28:16]}; // TODO: Check
+                            data_o = 32'hFF51_0000 | {18'd0, addr_offset[28:16]}; // TODO: Check
                             en_write_o = 1'b1;
                         end
                         8'd199: begin
-                            data_o = 32'h0000_01FF | {addr_offset_i[15:0], 16'd0}; // Shifted by 2
+                            data_o = 32'h0000_01FF | {addr_offset[15:0], 16'd0}; // Shifted by 2
                             en_write_o = 1'b1;
                         end
                         8'd197: begin
@@ -368,7 +359,7 @@ always_comb begin : cmdSeq
     endcase
 
 
-    if(new_req_o) begin // Changed from req_i
+    if(new_req_o) begin // Changed from obi_req_i.req
         en_write_o = 1'b1;
     end
     
@@ -380,7 +371,7 @@ end
 
 always_comb begin : cmdLen
     beginning_o = 1'b0;
-    case(addr_offset_i)
+    case(addr_offset)
         BEGINNING_OFFSET: begin
             cnt_cmd_o = 8'd4;
             len_cmd_o = 6'd31;
@@ -468,8 +459,8 @@ always_comb begin : cmdLen
         //DONE: Add read, write commands
         default: begin
             // Transparent command
-            if(addr_offset_i <= READWRITE_MAX_OFFSET && req_i) begin
-                if(we_i) begin
+            if(addr_offset <= READWRITE_MAX_OFFSET && obi_req_i.req) begin
+                if(obi_req_i.a.we) begin
                     // Write command
                     cnt_cmd_o = 8'd200;
                     if(cnt_cmd_i == 8'd198 || (8'd0 < cnt_cmd_i && cnt_cmd_i < 8'd68)) begin
@@ -495,9 +486,9 @@ always_comb begin : cmdLen
                     end
                 end
 
-            end else if(addr_offset_i >= BLOCK_READWRITE_MIN_OFFSET && addr_offset_i <= BLOCK_READWRITE_MAX_OFFSET && req_i) begin
+            end else if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req) begin
                 // Block swap command
-                if(we_i) begin
+                if(obi_req_i.a.we) begin
                     // Write command
                     cnt_cmd_o = 8'd200;
                     if(cnt_cmd_i == 8'd198 || (8'd0 < cnt_cmd_i && cnt_cmd_i < 8'd68)) begin
@@ -541,7 +532,7 @@ always_comb begin : cmdLen
 end
 
 `FF(tspi_on_q ,tspi_on_d , '0, clk_i, rst_ni)
-`FF(prev_req_q, req_i, '0, clk_i, rst_ni)
+`FF(prev_req_q, obi_req_i.req, '0, clk_i, rst_ni)
 `FF(config_reg_q ,config_reg_d , 8'h19, clk_i, rst_ni)
 
 endmodule

@@ -104,8 +104,14 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
   sbr_obi_rsp_t user_block_swap_obi_rsp;
 
   // Fanout into more readable signals
-  assign user_error_obi_req              = all_user_sbr_obi_req[UserError];
-  assign all_user_sbr_obi_rsp[UserError] = user_error_obi_rsp;
+  // assign user_error_obi_req              = all_user_sbr_obi_req[UserError];
+  // assign all_user_sbr_obi_rsp[UserError] = user_error_obi_rsp;
+
+  always_comb begin
+    user_error_obi_req = all_user_sbr_obi_req[UserError] | (block_swap_on & user_transparentspi_obi_req);
+    all_user_sbr_obi_rsp[UserError] = user_error_obi_rsp;
+  end
+
 
   assign user_rom_obi_req                = all_user_sbr_obi_req[UserRom];
   assign all_user_sbr_obi_rsp[UserRom]   = user_rom_obi_rsp;
@@ -282,12 +288,12 @@ block_swap_ctrl #(
     .clk_i,
     .rst_ni,
 
-    .swap_req_i(swap_req_q),
+    .swap_req_i(swap_req),
 
-    .old_addr_idx_i(old_addr_idx_q),
+    .old_addr_idx_i(old_addr_idx),
 
-    .old_addr_i(old_addr_q),
-    .new_addr_i(new_addr_q),
+    .old_addr_i(old_addr),
+    .new_addr_i(new_addr),
 
     .done_o(done),
 
@@ -313,7 +319,7 @@ always_comb begin
 
   if(block_swap_on) begin
     sdcard_obi_rsp = tspi_obi_rsp;
-    user_transparentspi_obi_rsp = '0;
+    user_transparentspi_obi_rsp = user_error_obi_rsp; // TODO: ask
   end else begin
     sdcard_obi_rsp = '0;
     user_transparentspi_obi_rsp = tspi_obi_rsp;
