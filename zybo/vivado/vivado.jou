@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Mon Jun 16 17:06:04 2025
-# Process ID: 1598648
+# Start of session at: Tue Jun 17 12:34:13 2025
+# Process ID: 2661930
 # Current directory: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado
 # Command line: vivado -mode tcl -source /usr/scratch/badile38/sem25f15/tspi_croc/zybo/scripts/flow.tcl
 # Log file: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/vivado.log
@@ -20,13 +20,13 @@ set_property -dict [list \
   CONFIG.CLKIN1_UI_JITTER {80.000} \
   CONFIG.CLKIN2_JITTER_PS {100.000} \
   CONFIG.CLKIN2_UI_JITTER {100.000} \
-  CONFIG.CLKOUT1_JITTER {283.436} \
-  CONFIG.CLKOUT1_PHASE_ERROR {133.882} \
-  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {10.000} \
+  CONFIG.CLKOUT1_JITTER {611.532} \
+  CONFIG.CLKOUT1_PHASE_ERROR {346.848} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {5.000} \
   CONFIG.JITTER_OPTIONS {PS} \
-  CONFIG.MMCM_CLKFBOUT_MULT_F {15.625} \
-  CONFIG.MMCM_CLKOUT0_DIVIDE_F {78.125} \
-  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {32.000} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {128.000} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {5} \
   CONFIG.MMCM_REF_JITTER1 {0.008} \
   CONFIG.MMCM_REF_JITTER2 {0.010} \
 ] [get_ips clk_wiz_0]
@@ -52,88 +52,9 @@ set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
 set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
 program_hw_devices [get_hw_devices xc7z020_1]
 refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
 reset_run synth_1
 launch_runs impl_1 -to_step write_bitstream -jobs 24
 wait_on_run impl_1
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-reset_run synth_1
-launch_runs impl_1 -to_step write_bitstream -jobs 24
-wait_on_run impl_1
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
-set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
-set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
-program_hw_devices [get_hw_devices xc7z020_1]
-refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
 set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
 set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
 set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]

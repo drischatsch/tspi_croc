@@ -67,18 +67,6 @@ logic counter_done;
 // logic sram_req_d, sram_req_q;
 // logic sdcard_req_d, sdcard_req_q;
 
-//TODO: TEST
-logic edge2_d, edge2_q;
-`FF(edge2_q, edge2_d, '0, clk_i, rst_ni)
-
-logic [20:0] new_addr_d, new_addr_q;
-logic [20:0] old_addr_d, old_addr_q;
-`FF(new_addr_q, new_addr_d, '0, clk_i, rst_ni)
-assign new_addr_d = new_addr_i;
-`FF(old_addr_q, old_addr_d, '0, clk_i, rst_ni)
-assign old_addr_d = old_addr_i;
-
-
 
 assign sram_addr = FIRST_USABLE_SRAM_ADDR + (old_addr_idx_i<<9);
 
@@ -97,6 +85,7 @@ always_comb begin
                 end else begin
                     state_d = WRITE_TO_SD_CARD_FROM_SRAM;
                 end
+                // count_d = 0; TODO: check if count_d works as expected
             end
         end
 
@@ -152,7 +141,6 @@ always_comb begin
         WRITE_TO_SD_CARD_FROM_SRAM: begin
 
             edge_detection_d = signal_next_write_data_i;
-            edge2_d = edge_detection_q;
             
             sram_obi_req_o = '0;
 
@@ -162,7 +150,7 @@ always_comb begin
             // sdcard_req_d = 1'b1;
 
             // Address Phase Signals
-            sdcard_obi_req_o.a.addr = UserTransparentSpiAddrOffset + BLOCK_READWRITE_MIN_OFFSET + old_addr_q; // DONE: Change when addresses are shorter
+            sdcard_obi_req_o.a.addr = UserTransparentSpiAddrOffset + BLOCK_READWRITE_MIN_OFFSET + old_addr_i; // DONE: Change when addresses are shorter
             sdcard_obi_req_o.a.we = 1'b1;
             sdcard_obi_req_o.a.be = 4'b1111;
             sdcard_obi_req_o.a.wdata = data_q;
@@ -173,6 +161,7 @@ always_comb begin
                     // TODO: Handle error
                     counter_done = 1'b1;
             end
+            // TODO: Mistake is in here
             if (sdcard_obi_rsp_i.rvalid && count_q >= 50) begin //TESTING
                 sdcard_obi_req_o = '0;
                 sdcard_obi_req_o.req = 1'b0;
@@ -181,14 +170,14 @@ always_comb begin
                 counter_done = 1'b1; //TESTING
             end
 
-            if(edge2_q == 1'b0 && edge_detection_q == 1'b1) begin //WAS: edge_detection_q == 1'b0 && signal_next_write_data_i == 1'b1
+            if(edge_detection_q == 1'b0 && signal_next_write_data_i == 1'b1) begin
                 sram_obi_req_o.req = 1'b1;
 
                 // Directly stop req signal
                 // sram_req_d = 1'b0;
 
                 // Address Phase Signals
-                sram_obi_req_o.a.addr = sram_addr | (count_q << 2);
+                sram_obi_req_o.a.addr = sram_addr | (count_q << 2); // TODO: Check if correct
                 sram_obi_req_o.a.we = 1'b0;
                 sram_obi_req_o.a.be = 4'b1111;
                 sram_obi_req_o.a.wdata = '0;
@@ -198,6 +187,7 @@ always_comb begin
 
             if(sram_obi_rsp_i.rvalid) begin
                 data_d = sram_obi_rsp_i.r.rdata;
+                // TODO: Check additional response signals
                 sram_obi_req_o = '0;
                 // sram_req_d = 1'b0;
                 
@@ -215,7 +205,6 @@ always_comb begin
         WRITE_TO_SRAM_FROM_SD_CARD: begin
 
             edge_detection_d = signal_next_read_data_i;
-            edge2_d = edge_detection_q;
 
             sram_obi_req_o = '0;
             
@@ -225,32 +214,30 @@ always_comb begin
             // sdcard_req_d = 1'b1;
 
             // Address Phase Signals
-            sdcard_obi_req_o.a.addr = UserTransparentSpiAddrOffset + BLOCK_READWRITE_MIN_OFFSET + new_addr_q; // DONE: Change when addresses are shorter
+            sdcard_obi_req_o.a.addr = UserTransparentSpiAddrOffset + BLOCK_READWRITE_MIN_OFFSET + new_addr_i; // DONE: Change when addresses are shorter
             sdcard_obi_req_o.a.we = 1'b0;
             sdcard_obi_req_o.a.be = 4'b1111;
             sdcard_obi_req_o.a.wdata = '0;
             sdcard_obi_req_o.a.aid = '1; // TODO: put proper id
 
-
-            // Added error handling
-            if(sdcard_obi_rsp_i.r.err == 1'b1 && sdcard_obi_rsp_i.rvalid) begin
-                    // TODO: Handle error
-                    counter_done = 1'b1;
-            end
             if (sdcard_obi_rsp_i.rvalid && count_q >= 50) begin
                 sdcard_obi_req_o = '0;
                 sdcard_obi_req_o.req = 1'b0;
                 // sdcard_req_d = 1'b0;
+
+                if(sdcard_obi_rsp_i.r.err == 1'b1) begin
+                    // TODO: Handle error
+                end
             end
 
-            if (edge2_q == 1'b0 && edge_detection_q == 1'b1) begin //WAS: edge_detection_q == 1'b0 && signal_next_read_data_i == 1'b1
+            if (edge_detection_q == 1'b0 && signal_next_read_data_i == 1'b1) begin
                 sram_obi_req_o.req = 1'b1;
 
                 // Directly stop req signal
                 // sram_req_d = 1'b0;
 
                 // Address Phase Signals
-                sram_obi_req_o.a.addr = sram_addr | (count_q << 2);
+                sram_obi_req_o.a.addr = sram_addr | (count_q << 2); // TODO: Check if correct
                 sram_obi_req_o.a.we = 1'b1;
                 sram_obi_req_o.a.be = 4'b1111;
                 sram_obi_req_o.a.wdata = data_q;
@@ -260,6 +247,7 @@ always_comb begin
 
 
             if(sram_obi_rsp_i.rvalid) begin
+                // TODO: Check additional response signals
                 sram_obi_req_o = '0;
                 // sram_req_d = 1'b0;
 
@@ -287,5 +275,7 @@ end
 `FF(count_q, count_d, '0, clk_i, rst_ni)
 `FF(edge_detection_q, edge_detection_d, '0, clk_i, rst_ni)
 
+// `FF(sram_req_q, sram_req_d, '0, clk_i, rst_ni)
+// `FF(sdcard_req_q, sdcard_req_d, '0, clk_i, rst_ni)
 
 endmodule

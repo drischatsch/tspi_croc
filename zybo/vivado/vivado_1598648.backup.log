@@ -1,0 +1,583 @@
+#-----------------------------------------------------------
+# Vivado v2023.2 (64-bit)
+# SW Build 4029153 on Fri Oct 13 20:13:54 MDT 2023
+# IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
+# SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
+# Start of session at: Mon Jun 16 17:06:04 2025
+# Process ID: 1598648
+# Current directory: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado
+# Command line: vivado -mode tcl -source /usr/scratch/badile38/sem25f15/tspi_croc/zybo/scripts/flow.tcl
+# Log file: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/vivado.log
+# Journal file: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/vivado.jou
+# Running On: badile39.ee.ethz.ch, OS: Linux, CPU Frequency: 600.000 MHz, CPU Physical cores: 24, Host memory: 64780 MB
+#-----------------------------------------------------------
+source /usr/scratch/badile38/sem25f15/tspi_croc/zybo/scripts/flow.tcl
+# source ../scripts/common.tcl
+## set root_dir    /usr/scratch/badile38/sem25f15/tspi_croc/zybo
+## set vivado_dir  ${root_dir}/vivado
+## set constr_dir  ${vivado_dir}/constraints
+## set scripts_dir ${root_dir}/scripts
+## set sources_dir ${root_dir}/sourcecode
+## set top croc_xilinx
+## set board  digilentinc.com:zybo-z7-20:part0:1.1
+## set device xc7z020clg400-1
+# source ${scripts_dir}/init.tcl
+## source ../scripts/common.tcl
+### set root_dir    /usr/scratch/badile38/sem25f15/tspi_croc/zybo
+### set vivado_dir  ${root_dir}/vivado
+### set constr_dir  ${vivado_dir}/constraints
+### set scripts_dir ${root_dir}/scripts
+### set sources_dir ${root_dir}/sourcecode
+### set top croc_xilinx
+### set board  digilentinc.com:zybo-z7-20:part0:1.1
+### set device xc7z020clg400-1
+## create_project test ${vivado_dir} -force -part ${device}
+## add_files -fileset constrs_1 -norecurse ${constr_dir}/zybo-z7.xdc
+## source ${scripts_dir}/add_sources.tcl
+### set ROOT "/usr/scratch/badile38/sem25f15/tspi_croc"
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/tech_cells_generic/fpga/pad_functional_xilinx.sv \
+###     $ROOT/rtl/tech_cells_generic/fpga/tc_clk_xilinx.sv \
+###     $ROOT/rtl/tech_cells_generic/fpga/tc_sram_xilinx.sv \
+###     $ROOT/rtl/tech_cells_generic/tc_sram_impl.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/common_cells/binary_to_gray.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/common_cells/cb_filter_pkg.sv \
+###     $ROOT/rtl/common_cells/cc_onehot.sv \
+###     $ROOT/rtl/common_cells/cdc_reset_ctrlr_pkg.sv \
+###     $ROOT/rtl/common_cells/cf_math_pkg.sv \
+###     $ROOT/rtl/common_cells/clk_int_div.sv \
+###     $ROOT/rtl/common_cells/credit_counter.sv \
+###     $ROOT/rtl/common_cells/delta_counter.sv \
+###     $ROOT/rtl/common_cells/ecc_pkg.sv \
+###     $ROOT/rtl/common_cells/edge_propagator_tx.sv \
+###     $ROOT/rtl/common_cells/exp_backoff.sv \
+###     $ROOT/rtl/common_cells/fifo_v3.sv \
+###     $ROOT/rtl/common_cells/gray_to_binary.sv \
+###     $ROOT/rtl/common_cells/isochronous_4phase_handshake.sv \
+###     $ROOT/rtl/common_cells/isochronous_spill_register.sv \
+###     $ROOT/rtl/common_cells/lfsr.sv \
+###     $ROOT/rtl/common_cells/lfsr_16bit.sv \
+###     $ROOT/rtl/common_cells/lfsr_8bit.sv \
+###     $ROOT/rtl/common_cells/lossy_valid_to_stream.sv \
+###     $ROOT/rtl/common_cells/mv_filter.sv \
+###     $ROOT/rtl/common_cells/onehot_to_bin.sv \
+###     $ROOT/rtl/common_cells/plru_tree.sv \
+###     $ROOT/rtl/common_cells/passthrough_stream_fifo.sv \
+###     $ROOT/rtl/common_cells/popcount.sv \
+###     $ROOT/rtl/common_cells/rr_arb_tree.sv \
+###     $ROOT/rtl/common_cells/rstgen_bypass.sv \
+###     $ROOT/rtl/common_cells/serial_deglitch.sv \
+###     $ROOT/rtl/common_cells/shift_reg.sv \
+###     $ROOT/rtl/common_cells/shift_reg_gated.sv \
+###     $ROOT/rtl/common_cells/spill_register_flushable.sv \
+###     $ROOT/rtl/common_cells/stream_demux.sv \
+###     $ROOT/rtl/common_cells/stream_filter.sv \
+###     $ROOT/rtl/common_cells/stream_fork.sv \
+###     $ROOT/rtl/common_cells/stream_intf.sv \
+###     $ROOT/rtl/common_cells/stream_join_dynamic.sv \
+###     $ROOT/rtl/common_cells/stream_mux.sv \
+###     $ROOT/rtl/common_cells/stream_throttle.sv \
+###     $ROOT/rtl/common_cells/sub_per_hash.sv \
+###     $ROOT/rtl/common_cells/sync.sv \
+###     $ROOT/rtl/common_cells/sync_wedge.sv \
+###     $ROOT/rtl/common_cells/unread.sv \
+###     $ROOT/rtl/common_cells/read.sv \
+###     $ROOT/rtl/common_cells/addr_decode_dync.sv \
+###     $ROOT/rtl/common_cells/cdc_2phase.sv \
+###     $ROOT/rtl/common_cells/cdc_4phase.sv \
+###     $ROOT/rtl/common_cells/clk_int_div_static.sv \
+###     $ROOT/rtl/common_cells/addr_decode.sv \
+###     $ROOT/rtl/common_cells/addr_decode_napot.sv \
+###     $ROOT/rtl/common_cells/multiaddr_decode.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/common_cells/cb_filter.sv \
+###     $ROOT/rtl/common_cells/cdc_fifo_2phase.sv \
+###     $ROOT/rtl/common_cells/clk_mux_glitch_free.sv \
+###     $ROOT/rtl/common_cells/counter.sv \
+###     $ROOT/rtl/common_cells/ecc_decode.sv \
+###     $ROOT/rtl/common_cells/ecc_encode.sv \
+###     $ROOT/rtl/common_cells/edge_detect.sv \
+###     $ROOT/rtl/common_cells/lzc.sv \
+###     $ROOT/rtl/common_cells/max_counter.sv \
+###     $ROOT/rtl/common_cells/rstgen.sv \
+###     $ROOT/rtl/common_cells/spill_register.sv \
+###     $ROOT/rtl/common_cells/stream_delay.sv \
+###     $ROOT/rtl/common_cells/stream_fifo.sv \
+###     $ROOT/rtl/common_cells/stream_fork_dynamic.sv \
+###     $ROOT/rtl/common_cells/stream_join.sv \
+###     $ROOT/rtl/common_cells/cdc_reset_ctrlr.sv \
+###     $ROOT/rtl/common_cells/cdc_fifo_gray.sv \
+###     $ROOT/rtl/common_cells/fall_through_register.sv \
+###     $ROOT/rtl/common_cells/id_queue.sv \
+###     $ROOT/rtl/common_cells/stream_to_mem.sv \
+###     $ROOT/rtl/common_cells/stream_arbiter_flushable.sv \
+###     $ROOT/rtl/common_cells/stream_fifo_optimal_wrap.sv \
+###     $ROOT/rtl/common_cells/stream_register.sv \
+###     $ROOT/rtl/common_cells/stream_xbar.sv \
+###     $ROOT/rtl/common_cells/cdc_fifo_gray_clearable.sv \
+###     $ROOT/rtl/common_cells/cdc_2phase_clearable.sv \
+###     $ROOT/rtl/common_cells/mem_to_banks_detailed.sv \
+###     $ROOT/rtl/common_cells/stream_arbiter.sv \
+###     $ROOT/rtl/common_cells/stream_omega_net.sv \
+###     $ROOT/rtl/common_cells/mem_to_banks.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/apb/apb_pkg.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/register_interface/reg_intf.sv \
+###     $ROOT/rtl/register_interface/lowrisc_opentitan/prim_subreg_arb.sv \
+###     $ROOT/rtl/register_interface/lowrisc_opentitan/prim_subreg_ext.sv \
+###     $ROOT/rtl/register_interface/periph_to_reg.sv \
+###     $ROOT/rtl/register_interface/reg_to_apb.sv \
+###     $ROOT/rtl/register_interface/lowrisc_opentitan/prim_subreg_shadow.sv \
+###     $ROOT/rtl/register_interface/lowrisc_opentitan/prim_subreg.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/apb_uart/slib_clock_div.sv \
+###     $ROOT/rtl/apb_uart/slib_counter.sv \
+###     $ROOT/rtl/apb_uart/slib_edge_detect.sv \
+###     $ROOT/rtl/apb_uart/slib_fifo.sv \
+###     $ROOT/rtl/apb_uart/slib_input_filter.sv \
+###     $ROOT/rtl/apb_uart/slib_input_sync.sv \
+###     $ROOT/rtl/apb_uart/slib_mv_filter.sv \
+###     $ROOT/rtl/apb_uart/uart_baudgen.sv \
+###     $ROOT/rtl/apb_uart/uart_interrupt.sv \
+###     $ROOT/rtl/apb_uart/uart_receiver.sv \
+###     $ROOT/rtl/apb_uart/uart_transmitter.sv \
+###     $ROOT/rtl/apb_uart/apb_uart.sv \
+###     $ROOT/rtl/apb_uart/apb_uart_wrap.sv \
+###     $ROOT/rtl/apb_uart/reg_uart_wrap.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/cve2/cve2_pkg.sv \
+###     $ROOT/rtl/cve2/cve2_alu.sv \
+###     $ROOT/rtl/cve2/cve2_compressed_decoder.sv \
+###     $ROOT/rtl/cve2/cve2_controller.sv \
+###     $ROOT/rtl/cve2/cve2_counter.sv \
+###     $ROOT/rtl/cve2/cve2_csr.sv \
+###     $ROOT/rtl/cve2/cve2_decoder.sv \
+###     $ROOT/rtl/cve2/cve2_fetch_fifo.sv \
+###     $ROOT/rtl/cve2/cve2_load_store_unit.sv \
+###     $ROOT/rtl/cve2/cve2_multdiv_fast.sv \
+###     $ROOT/rtl/cve2/cve2_multdiv_slow.sv \
+###     $ROOT/rtl/cve2/cve2_pmp.sv \
+###     $ROOT/rtl/cve2/cve2_register_file_ff.sv \
+###     $ROOT/rtl/cve2/cve2_wb.sv \
+###     $ROOT/rtl/cve2/cve2_cs_registers.sv \
+###     $ROOT/rtl/cve2/cve2_ex_block.sv \
+###     $ROOT/rtl/cve2/cve2_id_stage.sv \
+###     $ROOT/rtl/cve2/cve2_prefetch_buffer.sv \
+###     $ROOT/rtl/cve2/cve2_if_stage.sv \
+###     $ROOT/rtl/cve2/cve2_core.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/obi/obi_pkg.sv \
+###     $ROOT/rtl/obi/obi_intf.sv \
+###     $ROOT/rtl/obi/obi_rready_converter.sv \
+###     $ROOT/rtl/obi/obi_atop_resolver.sv \
+###     $ROOT/rtl/obi/obi_demux.sv \
+###     $ROOT/rtl/obi/obi_err_sbr.sv \
+###     $ROOT/rtl/obi/obi_mux.sv \
+###     $ROOT/rtl/obi/obi_sram_shim.sv \
+###     $ROOT/rtl/obi/obi_xbar.sv \
+###     $ROOT/rtl/obi/obi_cut.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/riscv-dbg/dm_pkg.sv \
+###     $ROOT/rtl/riscv-dbg/debug_rom/debug_rom.sv \
+###     $ROOT/rtl/riscv-dbg/debug_rom/debug_rom_one_scratch.sv \
+###     $ROOT/rtl/riscv-dbg/dm_csrs.sv \
+###     $ROOT/rtl/riscv-dbg/dm_mem.sv \
+###     $ROOT/rtl/riscv-dbg/dmi_cdc.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/riscv-dbg/dmi_jtag_tap.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/riscv-dbg/dm_sba.sv \
+###     $ROOT/rtl/riscv-dbg/dm_top.sv \
+###     $ROOT/rtl/riscv-dbg/dmi_jtag.sv \
+###     $ROOT/rtl/riscv-dbg/dm_obi_top.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/timer_unit/timer_unit_counter.sv \
+###     $ROOT/rtl/timer_unit/timer_unit_counter_presc.sv \
+###     $ROOT/rtl/timer_unit/apb_timer_unit.sv \
+###     $ROOT/rtl/timer_unit/timer_unit.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/user_domain/tspi/tspi_baudgeneration.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_cmd_ctrl.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_counter.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_host.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_port_ctrl.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_resp_checker.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_shift_reg.sv \
+###     $ROOT/rtl/user_domain/block_swap/block_swap_config.sv \
+###     $ROOT/rtl/user_domain/block_swap/block_swap_ctrl.sv \
+###     $ROOT/rtl/user_domain/block_swap/req_blocker_ctrl.sv \
+###     $ROOT/rtl/user_domain/block_swap/req_blocker.sv \
+###     $ROOT/rtl/user_domain/user_rom.sv \
+###     $ROOT/rtl/bootrom/bootrom.sv \
+### 
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/croc_pkg.sv \
+###     $ROOT/rtl/user_pkg.sv \
+###     $ROOT/rtl/soc_ctrl/soc_ctrl_reg_pkg.sv \
+###     $ROOT/rtl/gpio/gpio_reg_pkg.sv \
+###     $ROOT/rtl/user_domain/tspi/tspi_pkg.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/core_wrap.sv \
+###     $ROOT/rtl/soc_ctrl/soc_ctrl_reg_top.sv \
+###     $ROOT/rtl/gpio/gpio_reg_top.sv \
+###     $ROOT/rtl/gpio/gpio.sv \
+###     $ROOT/rtl/croc_domain.sv \
+###     $ROOT/rtl/user_domain.sv \
+###     $ROOT/rtl/croc_soc.sv \
+### ]
+### add_files -norecurse -fileset [current_fileset] [list \
+###     $ROOT/rtl/croc_xilinx.sv
+### ]
+### set_property include_dirs [list \
+###     $ROOT/rtl/apb/include \
+###     $ROOT/rtl/common_cells/include \
+###     $ROOT/rtl/cve2/include \
+###     $ROOT/rtl/obi/include \
+###     $ROOT/rtl/register_interface/include \
+### ] [current_fileset]
+### set_property include_dirs [list \
+###     $ROOT/rtl/apb/include \
+###     $ROOT/rtl/common_cells/include \
+###     $ROOT/rtl/cve2/include \
+###     $ROOT/rtl/obi/include \
+###     $ROOT/rtl/register_interface/include \
+### ] [current_fileset -simset]
+### set_property verilog_define [list \
+###     TARGET_FPGA \
+###     TARGET_RTL \
+###     TARGET_SYNTHESIS \
+###     TARGET_VIVADO \
+###     TARGET_XILINX \
+### ] [current_fileset]
+### set_property verilog_define [list \
+###     TARGET_FPGA \
+###     TARGET_RTL \
+###     TARGET_SYNTHESIS \
+###     TARGET_VIVADO \
+###     TARGET_XILINX \
+### ] [current_fileset -simset]
+## set_property top ${top} [current_fileset]
+## update_compile_order -fileset sources_1
+# source ${scripts_dir}/clkwiz.tcl
+## source ../scripts/common.tcl
+### set root_dir    /usr/scratch/badile38/sem25f15/tspi_croc/zybo
+### set vivado_dir  ${root_dir}/vivado
+### set constr_dir  ${vivado_dir}/constraints
+### set scripts_dir ${root_dir}/scripts
+### set sources_dir ${root_dir}/sourcecode
+### set top croc_xilinx
+### set board  digilentinc.com:zybo-z7-20:part0:1.1
+### set device xc7z020clg400-1
+## set clkwiz_dir ${vivado_dir}/ips
+## create_ip -name clk_wiz -vendor xilinx.com -library ip -version 6.0 -module_name clk_wiz_0 -dir ${clkwiz_dir}
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/ip'.
+ERROR: [Common 17-69] Command failed: IP directory '/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/ips' does not exist.
+
+
+    while executing
+"source ${scripts_dir}/clkwiz.tcl"
+    (file "/usr/scratch/badile38/sem25f15/tspi_croc/zybo/scripts/flow.tcl" line 8)
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.0/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_a/1.1/board.xml as part xcve2802-vsvh1760-2lp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.0/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vek280_es_revb:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vek280/es/rev_b/1.1/board.xml as part xcve2802-vsvh1760-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.0/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:vhk158_es:part0:1.1 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/vhk158/es/1.1/board.xml as part xcvh1582-vsva3697-2mp-e-s-es1 specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670:part0:2.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670/2.0/board.xml as part xczu67dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /usr/pack/vitis-2023.2-zr/Vivado/2023.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+update_compile_order -fileset sources_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+create_ip -name clk_wiz -vendor xilinx.com -library ip -version 6.0 -module_name clk_wiz_0
+set_property -dict [list \
+  CONFIG.CLKIN1_JITTER_PS {80.000} \
+  CONFIG.CLKIN1_UI_JITTER {80.000} \
+  CONFIG.CLKIN2_JITTER_PS {100.000} \
+  CONFIG.CLKIN2_UI_JITTER {100.000} \
+  CONFIG.CLKOUT1_JITTER {283.436} \
+  CONFIG.CLKOUT1_PHASE_ERROR {133.882} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {10.000} \
+  CONFIG.JITTER_OPTIONS {PS} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {15.625} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {78.125} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+  CONFIG.MMCM_REF_JITTER1 {0.008} \
+  CONFIG.MMCM_REF_JITTER2 {0.010} \
+] [get_ips clk_wiz_0]
+generate_target {instantiation_template} [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'clk_wiz_0'...
+generate_target all [get_files  /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Implementation' target for IP 'clk_wiz_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'clk_wiz_0'...
+catch { config_ip_cache -export [get_ips -all clk_wiz_0] }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0
+export_ip_user_files -of_objects [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci]
+launch_runs clk_wiz_0_synth_1 -jobs 24
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: clk_wiz_0
+[Mon Jun 16 17:07:55 2025] Launched clk_wiz_0_synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/clk_wiz_0_synth_1/runme.log
+export_simulation -of_objects [get_files /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci] -directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files/sim_scripts -ip_user_files_dir /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files -ipstatic_source_dir /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.ip_user_files/ipstatic -lib_map_path [list {modelsim=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/modelsim} {questa=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/questa} {xcelium=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/xcelium} {vcs=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/vcs} {riviera=/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.cache/compile_simlib/riviera}] -use_ip_compiled_libs -force -quiet
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 17:08:53 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 17:08:53 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+open_run impl_1
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 8656.223 ; gain = 0.000 ; free physical = 38451 ; free virtual = 102989
+INFO: [Netlist 29-17] Analyzing 982 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2023.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Read ShapeDB Complete: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 8656.223 ; gain = 0.000 ; free physical = 38374 ; free virtual = 102912
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+INFO: [Designutils 20-5722] Start Reading Physical Databases.
+Reading placement.
+Read Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 9242.754 ; gain = 0.000 ; free physical = 37846 ; free virtual = 102385
+Reading placer database...
+Read Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 9242.754 ; gain = 0.000 ; free physical = 37846 ; free virtual = 102385
+Read PlaceDB: Time (s): cpu = 00:00:00.2 ; elapsed = 00:00:00.21 . Memory (MB): peak = 9242.754 ; gain = 0.000 ; free physical = 37846 ; free virtual = 102384
+Read PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9242.754 ; gain = 0.000 ; free physical = 37846 ; free virtual = 102384
+Reading routing.
+Read RouteStorage: Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 9247.754 ; gain = 5.000 ; free physical = 37842 ; free virtual = 102380
+Read Physdb Files: Time (s): cpu = 00:00:00.32 ; elapsed = 00:00:00.31 . Memory (MB): peak = 9247.754 ; gain = 5.000 ; free physical = 37842 ; free virtual = 102380
+Restored from archive | CPU: 0.330000 secs | Memory: 17.006851 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.32 ; elapsed = 00:00:00.31 . Memory (MB): peak = 9247.754 ; gain = 5.000 ; free physical = 37842 ; free virtual = 102380
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 9247.754 ; gain = 0.000 ; free physical = 37842 ; free virtual = 102380
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2023.2
+  **** Build date : Oct 13 2023 at 20:26:23
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2023.2.0
+  ****** Build date   : Oct 10 2023-06:01:56
+    **** Build number : 2023.2.1696910516
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351A78390A
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+current_hw_device [get_hw_devices xc7z020_1]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1160] Copying file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp to /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1 and adding it to utils fileset
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 17:34:22 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 17:34:22 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 17:42:06 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 17:42:06 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 18:18:36 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 18:18:36 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+INFO: [Project 1-1161] Replacing file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.srcs/utils_1/imports/synth_1/croc_xilinx.dcp with file /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/croc_xilinx.dcp
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1
+
+launch_runs impl_1 -to_step write_bitstream -jobs 24
+[Mon Jun 16 18:23:37 2025] Launched synth_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/synth_1/runme.log
+[Mon Jun 16 18:23:37 2025] Launched impl_1...
+Run output will be captured here: /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7z020_1]
+set_property PROGRAM.FILE {/usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.runs/impl_1/croc_xilinx.bit} [get_hw_devices xc7z020_1]
+program_hw_devices [get_hw_devices xc7z020_1]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7z020_1] 0]
+INFO: [Labtools 27-1434] Device xc7z020 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 16 18:29:02 2025...

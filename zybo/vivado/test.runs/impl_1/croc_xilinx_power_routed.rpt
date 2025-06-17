@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date             : Mon Jun 16 18:26:11 2025
+| Date             : Tue Jun 17 13:02:46 2025
 | Host             : badile39.ee.ethz.ch running 64-bit AlmaLinux release 8.10 (Cerulean Leopard)
 | Command          : report_power -file croc_xilinx_power_routed.rpt -pb croc_xilinx_power_summary_routed.pb -rpx croc_xilinx_power_routed.rpx
 | Design           : croc_xilinx
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.234        |
+| Total On-Chip Power (W)  | 0.205        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.126        |
-| Device Static (W)        | 0.108        |
+| Dynamic (W)              | 0.098        |
+| Device Static (W)        | 0.107        |
 | Effective TJA (C/W)      | 11.5         |
-| Max Ambient (C)          | 82.3         |
-| Junction Temperature (C) | 27.7         |
+| Max Ambient (C)          | 82.6         |
+| Junction Temperature (C) | 27.4         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,20 +52,20 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.003 |        6 |       --- |             --- |
-| Slice Logic    |     0.001 |    15942 |       --- |             --- |
-|   LUT as Logic |     0.001 |     7927 |     53200 |           14.90 |
+| Clocks         |     0.002 |        6 |       --- |             --- |
+| Slice Logic    |    <0.001 |    15821 |       --- |             --- |
+|   LUT as Logic |    <0.001 |     7892 |     53200 |           14.83 |
 |   CARRY4       |    <0.001 |      295 |     13300 |            2.22 |
-|   Register     |    <0.001 |     5472 |    106400 |            5.14 |
+|   Register     |    <0.001 |     5386 |    106400 |            5.06 |
 |   F7/F8 Muxes  |    <0.001 |      664 |     53200 |            1.25 |
-|   BUFG         |    <0.001 |        7 |        32 |           21.88 |
-|   Others       |     0.000 |      205 |       --- |             --- |
-| Signals        |     0.001 |    12027 |       --- |             --- |
+|   BUFG         |    <0.001 |        6 |        32 |           18.75 |
+|   Others       |     0.000 |      203 |       --- |             --- |
+| Signals        |    <0.001 |    11953 |       --- |             --- |
 | Block RAM      |    <0.001 |        2 |       140 |            1.43 |
-| MMCM           |     0.120 |        1 |         4 |           25.00 |
+| MMCM           |     0.094 |        1 |         4 |           25.00 |
 | I/O            |    <0.001 |       20 |       125 |           16.00 |
-| Static Power   |     0.108 |          |           |                 |
-| Total          |     0.234 |          |           |                 |
+| Static Power   |     0.107 |          |           |                 |
+| Total          |     0.205 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -75,8 +75,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.006 |      0.008 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.077 |       0.067 |      0.011 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.011 |       0.003 |      0.008 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.063 |       0.052 |      0.010 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -139,8 +139,8 @@ Table of Contents
 | Clock              | Domain                           | Constraint (ns) |
 +--------------------+----------------------------------+-----------------+
 | clk_jtag           | jtag_tck_i                       |           100.0 |
-| clk_out1_clk_wiz_0 | i_clkwiz/inst/clk_out1_clk_wiz_0 |            80.0 |
-| clkfbout_clk_wiz_0 | i_clkwiz/inst/clkfbout_clk_wiz_0 |            16.0 |
+| clk_out1_clk_wiz_0 | i_clkwiz/inst/clk_out1_clk_wiz_0 |           160.0 |
+| clkfbout_clk_wiz_0 | i_clkwiz/inst/clkfbout_clk_wiz_0 |            40.0 |
 | sys_clk            | sys_clk                          |             8.0 |
 +--------------------+----------------------------------+-----------------+
 
@@ -154,12 +154,12 @@ Table of Contents
 +-------------------+-----------+
 | Name              | Power (W) |
 +-------------------+-----------+
-| croc_xilinx       |     0.126 |
-|   i_clkwiz        |     0.121 |
-|     inst          |     0.121 |
-|   i_croc_soc      |     0.005 |
-|     i_croc        |     0.005 |
-|       i_core_wrap |     0.002 |
+| croc_xilinx       |     0.098 |
+|   i_clkwiz        |     0.095 |
+|     inst          |     0.095 |
+|   i_croc_soc      |     0.003 |
+|     i_croc        |     0.003 |
+|       i_core_wrap |     0.001 |
 +-------------------+-----------+
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="clk_wiz_0_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1750086474">
+<GenRun Id="clk_wiz_0_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1750156548">
   <File Type="VDS-TIMINGSUMMARY" Name="clk_wiz_0_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="clk_wiz_0.dcp"/>
   <File Type="RDS-UTIL-PB" Name="clk_wiz_0_utilization_synth.pb"/>

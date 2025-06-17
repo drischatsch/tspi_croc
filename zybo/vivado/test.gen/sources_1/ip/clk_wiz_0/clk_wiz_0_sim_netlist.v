@@ -2,7 +2,7 @@
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-// Date        : Mon Jun 16 17:08:21 2025
+// Date        : Tue Jun 17 12:36:15 2025
 // Host        : badile39.ee.ethz.ch running 64-bit AlmaLinux release 8.10 (Cerulean Leopard)
 // Command     : write_verilog -force -mode funcsim
 //               /usr/scratch/badile38/sem25f15/tspi_croc/zybo/vivado/test.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.v
@@ -91,12 +91,12 @@ module clk_wiz_0_clk_wiz
   (* BOX_TYPE = "PRIMITIVE" *) 
   MMCME2_ADV #(
     .BANDWIDTH("OPTIMIZED"),
-    .CLKFBOUT_MULT_F(15.625000),
+    .CLKFBOUT_MULT_F(32.000000),
     .CLKFBOUT_PHASE(0.000000),
     .CLKFBOUT_USE_FINE_PS("FALSE"),
     .CLKIN1_PERIOD(10.000000),
     .CLKIN2_PERIOD(0.000000),
-    .CLKOUT0_DIVIDE_F(78.125000),
+    .CLKOUT0_DIVIDE_F(128.000000),
     .CLKOUT0_DUTY_CYCLE(0.500000),
     .CLKOUT0_PHASE(0.000000),
     .CLKOUT0_USE_FINE_PS("FALSE"),
@@ -126,7 +126,7 @@ module clk_wiz_0_clk_wiz
     .CLKOUT6_PHASE(0.000000),
     .CLKOUT6_USE_FINE_PS("FALSE"),
     .COMPENSATION("ZHOLD"),
-    .DIVCLK_DIVIDE(2),
+    .DIVCLK_DIVIDE(5),
     .IS_CLKINSEL_INVERTED(1'b0),
     .IS_PSEN_INVERTED(1'b0),
     .IS_PSINCDEC_INVERTED(1'b0),

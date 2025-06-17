@@ -27,9 +27,6 @@ module tspi_resp_checker import tspi_pkg::*; #(
 
     // OBI request interface
     input  obi_req_t obi_req_i,
-    input logic [AddressBits-1:0] addr_offset_i,
-    input logic req_i,
-    input logic we_i,
     output obi_rsp_t obi_rsp_o,
 
     // Shift register
@@ -52,13 +49,8 @@ module tspi_resp_checker import tspi_pkg::*; #(
 
   
     //-- Internal Signals ----------------------------------------------------------------
-    // logic [ObiCfg.DataWidth-1:0]  addr_offset_temp;
-    // logic [AddressBits-1:0] addr_offset;
-
-    // logic [AddressBits-1:0] addr_offset_d, addr_offset_q;
-    // `FF(addr_offset_q, addr_offset_d, '0, clk_i, rst_ni)
-    // assign addr_offset_d = addr_offset;
-
+    logic [ObiCfg.DataWidth-1:0]  addr_offset_temp;
+    logic [AddressBits-1:0] addr_offset;
     state_response_t resp_type_d, resp_type_q;
 
     logic [31:0] compare_data;
@@ -96,8 +88,8 @@ module tspi_resp_checker import tspi_pkg::*; #(
     `FF(data_is_read_q, data_is_read_d, '0, clk_i, rst_ni) 
 
 
-    // assign addr_offset_temp = obi_req_i.a.addr;
-    // assign addr_offset = addr_offset_temp[AddressBits-1:0];
+    assign addr_offset_temp = obi_req_i.a.addr;
+    assign addr_offset = addr_offset_temp[AddressBits-1:0];
 
 
 
@@ -106,7 +98,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
     //assign signal_next_read_data_o = (block_swap_first_read_word_q != 'd0) ? last_bit_i : 1'b0;
 
     always_comb begin
-        if(addr_offset_i >= BLOCK_READWRITE_MIN_OFFSET && addr_offset_i <= BLOCK_READWRITE_MAX_OFFSET && req_i && ~we_i) begin
+        if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req && ~obi_req_i.a.we) begin
             if(cnt_cmd_i > 8'd1 && cnt_cmd_i < block_swap_first_read_word_q) begin // TODO: Check bc: Changed from <= to < WHY THE HELL????
                 if(block_swap_first_read_word_q != 'd0) begin
                     signal_next_read_data_o = last_bit_i;
@@ -140,7 +132,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
         obi_rsp_o.r.rdata = data_i;  // TESTING: cnt_cmd_i;  //TODO: Implement bytewise
         obi_rsp_o.r.rid   = id_q;
         obi_rsp_o.r.err   = error_q; //TESTING TODO://error_q; //DONE: implement: error_q
-        obi_rsp_o.gnt     = done_o | ~req_i; // maybe still obi_req_i.req TODO!!!!
+        obi_rsp_o.gnt     = done_o | ~obi_req_i.req;
         obi_rsp_o.rvalid  = (correct_q | error_q); //TEST without req : Check
     end
 
@@ -252,7 +244,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
         compare_data = 32'hXXXX_XXXX; //DONE: X just becomes a fixed value
         mask = (32'hFFFF_FFFF >> (31 - len_cmd_i));
 
-        case(addr_offset_i)
+        case(addr_offset)
             BEGINNING_OFFSET: begin
                 if(cnt_cmd_i == 1) begin
                     resp_type_d = VALIDATE;
@@ -270,7 +262,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
                 compare_data = 32'hXXXX_XXXX;
             end
             CHANGE_BAUDRATE_OFFSET: begin
-                if(we_i) begin
+                if(obi_req_i.a.we) begin
                     resp_type_d = VALIDATE;
                 end else begin
                     resp_type_d = ERROR;
@@ -339,9 +331,9 @@ module tspi_resp_checker import tspi_pkg::*; #(
             end
             //DONE: Add read, write commands
             default: begin
-                if(addr_offset_i <= READWRITE_MAX_OFFSET && req_i) begin
+                if(addr_offset <= READWRITE_MAX_OFFSET && obi_req_i.req) begin
                     // Transparent command
-                    if(we_i) begin
+                    if(obi_req_i.a.we) begin
                         // Write command
                         case(cnt_cmd_i)
                             8'd198: begin
@@ -402,9 +394,9 @@ module tspi_resp_checker import tspi_pkg::*; #(
                         endcase
                     end
 
-                end else if (addr_offset_i >= BLOCK_READWRITE_MIN_OFFSET && addr_offset_i <= BLOCK_READWRITE_MAX_OFFSET && req_i) begin
+                end else if (addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req) begin
                     // Block swap commands
-                    if(we_i) begin
+                    if(obi_req_i.a.we) begin
                         // Write command
                         case(cnt_cmd_i)
                             8'd198: begin
