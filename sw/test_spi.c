@@ -11,8 +11,8 @@
 #include "gpio.h"
 #include "util.h"
 
-#define TB_FREQUENCY 6250000
-#define TB_BAUDRATE    57600
+// #define TB_FREQUENCY 6250000
+// #define TB_BAUDRATE    57600
 
 // #define SPI_BASE_ADDR 0x0300D000
 
@@ -105,28 +105,6 @@ int main() {
     for(uint32_t i = 0; i <128; i++) {
         *reg32(READWRITE_OFFSET | 0x800, 4*i) = (i * 5 + 7);
 
-        temp = *reg32(READWRITE_OFFSET | 0x800, 4*i);
-        printf("  WRITE TO 0x800 %x\n", temp);
-        uart_write_flush();
-
-    }
-
-    for(uint32_t i = 0; i <128; i++) {
-        *reg32(READWRITE_OFFSET | 0xA00, 4*i) = (i * 2 + 5);
-        // printf("  WRITE TO 0xA00 %x\n", i*2 + 50);
-        // uart_write_flush();
-    }
-
-    for(uint32_t i = 0; i <128; i++) {
-        *reg32(READWRITE_OFFSET | 0xC00, 4*i) = (i * 6 + 1);
-        // printf("  WRITE TO 0xA00 %x\n", i*2 + 50);
-        // uart_write_flush();
-    }
-
-    for(uint32_t i = 0; i <128; i++) {
-        *reg32(READWRITE_OFFSET | 0xE00, 4*i) = (i * 9 + 9);
-        // printf("  WRITE TO 0xA00 %x\n", i*2 + 50);
-        // uart_write_flush();
     }
 
 
@@ -148,33 +126,10 @@ int main() {
 
     for(uint32_t i = 0; i <128; i++) {
         temp = *reg32(READWRITE_OFFSET| 0x800, 4*i);
-        printf("  READ FROM 0x800 %x\n", temp);
-        uart_write_flush();
         if(temp != (i * 5 + 7)) {
             count_mistakes++;
         }
     }
-
-    for(uint32_t i = 0; i <128; i++) {
-        temp = *reg32(READWRITE_OFFSET| 0xA00, 4*i);
-        if(temp != (i * 2 + 5)) {
-            count_mistakes++;
-        }
-    }
-
-    for(uint32_t i = 0; i <128; i++) {
-        temp = *reg32(READWRITE_OFFSET| 0xC00, 4*i);
-        if(temp != (i * 6 + 1)) {
-            count_mistakes++;
-        }
-    }
-    for(uint32_t i = 0; i <128; i++) {
-        temp = *reg32(READWRITE_OFFSET| 0xE00, 4*i);
-        if(temp != (i * 9 + 9)) {
-            count_mistakes++;
-        }
-    }
-    
 
 
     if(count_mistakes == 0) {
