@@ -47,9 +47,13 @@ report_checks -unconstrained -format end -no_line_splits >> ${report_dir}/${log_
 report_checks -format end -no_line_splits                >> ${report_dir}/${log_id_str}_${proj_name}_checks.rpt
 report_checks -format end -no_line_splits                >> ${report_dir}/${log_id_str}_${proj_name}_checks.rpt
 
+# Size of the die
+set dieW            2235.0
+set dieH            2235.0
+
 # Size of the chip
-set chipW            1760.0
-set chipH            1760.0
+set chipW            [expr $dieW - 2 * (50.0 + 70.0)]
+set chipH            [expr $dieH - 2 * (50.0 + 70.0)]
 
 # thickness of annular ring for pads (length of a pad)
 set padRing           180.0
