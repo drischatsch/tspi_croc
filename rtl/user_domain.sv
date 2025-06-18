@@ -318,12 +318,12 @@ block_swap_ctrl #(
     .clk_i,
     .rst_ni,
 
-    .swap_req_i(swap_req),
+    .swap_req_i(swap_req_q),
 
-    .old_addr_idx_i(old_addr_idx),
+    .old_addr_idx_i(old_addr_idx_q),
 
-    .old_addr_i(old_addr),
-    .new_addr_i(new_addr),
+    .old_addr_i(old_addr_q),
+    .new_addr_i(new_addr_q),
 
     .done_o(done),
 
