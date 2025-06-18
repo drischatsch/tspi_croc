@@ -29,6 +29,7 @@
 
 #define SET_BLOCK_SWAP 0x20010000
 
+
 // How do I store this at the beginning of the Bootrom?
 // Also don't erase the value main_cancelled_count
 static int main_cancelled_count = 0;
@@ -36,9 +37,11 @@ static int main_cancelled_count = 0;
 // Error handler function
 void error_handler(const char* msg) {
     main_cancelled_count++;
-    printf("Error: %s. Main cancelled. Cancel count: %d\n", msg, main_cancelled_count);
-    uart_write_flush();
-    // Optionally, reset or halt here
+    
+    // asm volatile (
+    //     "la a0, 0x10000000\n" // Load address of SRAM start into a0
+    //     "jr a0\n"            // Jump to the address in a0
+    // );
 }
 
 
@@ -91,7 +94,7 @@ int main() {
     }
 
     // Jump to start of SRAM (0x10000000)
-    asm volatile (
+    asm volatile ( // TODO: VARIABLE DEPENDENT BOOTADDRESS wfi (wait for interrupt)
         "la a0, 0x10000000\n" // Load address of SRAM start into a0
         "jr a0\n"            // Jump to the address in a0
     );
