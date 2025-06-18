@@ -8,11 +8,12 @@
 
 `include "common_cells/registers.svh"
 
-typedef enum bit [1:0] {
+typedef enum bit [2:0] {
     IDLE,
     WRITE_TO_SRAM_FROM_SD_CARD,
     WAIT_ONE_CYCLE,
-    WRITE_TO_SD_CARD_FROM_SRAM
+    WRITE_TO_SD_CARD_FROM_SRAM,
+    WAIT_FOR_IDLE
 } block_swap_state_t;
 
 module block_swap_ctrl import croc_pkg::*; import tspi_pkg::*; import user_pkg::*; #(
@@ -104,9 +105,12 @@ always_comb begin
 
         WRITE_TO_SRAM_FROM_SD_CARD: begin
             if (counter_done) begin //DONE: change to correct condition
-                state_d = IDLE;
+                state_d = WAIT_FOR_IDLE;
                 done_o = 1'b1;
             end
+        end
+        WAIT_FOR_IDLE: begin
+            state_d = IDLE;
         end
         default: begin
             state_d = IDLE;
