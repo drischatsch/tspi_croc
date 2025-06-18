@@ -189,6 +189,7 @@ module croc_domain import croc_pkg::*; #(
   // assign xbar_periph_obi_req         = all_sbr_obi_req[XbarPeriph];
   // assign all_sbr_obi_rsp[XbarPeriph] = xbar_periph_obi_rsp;
 
+
   obi_cut #(
     .ObiCfg      ( SbrObiCfg     ),
     .obi_a_chan_t ( sbr_obi_a_chan_t ),
@@ -206,6 +207,7 @@ module croc_domain import croc_pkg::*; #(
     .mgr_port_rsp_i(xbar_periph_obi_rsp)
 
   );
+  
 
   for (genvar i = 0; i < NumSramBanks; i++) begin : gen_xbar_sbr_connect
     assign xbar_mem_bank_obi_req[i]     = all_sbr_obi_req[XbarBank0+i];
@@ -213,7 +215,7 @@ module croc_domain import croc_pkg::*; #(
   end
 
  // assign user_sbr_obi_req_o          = all_sbr_obi_req[XbarUser];
- // assign all_sbr_obi_rsp[XbarUser]   = user_sbr_obi_rsp_i;
+// assign all_sbr_obi_rsp[XbarUser]   = user_sbr_obi_rsp_i;
 
 
   obi_cut #(
@@ -223,7 +225,7 @@ module croc_domain import croc_pkg::*; #(
     .obi_req_t   ( sbr_obi_req_t ),
     .obi_rsp_t   ( sbr_obi_rsp_t ),
     .BypassReq ( 1'b0          ),
-    .BypassRsp ( 1'b1          )
+    .BypassRsp ( 1'b0          )
   ) i_user_obi_cut (
     .clk_i,
     .rst_ni,
@@ -234,6 +236,7 @@ module croc_domain import croc_pkg::*; #(
     .mgr_port_rsp_i(user_sbr_obi_rsp_i)
 
   );
+  
 
 
 
