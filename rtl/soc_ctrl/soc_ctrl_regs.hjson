@@ -74,6 +74,19 @@
           resval: 0x1
         }
       ]
+    },
+    { name: "restart_counter",
+      desc: "Bootrom restarts counter",
+      swaccess: "rw",
+      hwaccess: "hrw",
+      fields: [
+        { bits: "31:0",
+          name: "restart_counter",
+          desc: "Restart Counter",
+          resval: 0x0000_0000
+        }
+      ]
+
     }
 
   ],

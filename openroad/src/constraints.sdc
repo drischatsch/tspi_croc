@@ -126,15 +126,15 @@ set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.30 ] [get_po
 
 
 ##########
-## TSPI ##
+## TSPI ##`
 ##########
 puts "TSPI..."
 set_input_delay  -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_miso_i]
-set_input_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.30 ] [get_ports tspi_miso_i]
+set_input_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.2 ] [get_ports tspi_miso_i]
 set_output_delay -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_mosi_o]
-set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.30 ] [get_ports tspi_mosi_o]
+set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.13 ] [get_ports tspi_mosi_o]
 set_output_delay -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_clk_o]
-set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.30 ] [get_ports tspi_clk_o]
+set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.20 ] [get_ports tspi_clk_o]
 set_output_delay  -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_cs_no]
-set_output_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.30 ] [get_ports tspi_cs_no]
+set_output_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.20 ] [get_ports tspi_cs_no]
 ##########
