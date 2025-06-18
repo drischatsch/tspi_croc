@@ -43,14 +43,14 @@ int main() {
     uart_write_flush();
 
     temp = *reg32(BEGINNING_OFFSET, 0);
-    // printf("  BEGINNING %x\n", temp);
-    // uart_write_flush();
+    printf("  BEGINNING %x\n", temp);
+    uart_write_flush();
 
     *reg32(CHANGE_BAUDRATE_OFFSET, 0) = 0x18;
 
     temp = *reg32(CMD0_OFFSET, 0);
-    // printf("  CMD0 %x\n", temp);
-    // uart_write_flush();
+    printf("  CMD0 %x\n", temp);
+    uart_write_flush();
 
 
     temp = *reg32(CMD8_OFFSET, 0);

@@ -118,13 +118,15 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
 
   assign user_transparentspi_obi_req              = all_user_sbr_obi_req[UserTransparentSpi];
   assign all_user_sbr_obi_rsp[UserTransparentSpi] = user_transparentspi_obi_rsp;
+
 /*
   sbr_obi_rsp_t temp_transparentspi_obi_rsp;
   always_comb begin
-    all_user_sbr_obi_rsp[UserTransparentSpi] = temp_transparentspi_obi_rsp;
-    if((all_user_sbr_obi_req[UserTransparentSpi].req == 1'b1 && user_transparentspi_obi_req.req == 1'b0)) begin
+    all_user_sbr_obi_rsp[UserTransparentSpi] = user_transparentspi_obi_rsp;
+    if((all_user_sbr_obi_req[UserTransparentSpi].req == 1'b1) && (user_transparentspi_obi_req.req == 1'b0)) begin
       all_user_sbr_obi_rsp[UserTransparentSpi].gnt = 1'b0;
     end
+  end
 
 
   obi_cut #(
@@ -134,7 +136,7 @@ module user_domain import user_pkg::*; import croc_pkg::*; #(
     .obi_req_t   ( sbr_obi_req_t ),
     .obi_rsp_t   ( sbr_obi_rsp_t ),
     .BypassReq ( 1'b0          ),
-    .BypassRsp ( 1'b1         )
+    .BypassRsp ( 1'b0          )
   ) i_user_obi_cut (
     .clk_i,
     .rst_ni,

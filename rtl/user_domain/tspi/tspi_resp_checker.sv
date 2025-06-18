@@ -163,9 +163,14 @@ module tspi_resp_checker import tspi_pkg::*; #(
     //assign correct_response = (data_i[31:(31-len_cmd_i)] == compare_data[31:(31-len_cmd_i)]); 
 
     //DONE: Take away the correct response_q
+    logic last_bit_old_d, last_bit_old_q;
+    `FF(last_bit_old_q, last_bit_old_d, '0, clk_i, rst_ni) // 1 Bit
+    assign last_bit_old_d = last_bit_i; // Store the last bit for the response phase
 
     always_comb begin
-        if(last_bit_i && !en_write_i) begin // DONE: Change to check at the end
+        correct_d = 1'b0;
+        error_d = 1'b0;
+        if(last_bit_old_q == '0 && last_bit_i && !en_write_i) begin // DONE: Change to check at the end
             case(resp_type_q)
                 FINAL: begin
                     if(correct_response) begin
