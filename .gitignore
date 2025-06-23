@@ -5,3 +5,16 @@ vivado*
 
 .venv
 __pycache__
+
+dfii
+calibre
+docs
+innovus
+modelsim
+klayout/*-example
+synopsys
+technology
+tetramax
+.setPDK.csh
+.llamaconfig
+cockpit.log
