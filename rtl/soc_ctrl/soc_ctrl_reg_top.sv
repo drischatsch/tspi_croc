@@ -11,7 +11,8 @@ module soc_ctrl_reg_top #(
   parameter type reg_req_t = logic,
   parameter type reg_rsp_t = logic,
   parameter int AW = 5,
-  parameter int unsigned BootAddrDefault = 32'h0
+  parameter int unsigned BootAddrDefault = 32'h0,
+  parameter int unsigned BootAfterAddrDefault = 32'h0
 ) (
   input logic clk_i,
   input logic rst_ni,
