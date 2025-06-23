@@ -25,44 +25,32 @@ module user_rom #(
   output obi_rsp_t obi_rsp_o
 );
 
-  // User ROM hex filename
-  localparam string ROM_HEX_FILE = "../rtl/user_domain/user_rom.hex";
   // User ROM size in words
   localparam int ROM_SIZE_WORDS = 8;
   localparam int ROM_SIZE_WORDS_LOG2 = $ceil($clog2(ROM_SIZE_WORDS));
 
   // Define some registers to hold the requests fields
-  logic req_dd, req_d, req_q; // Request valid
-  logic we_dd, we_d, we_q; // Write enable
-  logic [ObiCfg.AddrWidth-1:0] addr_dd, addr_d, addr_q; // Internal address of the word to read
-  logic [ObiCfg.IdWidth-1:0] id_dd, id_d, id_q; // Id of the request, must be same for the response
+  logic req_d, req_q; // Request valid
+  logic we_d, we_q; // Write enable
+  logic [ObiCfg.AddrWidth-1:0] addr_d, addr_q; // Internal address of the word to read
+  logic [ObiCfg.IdWidth-1:0] id_d, id_q; // Id of the request, must be same for the response
 
   // Signals used to create the response
   logic [ObiCfg.DataWidth-1:0] rsp_data; // Data field of the obi response
   logic rsp_err; // Error field of the obi response
 
   // Wire the registers holding the request
-  assign req_dd = obi_req_i.req;
-  assign id_dd = obi_req_i.a.aid;
-  assign we_dd = obi_req_i.a.we;
-  assign addr_dd = obi_req_i.a.addr;
+  assign req_d = obi_req_i.req;
+  assign id_d = obi_req_i.a.aid;
+  assign we_d = obi_req_i.a.we;
+  assign addr_d = obi_req_i.a.addr;
   always_ff @(posedge (clk_i) or negedge (rst_ni)) begin
     if (!rst_ni) begin
-      req_d <= '0;
-      id_d <= '0;
-      we_d <= '0;
-      addr_d <= '0;
-
       req_q <= '0;
       id_q <= '0;
       we_q <= '0;
       addr_q <= '0;
     end else begin
-      req_d <= req_dd;
-      id_d <= id_dd;
-      we_d <= we_dd;
-      addr_d <= addr_dd;
-
       req_q <= req_d;
       id_q <= id_d;
       we_q <= we_d;
