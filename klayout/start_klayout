@@ -1,0 +1,11 @@
+#! /bin/csh -f
+
+# v0.2 - <bmuheim@ethz.ch> - Wed Oct  2 14:23:41 CEST 2024
+#  - starting klayout fron the oseda conaner
+# v0.1 - <bmuheim@ethz.ch> - Tue Mar 21 16:35:48 CET 2023
+#  - new
+
+setenv KLAYOUT_HOME ./.klayout
+
+oseda klayout -e $* &
+
