@@ -487,9 +487,19 @@ module tspi_resp_checker import tspi_pkg::*; #(
         endcase
     end
 
+logic edge_detect_d, edge_detect_q;
+logic enable;
+assign edge_detect_d = tspi_clk_i;
+assign enable = edge_detect_q == 1'b0 && tspi_clk_i == 1'b1;
+`FF(edge_detect_q, edge_detect_d, '0, clk_i, rst_ni)
 
-`FF(resp_type_q, resp_type_d, PASSTHROUGH, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
-`FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
+//`FFL(cnt_cmd_q, cnt_cmd_d, enable, '0, clk_i, rst_ni)
+
+
+// `FF(resp_type_q, resp_type_d, PASSTHROUGH, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
+`FFL(resp_type_q, resp_type_d, enable, PASSTHROUGH, clk_i, rst_ni)
+// `FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
+`FFL(block_swap_first_read_word_q, block_swap_first_read_word_d, enable, '0, clk_i, rst_ni)
     
 endmodule
   

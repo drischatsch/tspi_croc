@@ -39,8 +39,6 @@ create_clock -name clk_jtg -period $TCK_JTG [get_ports jtag_tck_i]
 set TCK_RTC 50.0
 create_clock -name clk_rtc -period $TCK_RTC [get_ports ref_clk_i]
 
-set TCK_TSPI 50.0
-create_clock -name clk_tspi -period $TCK_TSPI [get_ports tspi_clk_o]
 
 
 ##################################
