@@ -5,6 +5,7 @@
 // Authors:
 // - Philippe Sauter <phsauter@iis.ee.ethz.ch>
 // - Dumeni Rischatsch <drischatsch@student.ethz.ch>
+// - Cedric Hirschi <cehirschi@student.ethz.ch>
 
 #include "uart.h"
 #include "print.h"
@@ -32,32 +33,35 @@
 
 #define SET_BLOCK_SWAP 0x20010000
 
-#define BOOT_AFTER_ADDR 0x10000000
+#define RETRY_COUNTER_ADDR 0x10000100
+#define RETRY_COUNTER *reg32(RETRY_COUNTER_ADDR, 0)
 
-#define ERROR_VARIABLE_ADDR 0x10000100
-#define ERROR_VARIABLE *reg32(ERROR_VARIABLE_ADDR, 0)
-
+#define BOOT_AFTER_ADDR_ADDR 0x03000018
+#define BOOT_AFTER_ADDR *reg32(BOOT_AFTER_ADDR_ADDR, 0)
 
 int main() {
     uart_init();
     printf("BR>> Started\n");
     uart_write_flush();
 
-    ERROR_VARIABLE += 1;
-    if (ERROR_VARIABLE > NUM_RETRIES) {
-        printf("BR>> Resetting ERROR_VARIABLE\n");
+    RETRY_COUNTER += 1;
+    if (RETRY_COUNTER > NUM_RETRIES) {
+        printf("BR>> Resetting retry counter\n");
         uart_write_flush();
-        ERROR_VARIABLE = 0;
+        RETRY_COUNTER = 0;
     }
-
-    printf("BR>> Try %x\n", ERROR_VARIABLE);
-    uart_write_flush();
-    if (ERROR_VARIABLE < NUM_RETRIES) {
-        *reg32(SET_BLOCK_SWAP, 0) = 0;
-
-
+    
+    if (RETRY_COUNTER == NUM_RETRIES) {
+        printf("BR>> Too many retries, skipping initialization!\n");
+        uart_write_flush();
+    } else {
         uint32_t temp;
 
+        printf("BR>> Try %x\n", RETRY_COUNTER + 1);
+        uart_write_flush();
+
+        *reg32(SET_BLOCK_SWAP, 0) = 0;
+        
         temp = *reg32(BEGINNING_OFFSET, 0);
         temp = *reg32(CMD0_OFFSET, 0);
         temp = *reg32(CMD8_OFFSET, 0);
@@ -83,12 +87,6 @@ int main() {
         *reg32(SET_BLOCK_SWAP, 0) = 1;
 
         printf("BR>> Done!\n");
-        uart_write_flush();
-    }
-
-    if (ERROR_VARIABLE == NUM_RETRIES)
-    {
-        printf("BR>> Unused!\n");
         uart_write_flush();
     }
 

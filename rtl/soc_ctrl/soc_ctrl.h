@@ -1,4 +1,4 @@
-// Generated register defines for safety_soc_ctrl
+// Generated register defines for soc_ctrl
 
 // Copyright information found in source file:
 // Copyright 2024 ETH Zurich and University of Bologna
@@ -28,13 +28,20 @@ extern "C" {
 
 // Core Boot Mode
 #define SOC_CTRL_BOOTMODE_REG_OFFSET 0xc
-#define SOC_CTRL_BOOTMODE_BOOTMODE_MASK 0x3
-#define SOC_CTRL_BOOTMODE_BOOTMODE_OFFSET 0
-#define SOC_CTRL_BOOTMODE_BOOTMODE_FIELD \
-  ((bitfield_field32_t) { .mask = SOC_CTRL_BOOTMODE_BOOTMODE_MASK, .index = SOC_CTRL_BOOTMODE_BOOTMODE_OFFSET })
+#define SOC_CTRL_BOOTMODE_BOOTMODE_BIT 0
+
+// SRAM A_DLY value
+#define SOC_CTRL_SRAM_DLY_REG_OFFSET 0x10
+#define SOC_CTRL_SRAM_DLY_SRAM_DLY_BIT 0
+
+// Bootrom restarts counter
+#define SOC_CTRL_RESTART_COUNTER_REG_OFFSET 0x14
+
+// Core Boot Address After Bootrom
+#define SOC_CTRL_BOOTADDR_AFTER_REG_OFFSET 0x18
 
 #ifdef __cplusplus
 }  // extern "C"
 #endif
 #endif  // _SOC_CTRL_REG_DEFS_
-// End generated register defines for safety_soc_ctrl
+// End generated register defines for soc_ctrl

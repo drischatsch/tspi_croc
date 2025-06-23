@@ -628,9 +628,7 @@ module croc_domain import croc_pkg::*; #(
 
   soc_ctrl_reg_top #(
     .reg_req_t       ( reg_req_t    ),
-    .reg_rsp_t       ( reg_rsp_t    ),
-    .BootAddrDefault ( BootromAddrOffset ),
-    .BootAfterAddrDefault ( SramBaseAddr )
+    .reg_rsp_t       ( reg_rsp_t    )
   ) i_soc_ctrl (
     .clk_i,
     .rst_ni,
