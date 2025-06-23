@@ -98,7 +98,7 @@ for (genvar i = 0; i < 32; i++) begin : gen_regs
 
     // // shift valid flag without clock gate
     // `FF(data_q[i], data_d[i], '1, tspi_clk_i, rst_ni)
-    `FFL(data_q[i], data_d[i], enable, '1, tspi_clk_i, rst_ni)
+    `FFL(data_q[i], data_d[i], enable, '1, clk_i, rst_ni)
 end
 
 logic edge_detect_d, edge_detect_q;
