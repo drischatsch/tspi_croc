@@ -13,7 +13,7 @@ YOSYS     ?= yosys
 OPENROAD  ?= openroad
 KLAYOUT   ?= klayout
 VSIM      ?= vsim
-REGGEN    ?= $(PYTHON3) $(shell $(BENDER) path register_interface)/vendor/lowrisc_opentitan/util/regtool.py
+REGTOOL    ?= $(PYTHON3) vendor/register_interface/vendor/lowrisc_opentitan/util/regtool.py
 
 # Directories
 # directory of the path to the last called Makefile (this one)
@@ -21,6 +21,13 @@ PROJ_DIR  := $(realpath $(dir $(realpath $(lastword $(MAKEFILE_LIST)))))
 
 
 default: help
+
+reggen:
+	$(REGTOOL) rtl/soc_ctrl/soc_ctrl_regs.hjson -d -o rtl/soc_ctrl/soc_ctrl.md
+	$(REGTOOL) rtl/soc_ctrl/soc_ctrl_regs.hjson -D -o rtl/soc_ctrl/soc_ctrl.h
+	$(REGTOOL) rtl/soc_ctrl/soc_ctrl_regs.hjson -r -t rtl/soc_ctrl
+
+.PHONY: reggen
 
 ################
 # Dependencies #
