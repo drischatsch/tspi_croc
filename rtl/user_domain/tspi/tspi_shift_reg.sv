@@ -97,10 +97,22 @@ for (genvar i = 0; i < 32; i++) begin : gen_regs
     end
 
     // // shift valid flag without clock gate
-    `FF(data_q[i], data_d[i], '1, tspi_clk_i, rst_ni)
+    // `FF(data_q[i], data_d[i], '1, tspi_clk_i, rst_ni)
+    `FFL(data_q[i], data_d[i], enable, '1, tspi_clk_i, rst_ni)
 end
+
+logic edge_detect_d, edge_detect_q;
+logic enable;
+assign edge_detect_d = tspi_clk_i;
+assign enable = edge_detect_q == 1'b0 && tspi_clk_i == 1'b1;
+`FF(edge_detect_q, edge_detect_d, '0, clk_i, rst_ni)
+
+//`FFL(cnt_cmd_q, cnt_cmd_d, enable, '0, clk_i, rst_ni)
+
 // TODO: Check if still working
-`FF(en_write_q, en_write_d, '0, tspi_clk_i, rst_ni)
-`FF(waiting_for_start_bit_q, waiting_for_start_bit_d, '0, tspi_clk_i, rst_ni)
+// `FF(en_write_q, en_write_d, '0, tspi_clk_i, rst_ni)
+// `FF(waiting_for_start_bit_q, waiting_for_start_bit_d, '0, tspi_clk_i, rst_ni)
+`FFL(en_write_q, en_write_d, enable, '0, clk_i, rst_ni)
+`FFL(waiting_for_start_bit_q, waiting_for_start_bit_d, enable, '0, clk_i, rst_ni)
 
 endmodule
