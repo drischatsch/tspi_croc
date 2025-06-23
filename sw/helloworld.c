@@ -32,7 +32,7 @@ uint32_t isqrt(uint32_t n) {
 }
 
 int main() {
-    uart_init(); // setup the uart peripheral
+    // uart_init(); // the uart peripheral is initialized in the bootrom
 
     // simple printf support (only prints text and hex numbers)
     printf("Hello World!\n");
@@ -67,18 +67,6 @@ int main() {
 
     // print contents of the user ROM
     printf("User ROM contents:\n");
-    /* for (uint8_t i = 0; i < 8; i++)
-    {
-        volatile uint32_t *word = reg32(USER_ROM_BASE_ADDR, i * 4);
-        printf("0x%x (", *word);
-        for (int j = 0; j < 4; j++)
-        {
-            printf("0x%x ", (*word >> (j * 8)) & 0xFF);
-        }
-        printf(") ");
-    }
-    printf("\n");
-    uart_write_flush(); */
     printf("%s\n", USER_ROM_BASE_ADDR);
     uart_write_flush();
 
