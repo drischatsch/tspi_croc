@@ -1,0 +1,29 @@
+packages:
+  apb:
+    revision: null
+    version: null
+    source:
+      Path: /home/sem25f35/tspi_croc/rtl/apb
+    dependencies:
+    - common_cells
+  common_cells:
+    revision: null
+    version: null
+    source:
+      Path: /home/sem25f35/tspi_croc/rtl/common_cells
+    dependencies:
+    - common_verification
+    - tech_cells_generic
+  common_verification:
+    revision: null
+    version: null
+    source:
+      Path: /home/sem25f35/tspi_croc/rtl/common_verification
+    dependencies: []
+  tech_cells_generic:
+    revision: null
+    version: null
+    source:
+      Path: /home/sem25f35/tspi_croc/rtl/tech_cells_generic
+    dependencies:
+    - common_verification

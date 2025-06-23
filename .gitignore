@@ -2,3 +2,6 @@
 tmp
 croc.flist
 vivado*
+
+.venv
+__pycache__

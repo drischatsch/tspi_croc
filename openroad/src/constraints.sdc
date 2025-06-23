@@ -136,5 +136,5 @@ set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.13 ] [get_po
 set_output_delay -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_clk_o]
 set_output_delay -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.20 ] [get_ports tspi_clk_o]
 set_output_delay  -min -add_delay -clock clk_sys [ expr $TCK_SYS * 0.10 ] [get_ports tspi_cs_no]
-set_output_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.20 ] [get_ports tspi_cs_no]
+set_output_delay  -max -add_delay -clock clk_sys [ expr $TCK_SYS * 0.15 ] [get_ports tspi_cs_no]
 ##########

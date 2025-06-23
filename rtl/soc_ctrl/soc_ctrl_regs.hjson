@@ -22,6 +22,19 @@
         { bits: "31:0",
           name: "bootaddr",
           desc: "Boot Address",
+          resval: 0x0300_D000
+        }
+      ]
+
+    },
+    { name: "bootaddr_after",
+      desc: "Core Boot Address After Bootrom",
+      swaccess: "rw",
+      hwaccess: "hro",
+      fields: [
+        { bits: "31:0",
+          name: "bootaddr_after",
+          desc: "Boot Address After Bootrom",
           resval: 0x1000_0000
         }
       ]
