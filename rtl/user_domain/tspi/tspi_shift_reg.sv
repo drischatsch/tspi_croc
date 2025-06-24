@@ -78,7 +78,7 @@ for (genvar i = 0; i < 32; i++) begin : gen_regs
     if (i == 0) begin : gen_shift_in
         always_comb begin
             //assign valid_d[i] = valid_i;
-            if(en_write_i && new_cmd_i && (i >= 31 - len_cmd_i)) begin
+            if(en_write_i && new_cmd_i && ((i >= 31 - len_cmd_i) || len_cmd_i == 32)) begin
                 data_d[i] = data_i[i];
 
             end else begin
@@ -88,7 +88,7 @@ for (genvar i = 0; i < 32; i++) begin : gen_regs
     end else begin : gen_shift
         //assign valid_d[i] = valid_q[i-1];
         always_comb begin
-            if(en_write_i && new_cmd_i && (i >= 31 - len_cmd_i)) begin
+            if(en_write_i && new_cmd_i && ((i >= 31 - len_cmd_i) || len_cmd_i == 32)) begin
                 data_d[i] = data_i[i - 1]; // Shift data for first bit to be written directly
             end else begin
                 data_d[i]  = data_q[i - 1];
