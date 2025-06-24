@@ -40,9 +40,15 @@
 #define BOOT_AFTER_ADDR *reg32(BOOT_AFTER_ADDR_ADDR, 0)
 
 int main() {
+
+    *reg32(SET_BLOCK_SWAP, 0) = 0;
+
+    
     uart_init();
     printf("BR>> Started\n");
     uart_write_flush();
+
+    
 
     RETRY_COUNTER += 1;
     if (RETRY_COUNTER > NUM_RETRIES) {
@@ -60,7 +66,6 @@ int main() {
         printf("BR>> Try %x\n", RETRY_COUNTER + 1);
         uart_write_flush();
 
-        *reg32(SET_BLOCK_SWAP, 0) = 0;
         
         temp = *reg32(BEGINNING_OFFSET, 0);
         temp = *reg32(CMD0_OFFSET, 0);
