@@ -45,7 +45,7 @@ LIB_OBJS    := $(LIB_SOURCES:$(SRCDIR)/%=$(SRCDIR)/%.o)
 TOP_SOURCES ?= $(filter-out $(CRT0), $(wildcard *.[cS]))
 TOP_BASENAMES := $(basename $(TOP_SOURCES))
 TOP_OBJS    := $(TOP_BASENAMES:=.o)
-ALL_TARGETS := $(TOP_BASENAMES:%=$(BINDIR)/%.elf) $(TOP_BASENAMES:%=$(BINDIR)/%.dump) $(TOP_BASENAMES:%=$(BINDIR)/%.hex)
+ALL_TARGETS := $(TOP_BASENAMES:%=$(BINDIR)/%.elf) $(TOP_BASENAMES:%=$(BINDIR)/%.dump) $(TOP_BASENAMES:%=$(BINDIR)/%.hex) $(TOP_BASENAMES:%=$(BINDIR)/%.bin)
 
 
 $(BINDIR):
@@ -68,6 +68,9 @@ $(BINDIR)/%.dump: $(BINDIR)/%.elf
 
 $(BINDIR)/%.hex: $(BINDIR)/%.elf
 	$(RISCV_OBJCOPY) -O verilog $< $@
+
+$(BINDIR)/%.bin: $(BINDIR)/%.elf
+	$(RISCV_OBJCOPY) -O binary $< $@
 
 # Phonies
 .PHONY: all clean compile
