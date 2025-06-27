@@ -51,7 +51,7 @@ int main() {
     
 
     RETRY_COUNTER += 1;
-    if (0 && RETRY_COUNTER > NUM_RETRIES) {
+    if (RETRY_COUNTER > NUM_RETRIES) {
         printf("BR>> Resetting retry counter\n");
         uart_write_flush();
         RETRY_COUNTER = 0;

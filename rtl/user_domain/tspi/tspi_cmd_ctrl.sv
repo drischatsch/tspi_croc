@@ -304,7 +304,7 @@ always_comb begin : cmdSeq
                             en_write_o = 1'b0;
                         end
                         8'd197: begin
-                            data_o = 32'hFFFF_FFFE;// TODO: Check if the write works correctly for shorter command
+                            data_o = 32'hFFFE_FFFE;// TODO: Check if the write works correctly for shorter command
                             en_write_o = 1'b1;
                         end
                         8'd196: begin
@@ -496,7 +496,7 @@ always_comb begin : cmdLen
                     end else if(cnt_cmd_i == 8'd197) begin
                         len_cmd_o = 6'd15;
                     end else if(cnt_cmd_i == 8'd68) begin
-                        len_cmd_o = 6'd27; // Was 6'd31 MAYBE 15
+                        len_cmd_o = 6'd26; // Was 6'd27 MAYBE 15
                     end else if(cnt_cmd_i == 8'd67) begin
                         len_cmd_o = 6'd15; // Change this maybe to wait longer (len_cmd_o = 6'd31, mask = 32'hF800_0000) TODO: WAS 4
                     end else begin

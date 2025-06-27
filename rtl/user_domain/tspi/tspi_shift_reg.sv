@@ -26,7 +26,8 @@ module tspi_shift_reg import tspi_pkg::*; #()
     input logic en_write_i,
     input logic [31:0] data_i,
 
-    output logic [31:0] data_o
+    output logic [31:0] data_o,
+    output logic [31:0] direct_read_data_o
 );
 
 //-- Internal Signals ---------------------------------------------------------------------
@@ -38,6 +39,7 @@ logic waiting_for_start_bit_d, waiting_for_start_bit_q;
 //     assign data_o[i] = data_d[31-i]; // TODO: Check if this is correct
 // end
 assign data_o = data_q;
+assign direct_read_data_o = data_d;
 
 
 // Support for start bit
