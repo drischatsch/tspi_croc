@@ -140,6 +140,7 @@ always_comb begin
             sram_obi_req_o = '0;
             sdcard_obi_req_o = '0;
             edge_detection_d = '0;
+            count_d = '0;
         end
 
         WRITE_TO_SD_CARD_FROM_SRAM: begin
@@ -204,6 +205,7 @@ always_comb begin
             sram_obi_req_o = '0;
             sdcard_obi_req_o = '0;
             edge_detection_d = '0;
+            count_d = '0;
         end
 
         WRITE_TO_SRAM_FROM_SD_CARD: begin
