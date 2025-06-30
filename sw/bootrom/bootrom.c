@@ -38,6 +38,8 @@
 
 #define BOOT_AFTER_ADDR_ADDR 0x03000018
 #define BOOT_AFTER_ADDR *reg32(BOOT_AFTER_ADDR_ADDR, 0)
+#define BOOT_AFTER_SD_ADDR_ADDR 0x0300001C
+#define BOOT_AFTER_SD_ADDR *reg32(BOOT_AFTER_SD_ADDR_ADDR, 0)
 
 int main() {
 
@@ -61,18 +63,16 @@ int main() {
         printf("BR>> Too many retries, skipping initialization!\n");
         uart_write_flush();
     } else {
-        uint32_t temp;
-
         printf("BR>> Try %x\n", RETRY_COUNTER + 1);
         uart_write_flush();
 
         
-        temp = *reg32(BEGINNING_OFFSET, 0);
-        temp = *reg32(CMD0_OFFSET, 0);
-        temp = *reg32(CMD8_OFFSET, 0);
-        temp = *reg32(CMD59_OFFSET, 0);
-        temp = *reg32(CMD58_OFFSET, 0);
-        temp = *reg32(ACMD41_OFFSET, 0);
+        *reg32(BEGINNING_OFFSET, 0);
+        *reg32(CMD0_OFFSET, 0);
+        *reg32(CMD8_OFFSET, 0);
+        *reg32(CMD59_OFFSET, 0);
+        *reg32(CMD58_OFFSET, 0);
+        *reg32(ACMD41_OFFSET, 0);
 
         *reg32(CHANGE_BAUDRATE_OFFSET, 0) = 0x18;
 
@@ -81,10 +81,10 @@ int main() {
 
         *reg32(SET_BLOCK_SWAP, 0) = 3;
 
-        temp = *reg32(READWRITE_OFFSET, 0x000); 
-        temp = *reg32(READWRITE_OFFSET, 0x200);
-        temp = *reg32(READWRITE_OFFSET, 0x400);
-        temp = *reg32(READWRITE_OFFSET, 0x600);
+        *reg32(READWRITE_OFFSET, 0x000); 
+        *reg32(READWRITE_OFFSET, 0x200);
+        *reg32(READWRITE_OFFSET, 0x400);
+        *reg32(READWRITE_OFFSET, 0x600);
 
         printf("BR>> Blocks loaded\n");
         uart_write_flush();
@@ -93,7 +93,32 @@ int main() {
 
         printf("BR>> Done!\n");
         uart_write_flush();
+
+        // Jump to start of SD-Card mapped SRAM
+        printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_SD_ADDR);
+        uart_write_flush();
+        asm volatile (
+            "mv a0, %0\n"
+            "jr a0\n"
+            :
+            : "r"(BOOT_AFTER_SD_ADDR)
+            : "a0"
+        );
     }
+
+    /* // Check if start of SRAM is empty (0x00000000 or 0xFFFFFFFF)
+    uint32_t sram_start = *reg32(BOOT_AFTER_ADDR, 4);
+    if (sram_start == 0x00000000 || sram_start == 0xFFFFFFFF) {
+        printf("BR>> SRAM start empty (0x%x)!\n", sram_start);
+        uart_write_flush();
+
+        while (1) {
+            // Wait indefinitely
+            asm volatile ("wfi");
+        }
+    }
+    printf("BR>> SRAM start not empty (0x%x), continuing...\n", sram_start);
+    uart_write_flush(); */
 
     // Jump to start of SRAM
     printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_ADDR);
