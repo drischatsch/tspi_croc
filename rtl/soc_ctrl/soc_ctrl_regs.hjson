@@ -109,7 +109,7 @@
         { bits: "31:0",
           name: "bootaddr_after_sd",
           desc: "Boot Address After Bootrom if SD Card is attached",
-          resval: 0x6000_0000
+          resval: 0x1000_0800
         }
       ]
 
