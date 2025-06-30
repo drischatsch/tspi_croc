@@ -94,6 +94,15 @@ int main() {
         printf("BR>> Done!\n");
         uart_write_flush();
 
+        printf("BR>> First 8 words in SD Card:\n");
+        uart_write_flush();
+        for (int i = 0; i < 8; i++) {
+            // Read the first 8 bytes of the buffer
+            uint32_t data = *reg32(BOOT_AFTER_SD_ADDR + i * 4, 0);
+            printf("BR>>   %x: 0x%x\n", i, data);
+            uart_write_flush();
+        }
+
         // Jump to start of SD-Card mapped SRAM
         printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_SD_ADDR);
         uart_write_flush();
@@ -119,6 +128,15 @@ int main() {
     }
     printf("BR>> SRAM start not empty (0x%x), continuing...\n", sram_start);
     uart_write_flush(); */
+
+    printf("BR>> First 8 words in SRAM:\n");
+    uart_write_flush();
+    for (int i = 0; i < 8; i++) {
+        // Read the first 8 bytes of the buffer
+        uint32_t data = *reg32(BOOT_AFTER_ADDR + i * 4, 0);
+        printf("BR>>   %x: 0x%x\n", i, data);
+        uart_write_flush();
+    }
 
     // Jump to start of SRAM
     printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_ADDR);
