@@ -83,6 +83,10 @@ module tspi_counter import tspi_pkg::*; #()
     // .overflow_o(                          ) 
     // );
 
+
+    // Flip-flop to store the current state of the counter command
+    // `FF(fast_cnt_cmd_q, fast_cnt_cmd_d, '0, clk_i, rst_ni)
+    // `FF(cnt_cmd_q, cnt_cmd_d, '0, tspi_clk_i, rst_ni)
     // Own counter:
     logic [5:0] count_d, count_q;
     always_comb begin
@@ -109,6 +113,7 @@ module tspi_counter import tspi_pkg::*; #()
 
     // `FF(cnt_cmd_q, cnt_cmd_d, '0, tspi_clk_i, rst_ni)
     `FFL(cnt_cmd_q, cnt_cmd_d, enable, '0, clk_i, rst_ni)
+
     
     `FF(new_req_q, new_req_d, '0, clk_i, rst_ni)
 

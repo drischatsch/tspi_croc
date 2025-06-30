@@ -137,7 +137,8 @@
         .mosi_o(tspi_mosi_o),
         .en_write_i(en_write),
         .data_i(data_cmd_controller),
-        .data_o(data_cmd_shift_reg)
+        .data_o(data_cmd_shift_reg),
+        .direct_read_data_o(read_data_o)
     );
 
     tspi_resp_checker #(
@@ -158,7 +159,7 @@
         .start_bit_i(start_bit),
         .done_o(done),
         .block_swap_first_read_word_o(block_swap_first_read_word),
-        .read_data_o(read_data_o),
+        //.read_data_o(read_data_o),
         .signal_next_read_data_o(signal_next_read_data_o)
     );
 

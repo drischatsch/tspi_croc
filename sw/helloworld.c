@@ -33,7 +33,6 @@ uint32_t isqrt(uint32_t n) {
 
 int main() {
     // uart_init(); // the uart peripheral is initialized in the bootrom
-
     // simple printf support (only prints text and hex numbers)
     printf("Hello World!\n");
     // wait until uart has finished sending

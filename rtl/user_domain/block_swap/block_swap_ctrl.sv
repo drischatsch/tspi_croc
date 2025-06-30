@@ -140,6 +140,7 @@ always_comb begin
             sram_obi_req_o = '0;
             sdcard_obi_req_o = '0;
             edge_detection_d = '0;
+            count_d = '0;
         end
 
         WRITE_TO_SD_CARD_FROM_SRAM: begin
@@ -166,7 +167,7 @@ always_comb begin
                     counter_done = 1'b1;
             end
             // TODO: Mistake is in here
-            if (sdcard_obi_rsp_i.rvalid && count_q >= 50) begin //TESTING
+            if (sdcard_obi_rsp_i.rvalid) begin //WAS:  && count_q >= 50
                 sdcard_obi_req_o = '0;
                 sdcard_obi_req_o.req = 1'b0;
                 // sdcard_req_d = 1'b0;
@@ -204,6 +205,7 @@ always_comb begin
             sram_obi_req_o = '0;
             sdcard_obi_req_o = '0;
             edge_detection_d = '0;
+            count_d = '0;
         end
 
         WRITE_TO_SRAM_FROM_SD_CARD: begin
@@ -231,6 +233,7 @@ always_comb begin
 
                 if(sdcard_obi_rsp_i.r.err == 1'b1) begin
                     // TODO: Handle error
+                    counter_done = 1'b1;
                 end
             end
 

@@ -99,7 +99,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
 
     always_comb begin
         if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req && ~obi_req_i.a.we) begin
-            if(cnt_cmd_i > 8'd1 && cnt_cmd_i < block_swap_first_read_word_q) begin // TODO: Check bc: Changed from <= to < WHY THE HELL????
+            if(cnt_cmd_i > 8'd1 && cnt_cmd_i <= block_swap_first_read_word_q) begin // TODO: Check bc: Changed from <= to < WHY THE HELL????
                 if(block_swap_first_read_word_q != 'd0) begin
                     signal_next_read_data_o = last_bit_i;
                 end else begin
