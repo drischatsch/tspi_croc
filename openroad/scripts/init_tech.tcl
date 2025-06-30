@@ -18,6 +18,7 @@ if {[file exists "../cockpit.log"]} {
 	set pdk_sram_lef  ${pdk_dir}/lef
 	set pdk_io_lib    ${pdk_dir}/lib
 	set pdk_io_lef    ${pdk_dir}/lef
+	set base_dir      ".."
 } else {
 	utl::report "Init tech from Github PDK"
 	if {![info exists pdk_dir]} {
@@ -55,7 +56,7 @@ foreach file [glob -directory $pdk_sram_lib *_fast_1p32V_m55C.lib] {
 }
 
 puts "Init tech-lef"
-read_lef ${pdk_cells_lef}/sg13g2_tech.lef
+read_lef ${base_dir}/sg13g2_tech.lef
 
 puts "Init cell-lef"
 read_lef ${pdk_cells_lef}/sg13g2_stdcell.lef

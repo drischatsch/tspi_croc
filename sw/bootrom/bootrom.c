@@ -94,9 +94,9 @@ int main() {
         printf("BR>> Done!\n");
         uart_write_flush();
 
-        printf("BR>> First 8 words in SD Card:\n");
+        printf("BR>> First 128 words in SD Card:\n");
         uart_write_flush();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 128; i++) {
             // Read the first 8 bytes of the buffer
             uint32_t data = *reg32(BOOT_AFTER_SD_ADDR + i * 4, 0);
             printf("BR>>   %x: 0x%x\n", i, data);

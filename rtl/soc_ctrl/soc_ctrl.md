@@ -129,7 +129,7 @@ Core Boot Address After Bootrom
 ## bootaddr_after_sd
 Core Boot Address After Bootrom if SD Card is attached
 - Offset: `0x1c`
-- Reset default: `0x10000800`
+- Reset default: `0x60000000`
 - Reset mask: `0xffffffff`
 
 ### Fields
@@ -140,5 +140,5 @@ Core Boot Address After Bootrom if SD Card is attached
 
 |  Bits  |  Type  |   Reset    | Name              | Description                                       |
 |:------:|:------:|:----------:|:------------------|:--------------------------------------------------|
-|  31:0  |   rw   | 0x10000800 | bootaddr_after_sd | Boot Address After Bootrom if SD Card is attached |
+|  31:0  |   rw   | 0x60000000 | bootaddr_after_sd | Boot Address After Bootrom if SD Card is attached |
 
