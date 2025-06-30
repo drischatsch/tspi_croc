@@ -12,14 +12,14 @@ ENTRY(_start)
 
 MEMORY 
 {
-   SRAM (rwxail) : ORIGIN = 0x10000000, LENGTH = 2K
+   SRAM (rwxail) : ORIGIN = 0x60000000, LENGTH = 2K
 }
 
 SECTIONS
 {
   /DISCARD/ : { *(.riscv.attributes) *(.comment) }
 
-  .text._start 0x10000000 : { *(.text._start) } >SRAM
+  .text._start 0x60000000 : { *(.text._start) } >SRAM
   .text : { *(.text) *(.text.*) } >SRAM
   .misc : { *(.sdata) *(.*) } >SRAM
   
