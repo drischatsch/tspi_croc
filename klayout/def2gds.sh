@@ -27,6 +27,7 @@ if [[ -f "$root_dir/cockpit.log" ]]; then
     pdk_cells_gds_dir="${pdk_dir}/gds"
     pdk_sram_gds_dir="${pdk_dir}/gds"
     pdk_io_gds_dir="${pdk_dir}/gds"
+    base_dir=$(realpath "$root_dir/..")
 else
     echo "Init tech from Github PDK"
     pdk_dir=${pdk_dir:-$(realpath "$root_dir/ihp13/pdk/ihp-sg13g2")}
@@ -42,7 +43,7 @@ bondpad_lef_dir=$(realpath "$root_dir/ihp13/bondpad/lef")
 bondpad_gds_dir=$(realpath "$root_dir/ihp13/bondpad/gds")
 
 lef="$(find "$pdk_cells_lef_dir" -name 'sg13g2_stdcell.lef' -exec realpath {} \;) \
-     $(find "$pdk_cells_lef_dir" -name 'sg13g2_tech.lef' -exec realpath {} \;) \
+     $(find "$base_dir" -name 'sg13g2_tech.lef' -exec realpath {} \;) \
      $(find "$pdk_sram_lef_dir" -name 'RM_IHPSG13*.lef' -exec realpath {} \;) \
      $(find "$pdk_io_lef_dir" -name 'sg13g2_io.lef' -exec realpath {} \;) \
      $(find "$bondpad_lef_dir" -name '*.lef' -exec realpath {} \;)"

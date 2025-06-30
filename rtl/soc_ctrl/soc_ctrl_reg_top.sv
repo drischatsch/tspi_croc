@@ -288,7 +288,7 @@ module soc_ctrl_reg_top #(
   prim_subreg #(
     .DW      (32),
     .SWACCESS("RW"),
-    .RESVAL  (32'h10000800)
+    .RESVAL  (32'h60000000)
   ) u_bootaddr_after_sd (
     .clk_i   (clk_i    ),
     .rst_ni  (rst_ni  ),
