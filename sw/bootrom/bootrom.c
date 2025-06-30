@@ -107,12 +107,26 @@ int main() {
         printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_SD_ADDR);
         uart_write_flush();
         asm volatile (
-            "mv a0, %0\n"
-            "jr a0\n"
+            "mv t0, %0\n"
+            "jr t0\n"
             :
             : "r"(BOOT_AFTER_SD_ADDR)
-            : "a0"
+            : "t0"
         );
+
+        // Read a0 (return value)
+        uint32_t a0;
+        asm volatile (
+            "mv %0, a0\n"
+            : "=r"(a0)
+        );
+        printf("BR>> Return value from SD Card: 0x%x\n", a0);
+        uart_write_flush();
+
+        // Wait for interrupt indefinitely
+        while (1) {
+            asm volatile ("wfi");
+        }
     }
 
     /* // Check if start of SRAM is empty (0x00000000 or 0xFFFFFFFF)
@@ -142,12 +156,26 @@ int main() {
     printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_ADDR);
     uart_write_flush();
     asm volatile (
-        "mv a0, %0\n"
-        "jr a0\n"
+        "mv t0, %0\n"
+        "jr t0\n"
         :
         : "r"(BOOT_AFTER_ADDR)
-        : "a0"
+        : "t0"
     );
+
+    // Read a0 (return value)
+    uint32_t a0;
+    asm volatile (
+        "mv %0, a0\n"
+        : "=r"(a0)
+    );
+    printf("BR>> Return value from SRAM: 0x%x\n", a0);
+    uart_write_flush();
+
+    // Wait for interrupt indefinitely
+    while (1) {
+        asm volatile ("wfi");
+    }
 
     return 1;
 }
