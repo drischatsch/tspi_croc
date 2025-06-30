@@ -25,8 +25,9 @@ RISCV_LD      ?= $(RISCV_PREFIX)ld
 RISCV_STRIP   ?= $(RISCV_PREFIX)strip
 
 RISCV_FLAGS    ?= -march=$(RISCV_MARCH) -mabi=$(RISCV_MABI) -mcmodel=medany -static -std=gnu99 -Os -nostdlib -fno-builtin -ffreestanding
+RISCV_FLAGS    += -ffunction-sections -fdata-sections -fno-common -Wall -Wextra -Werror
 RISCV_CCFLAGS  ?= $(RISCV_FLAGS) -Iinclude -I$(INCDIR) -I$(CURDIR)
-RISCV_LDFLAGS  ?= -static -nostartfiles -lm -lgcc $(RISCV_FLAGS)
+RISCV_LDFLAGS  ?= -static -nostartfiles -Wl,--gc-sections -L$(PICOLIBC)/lib -lgcc $(RISCV_FLAGS)
 
 # all
 
