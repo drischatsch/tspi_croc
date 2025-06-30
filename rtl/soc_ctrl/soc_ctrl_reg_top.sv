@@ -89,6 +89,9 @@ module soc_ctrl_reg_top #(
   logic [31:0] bootaddr_after_qs;
   logic [31:0] bootaddr_after_wd;
   logic bootaddr_after_we;
+  logic [31:0] bootaddr_after_sd_qs;
+  logic [31:0] bootaddr_after_sd_wd;
+  logic bootaddr_after_sd_we;
 
   // Register instances
   // R[bootaddr]: V(False)
@@ -280,9 +283,36 @@ module soc_ctrl_reg_top #(
   );
 
 
+  // R[bootaddr_after_sd]: V(False)
+
+  prim_subreg #(
+    .DW      (32),
+    .SWACCESS("RW"),
+    .RESVAL  (32'h60000000)
+  ) u_bootaddr_after_sd (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (bootaddr_after_sd_we),
+    .wd     (bootaddr_after_sd_wd),
+
+    // from internal hardware
+    .de     (1'b0),
+    .d      ('0  ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.bootaddr_after_sd.q ),
+
+    // to register interface (read)
+    .qs     (bootaddr_after_sd_qs)
+  );
 
 
-  logic [6:0] addr_hit;
+
+
+  logic [7:0] addr_hit;
   always_comb begin
     addr_hit = '0;
     addr_hit[0] = (reg_addr == SOC_CTRL_BOOTADDR_OFFSET);
@@ -292,6 +322,7 @@ module soc_ctrl_reg_top #(
     addr_hit[4] = (reg_addr == SOC_CTRL_SRAM_DLY_OFFSET);
     addr_hit[5] = (reg_addr == SOC_CTRL_RESTART_COUNTER_OFFSET);
     addr_hit[6] = (reg_addr == SOC_CTRL_BOOTADDR_AFTER_OFFSET);
+    addr_hit[7] = (reg_addr == SOC_CTRL_BOOTADDR_AFTER_SD_OFFSET);
   end
 
   assign addrmiss = (reg_re || reg_we) ? ~|addr_hit : 1'b0 ;
@@ -305,7 +336,8 @@ module soc_ctrl_reg_top #(
                (addr_hit[3] & (|(SOC_CTRL_PERMIT[3] & ~reg_be))) |
                (addr_hit[4] & (|(SOC_CTRL_PERMIT[4] & ~reg_be))) |
                (addr_hit[5] & (|(SOC_CTRL_PERMIT[5] & ~reg_be))) |
-               (addr_hit[6] & (|(SOC_CTRL_PERMIT[6] & ~reg_be)))));
+               (addr_hit[6] & (|(SOC_CTRL_PERMIT[6] & ~reg_be))) |
+               (addr_hit[7] & (|(SOC_CTRL_PERMIT[7] & ~reg_be)))));
   end
 
   assign bootaddr_we = addr_hit[0] & reg_we & !reg_error;
@@ -328,6 +360,9 @@ module soc_ctrl_reg_top #(
 
   assign bootaddr_after_we = addr_hit[6] & reg_we & !reg_error;
   assign bootaddr_after_wd = reg_wdata[31:0];
+
+  assign bootaddr_after_sd_we = addr_hit[7] & reg_we & !reg_error;
+  assign bootaddr_after_sd_wd = reg_wdata[31:0];
 
   // Read data return
   always_comb begin
@@ -359,6 +394,10 @@ module soc_ctrl_reg_top #(
 
       addr_hit[6]: begin
         reg_rdata_next[31:0] = bootaddr_after_qs;
+      end
+
+      addr_hit[7]: begin
+        reg_rdata_next[31:0] = bootaddr_after_sd_qs;
       end
 
       default: begin

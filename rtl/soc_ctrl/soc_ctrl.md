@@ -1,14 +1,15 @@
 ## Summary
 
-| Name                                           | Offset   |   Length | Description                            |
-|:-----------------------------------------------|:---------|---------:|:---------------------------------------|
-| soc_ctrl.[`bootaddr`](#bootaddr)               | 0x0      |        4 | Core Boot Address                      |
-| soc_ctrl.[`fetchen`](#fetchen)                 | 0x4      |        4 | Core Fetch Enable                      |
-| soc_ctrl.[`corestatus`](#corestatus)           | 0x8      |        4 | Core Return Status (return value, EOC) |
-| soc_ctrl.[`bootmode`](#bootmode)               | 0xc      |        4 | Core Boot Mode                         |
-| soc_ctrl.[`sram_dly`](#sram_dly)               | 0x10     |        4 | SRAM A_DLY value                       |
-| soc_ctrl.[`restart_counter`](#restart_counter) | 0x14     |        4 | Bootrom restarts counter               |
-| soc_ctrl.[`bootaddr_after`](#bootaddr_after)   | 0x18     |        4 | Core Boot Address After Bootrom        |
+| Name                                               | Offset   |   Length | Description                                            |
+|:---------------------------------------------------|:---------|---------:|:-------------------------------------------------------|
+| soc_ctrl.[`bootaddr`](#bootaddr)                   | 0x0      |        4 | Core Boot Address                                      |
+| soc_ctrl.[`fetchen`](#fetchen)                     | 0x4      |        4 | Core Fetch Enable                                      |
+| soc_ctrl.[`corestatus`](#corestatus)               | 0x8      |        4 | Core Return Status (return value, EOC)                 |
+| soc_ctrl.[`bootmode`](#bootmode)                   | 0xc      |        4 | Core Boot Mode                                         |
+| soc_ctrl.[`sram_dly`](#sram_dly)                   | 0x10     |        4 | SRAM A_DLY value                                       |
+| soc_ctrl.[`restart_counter`](#restart_counter)     | 0x14     |        4 | Bootrom restarts counter                               |
+| soc_ctrl.[`bootaddr_after`](#bootaddr_after)       | 0x18     |        4 | Core Boot Address After Bootrom                        |
+| soc_ctrl.[`bootaddr_after_sd`](#bootaddr_after_sd) | 0x1c     |        4 | Core Boot Address After Bootrom if SD Card is attached |
 
 ## bootaddr
 Core Boot Address
@@ -124,4 +125,20 @@ Core Boot Address After Bootrom
 |  Bits  |  Type  |   Reset    | Name           | Description                |
 |:------:|:------:|:----------:|:---------------|:---------------------------|
 |  31:0  |   rw   | 0x10000000 | bootaddr_after | Boot Address After Bootrom |
+
+## bootaddr_after_sd
+Core Boot Address After Bootrom if SD Card is attached
+- Offset: `0x1c`
+- Reset default: `0x60000000`
+- Reset mask: `0xffffffff`
+
+### Fields
+
+```wavejson
+{"reg": [{"name": "bootaddr_after_sd", "bits": 32, "attr": ["rw"], "rotate": 0}], "config": {"lanes": 1, "fontsize": 10, "vspace": 80}}
+```
+
+|  Bits  |  Type  |   Reset    | Name              | Description                                       |
+|:------:|:------:|:----------:|:------------------|:--------------------------------------------------|
+|  31:0  |   rw   | 0x60000000 | bootaddr_after_sd | Boot Address After Bootrom if SD Card is attached |
 

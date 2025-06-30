@@ -40,6 +40,9 @@ extern "C" {
 // Core Boot Address After Bootrom
 #define SOC_CTRL_BOOTADDR_AFTER_REG_OFFSET 0x18
 
+// Core Boot Address After Bootrom if SD Card is attached
+#define SOC_CTRL_BOOTADDR_AFTER_SD_REG_OFFSET 0x1c
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif

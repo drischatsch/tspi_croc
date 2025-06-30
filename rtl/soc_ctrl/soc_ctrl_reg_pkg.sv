@@ -42,6 +42,10 @@ package soc_ctrl_reg_pkg;
   } soc_ctrl_reg2hw_bootaddr_after_reg_t;
 
   typedef struct packed {
+    logic [31:0] q;
+  } soc_ctrl_reg2hw_bootaddr_after_sd_reg_t;
+
+  typedef struct packed {
     logic        d;
     logic        de;
   } soc_ctrl_hw2reg_fetchen_reg_t;
@@ -58,13 +62,14 @@ package soc_ctrl_reg_pkg;
 
   // Register -> HW type
   typedef struct packed {
-    soc_ctrl_reg2hw_bootaddr_reg_t bootaddr; // [130:99]
-    soc_ctrl_reg2hw_fetchen_reg_t fetchen; // [98:98]
-    soc_ctrl_reg2hw_corestatus_reg_t corestatus; // [97:66]
-    soc_ctrl_reg2hw_bootmode_reg_t bootmode; // [65:65]
-    soc_ctrl_reg2hw_sram_dly_reg_t sram_dly; // [64:64]
-    soc_ctrl_reg2hw_restart_counter_reg_t restart_counter; // [63:32]
-    soc_ctrl_reg2hw_bootaddr_after_reg_t bootaddr_after; // [31:0]
+    soc_ctrl_reg2hw_bootaddr_reg_t bootaddr; // [162:131]
+    soc_ctrl_reg2hw_fetchen_reg_t fetchen; // [130:130]
+    soc_ctrl_reg2hw_corestatus_reg_t corestatus; // [129:98]
+    soc_ctrl_reg2hw_bootmode_reg_t bootmode; // [97:97]
+    soc_ctrl_reg2hw_sram_dly_reg_t sram_dly; // [96:96]
+    soc_ctrl_reg2hw_restart_counter_reg_t restart_counter; // [95:64]
+    soc_ctrl_reg2hw_bootaddr_after_reg_t bootaddr_after; // [63:32]
+    soc_ctrl_reg2hw_bootaddr_after_sd_reg_t bootaddr_after_sd; // [31:0]
   } soc_ctrl_reg2hw_t;
 
   // HW -> register type
@@ -82,6 +87,7 @@ package soc_ctrl_reg_pkg;
   parameter logic [BlockAw-1:0] SOC_CTRL_SRAM_DLY_OFFSET = 5'h 10;
   parameter logic [BlockAw-1:0] SOC_CTRL_RESTART_COUNTER_OFFSET = 5'h 14;
   parameter logic [BlockAw-1:0] SOC_CTRL_BOOTADDR_AFTER_OFFSET = 5'h 18;
+  parameter logic [BlockAw-1:0] SOC_CTRL_BOOTADDR_AFTER_SD_OFFSET = 5'h 1c;
 
   // Register index
   typedef enum int {
@@ -91,18 +97,20 @@ package soc_ctrl_reg_pkg;
     SOC_CTRL_BOOTMODE,
     SOC_CTRL_SRAM_DLY,
     SOC_CTRL_RESTART_COUNTER,
-    SOC_CTRL_BOOTADDR_AFTER
+    SOC_CTRL_BOOTADDR_AFTER,
+    SOC_CTRL_BOOTADDR_AFTER_SD
   } soc_ctrl_id_e;
 
   // Register width information to check illegal writes
-  parameter logic [3:0] SOC_CTRL_PERMIT [7] = '{
+  parameter logic [3:0] SOC_CTRL_PERMIT [8] = '{
     4'b 1111, // index[0] SOC_CTRL_BOOTADDR
     4'b 0001, // index[1] SOC_CTRL_FETCHEN
     4'b 1111, // index[2] SOC_CTRL_CORESTATUS
     4'b 0001, // index[3] SOC_CTRL_BOOTMODE
     4'b 0001, // index[4] SOC_CTRL_SRAM_DLY
     4'b 1111, // index[5] SOC_CTRL_RESTART_COUNTER
-    4'b 1111  // index[6] SOC_CTRL_BOOTADDR_AFTER
+    4'b 1111, // index[6] SOC_CTRL_BOOTADDR_AFTER
+    4'b 1111  // index[7] SOC_CTRL_BOOTADDR_AFTER_SD
   };
 
 endpackage
