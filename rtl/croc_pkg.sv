@@ -41,7 +41,7 @@ package croc_pkg;
   ///////////////////////////////////
   // Constants for Block Swapping ///
   ///////////////////////////////////
-  localparam int unsigned NUM_SRAM_ADDRESSES = 4; // DONE: change
+  localparam int unsigned NUM_SRAM_ADDRESSES = 12; // DONE: change
   localparam int unsigned NUM_REQ_BLOCKS = 2;
 
   localparam int unsigned FIRST_USABLE_SRAM_ADDR = 32'h1000_0800;
@@ -67,7 +67,7 @@ package croc_pkg;
   localparam bit [31:0]   PeriphAddrRange   = 32'h1000_0000;
 
   localparam bit [31:0]   SramBaseAddr      = 32'h1000_0000;
-  localparam int unsigned NumSramBanks      = 32'd2;
+  localparam int unsigned NumSramBanks      = 32'd4;
   localparam int unsigned SramBankNumWords  = 512;
   localparam int unsigned SramBankAddrWidth = cf_math_pkg::idx_width(SramBankNumWords);
   localparam int unsigned SramAddrRange     = NumSramBanks*SramBankNumWords*4;
