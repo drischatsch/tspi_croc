@@ -65,13 +65,13 @@ $(BINDIR)/%.elf: %.c.o $(CRT0).o $(LIB_OBJS) | $(BINDIR)
 	$(RISCV_CC) -o $@ $^ $(RISCV_LDFLAGS) -T$(LINK)
 
 $(BINDIR)/%.dump: $(BINDIR)/%.elf
-	$(RISCV_OBJDUMP) -D -s $< >$@
+	$(RISCV_OBJDUMP) --visualize-jumps -D -s $< >$@
 
 $(BINDIR)/%.hex: $(BINDIR)/%.elf
-	$(RISCV_OBJCOPY) -O verilog $< $@
+	$(RISCV_OBJCOPY) --reverse-bytes=4 -O verilog $< $@
 
 $(BINDIR)/%.bin: $(BINDIR)/%.elf
-	$(RISCV_OBJCOPY) -O binary $< $@
+	$(RISCV_OBJCOPY) --reverse-bytes=4 -O binary $< $@
 
 # Phonies
 .PHONY: all clean compile
