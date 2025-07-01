@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+
+# Copyright (c) 2024 ETH Zurich and University of Bologna.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Authors:
+# - Cedric Hirschi <cehirschi@student.ethz.ch>
+#
+# Write a raw binary to a device (e.g. SD card) without a filesystem.
+#
+# This script writes a raw binary image to a block device (e.g. SD card) and
+# optionally erases the device, writes with an offset, and verifies the written
+# data after flashing.
+#
+# Usage:
+#     python write.py --help
+
 import os, sys, argparse
 import textwrap
 

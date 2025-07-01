@@ -1,4 +1,20 @@
 #!/usr/bin/env python3
+
+# Copyright (c) 2024 ETH Zurich and University of Bologna.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Authors:
+# - Cedric Hirschi <cehirschi@student.ethz.ch>
+#
+# Read raw blocks from a block device (e.g. SD card) without a filesystem.
+#
+# This script reads raw blocks from a block device (e.g. SD card) and either
+# hex-dumps the data to stdout or writes it to a specified output file.
+#
+# Usage:
+#     python read.py --help
+
 import os, sys, argparse
 import textwrap
 

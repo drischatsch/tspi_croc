@@ -42,15 +42,11 @@
 #define BOOT_AFTER_SD_ADDR *reg32(BOOT_AFTER_SD_ADDR_ADDR, 0)
 
 int main() {
-
     *reg32(SET_BLOCK_SWAP, 0) = 0;
 
-    
     uart_init();
     printf("BR>> Started\n");
     uart_write_flush();
-
-    
 
     RETRY_COUNTER += 1;
     if (RETRY_COUNTER > NUM_RETRIES) {
@@ -66,7 +62,6 @@ int main() {
         printf("BR>> Try %x\n", RETRY_COUNTER + 1);
         uart_write_flush();
 
-        
         *reg32(BEGINNING_OFFSET, 0);
         *reg32(CMD0_OFFSET, 0);
         *reg32(CMD8_OFFSET, 0);
@@ -94,7 +89,6 @@ int main() {
         *reg32(READWRITE_OFFSET + 0x1000, 0x400);
         *reg32(READWRITE_OFFSET + 0x1000, 0x600);
 
-
         printf("BR>> Blocks loaded\n");
         uart_write_flush();
 
@@ -102,7 +96,6 @@ int main() {
 
         printf("BR>> Done!\n");
         uart_write_flush();
-
 
         // Jump to start of SD-Card mapped SRAM
         printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_SD_ADDR);
@@ -114,23 +107,8 @@ int main() {
             : "r"(BOOT_AFTER_SD_ADDR)
             : "t0"
         );
-
-        // Read a0 (return value)
-        uint32_t a0;
-        asm volatile (
-            "mv %0, a0\n"
-            : "=r"(a0)
-        );
-        printf("BR>> Return value from SD Card: 0x%x\n", a0);
-        uart_write_flush();
-
-        // Wait for interrupt indefinitely
-        while (1) {
-            asm volatile ("wfi");
-        }
     }
 
-    
     // Jump to start of SRAM
     printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_ADDR);
     uart_write_flush();
@@ -141,20 +119,6 @@ int main() {
         : "r"(BOOT_AFTER_ADDR)
         : "t0"
     );
-
-    // Read a0 (return value)
-    uint32_t a0;
-    asm volatile (
-        "mv %0, a0\n"
-        : "=r"(a0)
-    );
-    printf("BR>> Return value from SRAM: 0x%x\n", a0);
-    uart_write_flush();
-
-    // Wait for interrupt indefinitely
-    while (1) {
-        asm volatile ("wfi");
-    }
 
     return 1;
 }

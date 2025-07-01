@@ -4,6 +4,7 @@
 //
 // Authors:
 // - Philippe Sauter <phsauter@iis.ee.ethz.ch>
+// - Cedric Hirschi <cehirschi@student.ethz.ch>
 
 #include "uart.h"
 #include "print.h"
