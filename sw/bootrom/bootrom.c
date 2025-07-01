@@ -74,7 +74,7 @@ int main() {
         *reg32(CMD58_OFFSET, 0);
         *reg32(ACMD41_OFFSET, 0);
 
-        *reg32(CHANGE_BAUDRATE_OFFSET, 0) = 0x18;
+        *reg32(CHANGE_BAUDRATE_OFFSET, 0) = 0x20;
 
         printf("BR>> TSPI initialized\n");
         uart_write_flush();
@@ -86,6 +86,7 @@ int main() {
         *reg32(READWRITE_OFFSET, 0x400);
         *reg32(READWRITE_OFFSET, 0x600);
 
+
         printf("BR>> Blocks loaded\n");
         uart_write_flush();
 
@@ -94,19 +95,6 @@ int main() {
         printf("BR>> Done!\n");
         uart_write_flush();
 
-        printf("BR>> First 128 words in SD Card:\n");
-        uart_write_flush();
-
-        uint32_t data = *reg32(BOOT_AFTER_SD_ADDR, 0);
-        printf("BR>>   FIRST BLOCK: 0x%x\n", data);
-        uart_write_flush();
-
-        for (int i = 0; i < 128; i++) {
-            // Read the first 8 bytes of the buffer
-            uint32_t data = *reg32(BOOT_AFTER_SD_ADDR + 512 + i * 4, 0);
-            printf("BR>>   %x: 0x%x\n", 4*i + 512, data);
-            uart_write_flush();
-        }
 
         // Jump to start of SD-Card mapped SRAM
         printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_SD_ADDR);
@@ -134,29 +122,7 @@ int main() {
         }
     }
 
-    /* // Check if start of SRAM is empty (0x00000000 or 0xFFFFFFFF)
-    uint32_t sram_start = *reg32(BOOT_AFTER_ADDR, 4);
-    if (sram_start == 0x00000000 || sram_start == 0xFFFFFFFF) {
-        printf("BR>> SRAM start empty (0x%x)!\n", sram_start);
-        uart_write_flush();
-
-        while (1) {
-            // Wait indefinitely
-            asm volatile ("wfi");
-        }
-    }
-    printf("BR>> SRAM start not empty (0x%x), continuing...\n", sram_start);
-    uart_write_flush(); */
-
-    printf("BR>> First 8 words in SRAM:\n");
-    uart_write_flush();
-    for (int i = 0; i < 8; i++) {
-        // Read the first 8 bytes of the buffer
-        uint32_t data = *reg32(BOOT_AFTER_ADDR + i * 4, 0);
-        printf("BR>>   %x: 0x%x\n", i, data);
-        uart_write_flush();
-    }
-
+    
     // Jump to start of SRAM
     printf("BR>> Jumping to 0x%x\n", BOOT_AFTER_ADDR);
     uart_write_flush();

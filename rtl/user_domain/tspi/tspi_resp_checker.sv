@@ -500,7 +500,7 @@ assign enable = edge_detect_q == 1'b0 && tspi_clk_i == 1'b1;
 // `FF(resp_type_q, resp_type_d, PASSTHROUGH, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
 `FFL(resp_type_q, resp_type_d, enable, PASSTHROUGH, clk_i, rst_ni)
 // `FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
-`FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, clk_i, rst_ni)
+`FFL(block_swap_first_read_word_q, block_swap_first_read_word_d, enable, '0, clk_i, rst_ni)
     
 endmodule
   

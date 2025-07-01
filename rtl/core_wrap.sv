@@ -59,7 +59,7 @@ module core_wrap import croc_pkg::*; #() (
     .MHPMCounterNum     ( 0                   ),
     .MHPMCounterWidth   ( 40                  ),
     .RV32E              ( 0                   ),
-    .RV32M              ( cve2_pkg::RV32MNone ),
+    .RV32M              ( cve2_pkg::RV32MFast ),
     .RV32B              ( cve2_pkg::RV32BNone ),
     .DbgTriggerEn       ( 1'b1                ),
     .DbgHwBreakNum      ( 1                   ),
