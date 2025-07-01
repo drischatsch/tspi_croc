@@ -95,5 +95,14 @@ set X [expr $X]
 set Y [expr $Y - $RamSize256x64_H - 15]
 placeInstance $bank1_sram0 $X $Y R0
 
+# Bank2
+set X [expr $X]
+set Y [expr $Y - $RamSize256x64_H - 15]
+placeInstance $bank2_sram0 $X $Y R0
+
+# Bank3
+set X [expr $X]
+set Y [expr $Y - $RamSize256x64_H - 15]
+placeInstance $bank3_sram0 $X $Y R0
 
 cut_rows -halo_width_x 2 -halo_width_y 1
