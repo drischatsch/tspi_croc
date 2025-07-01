@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
-
-# Copyright (c) 2024 ETH Zurich.
-#
-# Authors:
-# - Cedric Hirschi <cehirschi@student.ethz.ch>
-#
-# Read raw blocks from a block device (e.g. SD card) without a filesystem.
-
 import os, sys, argparse
 import textwrap
 
 def hex_dump(data: bytes, offset: int = 0, width: int = 16):
     for i in range(0, len(data), width):
         chunk = data[i:i+width]
-        hex_bytes = ' '.join(f'{b:02X}' for b in chunk)
+        # Group hex bytes with extra space every 8 bytes
+        hex_parts = []
+        for j in range(0, len(chunk), 8):
+            group = chunk[j:j+8]
+            hex_parts.append(' '.join(f'{b:02X}' for b in group))
+        hex_bytes = '  '.join(hex_parts)
         ascii_bytes = ''.join((chr(b) if 32 <= b < 127 else '.') for b in chunk)
-        print(f'{i+offset:08X}  {hex_bytes:<{width*3}}  |{ascii_bytes}|')
+        print(f'{i+offset:08X}  {hex_bytes:<{width*3+2}}  |{ascii_bytes}|')
 
 def read_blocks(device: str, offset: int = 0, count: int = 1, block_size: int = 512, out: str = None):
     # must be root
@@ -25,6 +22,12 @@ def read_blocks(device: str, offset: int = 0, count: int = 1, block_size: int = 
 
     if not os.path.exists(device):
         sys.exit(f"ERROR: device '{device}' not found.")
+
+    try:
+        with open(device, 'rb') as dev:
+            pass
+    except IOError as e:
+        sys.exit(f"ERROR: cannot open device '{device}': {e}")
 
     byte_offset = offset * block_size
     total_bytes = count * block_size
