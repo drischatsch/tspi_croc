@@ -5,6 +5,7 @@
 # Authors:
 # - Paul Scheffler <paulsc@iis.ee.ethz.ch>
 # - Philippe Sauter <phsauter@iis.ee.ethz.ch>
+# - Cedric Hirschi <cehirschi@student.ethz.ch>
 
 SRCDIR  ?= lib/src
 INCDIR  ?= lib/inc

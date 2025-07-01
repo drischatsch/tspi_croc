@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
-"""
-Automatically modify SystemVerilog ROM file with new data and size.
 
-This script takes a hex file as input, processes it, and directly modifies
-the SystemVerilog ROM module by:
-1. Updating the SizeBytes parameter
-2. Replacing the static ROM data array
-
-Usage:
-    python modify_rom.py input.hex bootrom.sv [-o output.sv]
-"""
+# Copyright (c) 2024 ETH Zurich and University of Bologna.
+# Licensed under the Apache License, Version 2.0, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Authors:
+# - Cedric Hirschi <cehirschi@student.ethz.ch>
+#
+# Automatically modify SystemVerilog ROM file with new data and size.
+# 
+# This script takes a hex file as input, processes it, and directly modifies
+# the SystemVerilog ROM module by:
+# 1. Updating the size parameter to match the new data size
+# 2. Replacing the static ROM data array
+# 
+# Usage:
+#     python gen_bootrom.py --help
 
 import sys
 import re
