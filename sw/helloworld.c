@@ -32,13 +32,13 @@ uint32_t isqrt(uint32_t n) {
 }
 
 int main() {
-    uart_init(); // the uart peripheral is initialized in the bootrom
+    // uart_init(); // the uart peripheral is initialized in the bootrom
     // simple printf support (only prints text and hex numbers)
     printf("Hello World!\n");
     // wait until uart has finished sending
     uart_write_flush();
 
-    /* // toggling some GPIOs
+    // toggling some GPIOs
     gpio_set_direction(0xFFFF, 0x000F); // lowest four as outputs
     gpio_write(0x0A);  // ready output pattern
     gpio_enable(0xFF); // enable lowest eight
@@ -67,12 +67,7 @@ int main() {
     // print contents of the user ROM
     printf("User ROM contents:\n");
     printf("%s\n", USER_ROM_BASE_ADDR);
-    uart_write_flush(); */
-
-    while (1) {
-        // wait indefinitely
-        asm volatile ("wfi");
-    }
+    uart_write_flush();
 
     return 1;
 }
