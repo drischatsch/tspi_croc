@@ -85,6 +85,14 @@ int main() {
         *reg32(READWRITE_OFFSET, 0x200);
         *reg32(READWRITE_OFFSET, 0x400);
         *reg32(READWRITE_OFFSET, 0x600);
+        *reg32(READWRITE_OFFSET, 0x800);
+        *reg32(READWRITE_OFFSET, 0xA00);
+        *reg32(READWRITE_OFFSET, 0xC00);
+        *reg32(READWRITE_OFFSET, 0xE00);
+        *reg32(READWRITE_OFFSET + 0x1000, 0x000);
+        *reg32(READWRITE_OFFSET + 0x1000, 0x200);
+        *reg32(READWRITE_OFFSET + 0x1000, 0x400);
+        *reg32(READWRITE_OFFSET + 0x1000, 0x600);
 
 
         printf("BR>> Blocks loaded\n");

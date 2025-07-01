@@ -269,18 +269,22 @@ always_comb begin
             end
         end
         WAIT_FOR_IDLE: begin
-            sdcard_obi_req_o.req = 1'b1;
+            count_d = count_q + 1;
+            if(count_q > 3) begin
+                count_d = count_q;
+                sdcard_obi_req_o.req = 1'b1;
 
-            // Address Phase Signals
-            sdcard_obi_req_o.a.addr = 32'h5FFF_FFE4; // DONE: Change when addresses are shorter
-            sdcard_obi_req_o.a.we = 1'b0;
-            sdcard_obi_req_o.a.be = 4'b1111;
-            sdcard_obi_req_o.a.wdata = '0;
-            sdcard_obi_req_o.a.aid = '1; // TODO: put proper id
-            if (sdcard_obi_rsp_i.rvalid) begin
-                sdcard_obi_req_o = '0;
-                // sdcard_req_d = 1'b0;
-                counter_done = 1'b1;
+                // Address Phase Signals
+                sdcard_obi_req_o.a.addr = 32'h5FFF_FFE4; // DONE: Change when addresses are shorter
+                sdcard_obi_req_o.a.we = 1'b0;
+                sdcard_obi_req_o.a.be = 4'b1111;
+                sdcard_obi_req_o.a.wdata = '0;
+                sdcard_obi_req_o.a.aid = '1; // TODO: put proper id
+                if (sdcard_obi_rsp_i.rvalid) begin
+                    sdcard_obi_req_o = '0;
+                    // sdcard_req_d = 1'b0;
+                    counter_done = 1'b1;
+                end
             end
         end
         default: begin
