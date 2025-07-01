@@ -60,7 +60,7 @@ module core_wrap import croc_pkg::*; #() (
     .MHPMCounterWidth   ( 40                  ),
     .RV32E              ( 0                   ),
     .RV32M              ( cve2_pkg::RV32MFast ),
-    .RV32B              ( cve2_pkg::RV32BNone ),
+    .RV32B              ( cve2_pkg::RV32BFull ),
     .DbgTriggerEn       ( 1'b1                ),
     .DbgHwBreakNum      ( 1                   ),
     .DmHaltAddr         ( DebugAddrOffset + dm::HaltAddress[31:0]      ),
