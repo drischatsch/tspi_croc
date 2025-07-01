@@ -98,8 +98,8 @@ int main() {
         uart_write_flush();
         for (int i = 0; i < 128; i++) {
             // Read the first 8 bytes of the buffer
-            uint32_t data = *reg32(BOOT_AFTER_SD_ADDR + i * 4, 0);
-            printf("BR>>   %x: 0x%x\n", i, data);
+            uint32_t data = *reg32(BOOT_AFTER_SD_ADDR + 512 + i * 4, 0);
+            printf("BR>>   %x: 0x%x\n", i + 512, data);
             uart_write_flush();
         }
 
