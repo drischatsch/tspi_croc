@@ -100,7 +100,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
     always_comb begin
         if(addr_offset >= BLOCK_READWRITE_MIN_OFFSET && addr_offset <= BLOCK_READWRITE_MAX_OFFSET && obi_req_i.req && ~obi_req_i.a.we) begin
             if(cnt_cmd_i > 8'd1 && cnt_cmd_i <= block_swap_first_read_word_q) begin // TODO: Check bc: Changed from <= to < WHY THE HELL????
-                if(block_swap_first_read_word_q != 'd0) begin
+                if(block_swap_first_read_word_q != 'd0 && resp_type_d != VALIDATE) begin
                     signal_next_read_data_o = last_bit_i;
                 end else begin
                     signal_next_read_data_o = 1'b0;
@@ -248,6 +248,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
         resp_type_d = PASSTHROUGH;
         compare_data = 32'hXXXX_XXXX; //DONE: X just becomes a fixed value
         mask = (32'hFFFF_FFFF >> (31 - len_cmd_i));
+        block_swap_first_read_word_d = 'd0;
 
         case(addr_offset)
             BEGINNING_OFFSET: begin
@@ -471,7 +472,7 @@ module tspi_resp_checker import tspi_pkg::*; #(
                                             resp_type_d = PASSTHROUGH;
                                         end else begin
                                             resp_type_d = VALIDATE;
-                                            block_swap_first_read_word_d = '0;                          
+                                            // block_swap_first_read_word_d = '0;                          
                                         end
                                     end
                                 end
@@ -499,7 +500,7 @@ assign enable = edge_detect_q == 1'b0 && tspi_clk_i == 1'b1;
 // `FF(resp_type_q, resp_type_d, PASSTHROUGH, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
 `FFL(resp_type_q, resp_type_d, enable, PASSTHROUGH, clk_i, rst_ni)
 // `FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, tspi_clk_i, rst_ni) //TODO: Include something like:  | obi_req_i.req
-`FFL(block_swap_first_read_word_q, block_swap_first_read_word_d, enable, '0, clk_i, rst_ni)
+`FF(block_swap_first_read_word_q, block_swap_first_read_word_d, '0, clk_i, rst_ni)
     
 endmodule
   
