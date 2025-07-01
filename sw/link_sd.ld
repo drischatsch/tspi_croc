@@ -21,7 +21,7 @@ SECTIONS
 
   .text._start 0x60000000 : { *(.text._start) } >SRAM
   .text : { *(.text) *(.text.*) } >SRAM
-  .misc : { *(.sdata) *(.*) } >SRAM
+  .misc : ALIGN(4) { *(.sdata) *(.*) . = ALIGN(4); } >SRAM
   
   __global_pointer$ = ADDR(.misc)  + SIZEOF(.misc) / 2; 
   __stack_pointer$  = ORIGIN(SRAM) + LENGTH(SRAM);

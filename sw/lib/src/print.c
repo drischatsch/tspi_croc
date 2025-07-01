@@ -9,8 +9,6 @@
 #include "util.h"
 #include "config.h"
 
-const char hex_symbols[16] = {'0', '1', '2', '3', '4', '5', '6', '7', 
-                              '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
 void printf(const char *fmt, ...) {
     va_list args;
@@ -28,7 +26,7 @@ void printf(const char *fmt, ...) {
                     putchar('0');
                 } else {
                     while (hex > 0) {
-                        buffer[i++] = hex_symbols[hex & 0xF];
+                        buffer[i++] = (hex & 0xF) + (((hex & 0xF) <= 9) ? '0' : ('A' - 10));
                         hex >>= 4;
                     }
                     // print from stack
