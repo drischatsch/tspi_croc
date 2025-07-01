@@ -1,12 +1,4 @@
 #!/usr/bin/env python3
-
-# Copyright (c) 2024 ETH Zurich.
-#
-# Authors:
-# - Cedric Hirschi <cehirschi@student.ethz.ch>
-#
-# Write a raw binary to a device (e.g. SD card) without a filesystem.
-
 import os, sys, argparse
 import textwrap
 
@@ -18,6 +10,12 @@ def flash_raw(image: str, device: str, block_size: int = 512, offset: int = 0, e
         sys.exit(f"ERROR: image '{image}' not found")
     if not os.path.exists(device):
         sys.exit(f"ERROR: device '{device}' not found")
+
+    try:
+        with open(device, 'rb') as dev:
+            pass
+    except IOError as e:
+        sys.exit(f"ERROR: cannot open device '{device}': {e}")
 
     # 2) unmount any mounted partitions
     #    (on Linux you could do `os.system(f"umount {device}?*")`)
@@ -91,7 +89,7 @@ def flash_raw(image: str, device: str, block_size: int = 512, offset: int = 0, e
 
                 if img_chunk != dev_chunk:
                     sys.exit(f"\rERROR: verification failed! Data mismatch detected at offset 0x{verified * block_size + offset * block_size:08X}\n"
-                             f"Expected:\n\t{img_chunk.hex()}\n"
+                             f"Expected:\n\t{bytes(img_chunk).hex()}\n"
                              f"Got:\n\t{dev_chunk.hex()}")
 
                 verified += 1
