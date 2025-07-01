@@ -37,7 +37,8 @@ all: compile
 
 BINDIR 	?= bin
 CRT0 	?= crt0.S
-LINK 	?= link.ld
+LINK_SD ?= link_sd.ld
+LINK_SRAM ?= link_sram.ld
 
 LIB_SOURCES := $(wildcard $(SRCDIR)/*.[cS])
 LIB_OBJS    := $(LIB_SOURCES:$(SRCDIR)/%=$(SRCDIR)/%.o)
@@ -46,7 +47,8 @@ LIB_OBJS    := $(LIB_SOURCES:$(SRCDIR)/%=$(SRCDIR)/%.o)
 TOP_SOURCES ?= $(filter-out $(CRT0), $(wildcard *.[cS]))
 TOP_BASENAMES := $(basename $(TOP_SOURCES))
 TOP_OBJS    := $(TOP_BASENAMES:=.o)
-ALL_TARGETS := $(TOP_BASENAMES:%=$(BINDIR)/%.elf) $(TOP_BASENAMES:%=$(BINDIR)/%.dump) $(TOP_BASENAMES:%=$(BINDIR)/%.hex) $(TOP_BASENAMES:%=$(BINDIR)/%.bin)
+ALL_TARGETS := $(TOP_BASENAMES:%=$(BINDIR)/%_sd.elf) $(TOP_BASENAMES:%=$(BINDIR)/%_sd.dump) $(TOP_BASENAMES:%=$(BINDIR)/%_sd.hex) $(TOP_BASENAMES:%=$(BINDIR)/%_sd.bin)
+ALL_TARGETS += $(TOP_BASENAMES:%=$(BINDIR)/%_sram.elf) $(TOP_BASENAMES:%=$(BINDIR)/%_sram.dump) $(TOP_BASENAMES:%=$(BINDIR)/%_sram.hex) $(TOP_BASENAMES:%=$(BINDIR)/%_sram.bin)
 
 
 $(BINDIR):
@@ -58,20 +60,26 @@ $(BINDIR):
 %.c.o: %.c
 	$(RISCV_CC) $(RISCV_CCFLAGS) -c $< -o $@
 
-$(BINDIR)/%.elf: %.S.o $(CRT0).o $(LIB_OBJS) | $(BINDIR)
-	$(RISCV_CC) -o $@ $^ $(RISCV_LDFLAGS) -T$(LINK)
+$(BINDIR)/%_sd.elf: %.c.o $(CRT0).o $(LIB_OBJS) | $(BINDIR)
+	$(RISCV_CC) -o $@ $^ $(RISCV_LDFLAGS) -T$(LINK_SD)
 
-$(BINDIR)/%.elf: %.c.o $(CRT0).o $(LIB_OBJS) | $(BINDIR)
-	$(RISCV_CC) -o $@ $^ $(RISCV_LDFLAGS) -T$(LINK)
+$(BINDIR)/%_sram.elf: %.c.o $(CRT0).o $(LIB_OBJS) | $(BINDIR)
+	$(RISCV_CC) -o $@ $^ $(RISCV_LDFLAGS) -T$(LINK_SRAM)
 
 $(BINDIR)/%.dump: $(BINDIR)/%.elf
 	$(RISCV_OBJDUMP) --visualize-jumps -D -s $< >$@
 
-$(BINDIR)/%.hex: $(BINDIR)/%.elf
+$(BINDIR)/%_sd.hex: $(BINDIR)/%_sd.elf
 	$(RISCV_OBJCOPY) --reverse-bytes=4 -O verilog $< $@
 
-$(BINDIR)/%.bin: $(BINDIR)/%.elf
+$(BINDIR)/%_sram.hex: $(BINDIR)/%_sram.elf
+	$(RISCV_OBJCOPY) -O verilog $< $@
+
+$(BINDIR)/%_sd.bin: $(BINDIR)/%_sd.elf
 	$(RISCV_OBJCOPY) --reverse-bytes=4 -O binary $< $@
+
+$(BINDIR)/%_sram.bin: $(BINDIR)/%_sram.elf
+	$(RISCV_OBJCOPY) -O binary $< $@
 
 # Phonies
 .PHONY: all clean compile

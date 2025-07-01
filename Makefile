@@ -55,7 +55,7 @@ clean-deps:
 ############
 # Software #
 ############
-SW_HEX := sw/bin/helloworld.hex
+SW_HEX := sw/bin/helloworld_sram.hex
 
 $(SW_HEX): sw/*.c sw/*.h sw/*.S sw/*.ld
 	$(MAKE) -C sw/ compile
