@@ -9,7 +9,7 @@
 
 # Initialize the PDK
 
-if {[file exists "../cockpit.log"]} {
+if {[file exists "../technology"]} {
 	utl::report "Init tech from ETHZ DZ cockpit"
 	set pdk_dir "../technology"
 	set pdk_cells_lib ${pdk_dir}/lib
@@ -56,7 +56,7 @@ foreach file [glob -directory $pdk_sram_lib *_fast_1p32V_m55C.lib] {
 }
 
 puts "Init tech-lef"
-read_lef ${base_dir}/sg13g2_tech.lef
+read_lef ${pdk_cells_lef}/sg13g2_tech.lef
 
 puts "Init cell-lef"
 read_lef ${pdk_cells_lef}/sg13g2_stdcell.lef
