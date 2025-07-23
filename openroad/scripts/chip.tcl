@@ -52,13 +52,22 @@ report_checks -format end -no_line_splits                >> ${report_dir}/${log_
 set dieW            2235.0
 set dieH            2235.0
 
+puts "Die size: $dieW x $dieH um"
+
+# Sealring properties
+set sealRingSpacing 39.0
+set bondingPadWidth 70.0
+
 # Size of the chip
-set chipW            [expr $dieW - 2 * (50.0 + 70.0)]
-set chipH            [expr $dieH - 2 * (50.0 + 70.0)]
+set chipW            [expr $dieW - 2 * ($sealRingSpacing + $bondingPadWidth)]
+set chipH            [expr $dieH - 2 * ($sealRingSpacing + $bondingPadWidth)]
+
+puts "Chip size: $chipW x $chipH um"
 
 # thickness of annular ring for pads (length of a pad)
-set padRing           180.0
-set coreMargin [expr $padRing + 35]; # space for power ring
+set padD    180; # pad depth (edge to core)
+set padW     80; # pad width (beachfront)
+set coreMargin [expr $padD + 35]; # space for power ring
 
 utl::report "Initialize Chip"
 initialize_floorplan -die_area "0 0 $chipW $chipH" \
@@ -119,7 +128,7 @@ utl::report "###################################################################
 utl::report "# Step ${log_id_str}: GLOBAL PLACEMENT"
 utl::report "###############################################################################"
 
-set_thread_count 8
+set_thread_count 20
 
 set GPL_ARGS {  -density 0.60 }
 
@@ -310,11 +319,11 @@ repair_antennas -ratio_margin 30 -iterations 5
 # check_antennas
 
 utl::report "Detailed route"
-set_thread_count 8
+set_thread_count 20
 detailed_route -output_drc ${report_dir}/${log_id_str}_${proj_name}_route_drc.rpt \
                -bottom_routing_layer Metal2 \
                -top_routing_layer TopMetal1 \
-               -droute_end_iter 30 \
+               -droute_end_iter 40 \
                -drc_report_iter_step 5 \
                -save_guide_updates \
                -clean_patches \

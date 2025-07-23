@@ -22,14 +22,14 @@
 #   die area (4sqmm)       2235.0 x 2235.0
 #   io cell dimensions      180.0 x   80.0
 #   bonding pad area (est)   70.0 x   70.0
-#   seal ring width (est)    50.0 x    -
+#   seal ring width (est)    39.0 x    -
 #
 # OpenROAD:
-#   OR die area            1995.0 x 1995.0
-#   core area              1635.0 x 1635.0
+#   OR die area            2235.0 x 2235.0
+#   core area              2017.0 x 2017.0
 #   total silicon area
 #
-# pad pitch (min)            90.0     90.0
+# pad pitch (min)           102.0    102.0
 
 
 make_io_sites -horizontal_site sg13g2_ioSite \
@@ -40,17 +40,11 @@ make_io_sites -horizontal_site sg13g2_ioSite \
     -rotation_vertical R0 \
     -rotation_corner R0
 
-set padD    180; # pad depth (edge to core)
-set padW     80; # pad width (beachfront)
-
-set chipH  1995; # left/right (height)
-set chipW  1995; # top/bottom (width)
-
 #Edge: LEFT (top to bottom)
 set numPads 16
 set offset 20
 set pitch [expr {floor( ($chipH - 2*$padD -2*$offset - $padW)/($numPads-1) )}]
-puts "IO_WEST_pitch: $pitch "
+puts "IO_WEST_pitch:  $pitch "
 set start [expr $chipH - $padD - $offset - $padW]
 place_pad -row IO_WEST  -location [expr $start -  0*$pitch] "pad_vssio0"       ; # pin no:  1
 place_pad -row IO_WEST  -location [expr $start -  1*$pitch] "pad_vddio0"       ; # pin no:  2
@@ -98,7 +92,7 @@ place_pad -row IO_SOUTH  -location [expr $start + 15*$pitch] "pad_vdd1"         
 set numPads 16
 set offset 20
 set pitch [expr {floor( ($chipH - 2*$padD -2*$offset - $padW)/($numPads-1) )}]
-puts "IO_EAST_pitch: $pitch "
+puts "IO_EAST_pitch:  $pitch "
 set start [expr $padD + $offset]
 place_pad -row IO_EAST  -location [expr $start +  0*$pitch] "pad_vssio2"       ; # pin no:  1
 place_pad -row IO_EAST  -location [expr $start +  1*$pitch] "pad_vddio2"       ; # pin no:  2
@@ -110,10 +104,10 @@ place_pad -row IO_EAST  -location [expr $start +  6*$pitch] "pad_gpio16_io"    ;
 place_pad -row IO_EAST  -location [expr $start +  7*$pitch] "pad_gpio17_io"    ; # pin no:  8
 place_pad -row IO_EAST  -location [expr $start +  8*$pitch] "pad_gpio18_io"    ; # pin no:  9
 place_pad -row IO_EAST  -location [expr $start +  9*$pitch] "pad_gpio19_io"    ; # pin no: 10
-place_pad -row IO_EAST  -location [expr $start + 10*$pitch] "pad_tspi_clk_o"    ; # pin no: 11
-place_pad -row IO_EAST  -location [expr $start + 11*$pitch] "pad_tspi_mosi_o"    ; # pin no: 12
-place_pad -row IO_EAST  -location [expr $start + 12*$pitch] "pad_tspi_miso_i"    ; # pin no: 13
-place_pad -row IO_EAST  -location [expr $start + 13*$pitch] "pad_tspi_cs_no"    ; # pin no: 14
+place_pad -row IO_EAST  -location [expr $start + 10*$pitch] "pad_tspi_clk_o"   ; # pin no: 11
+place_pad -row IO_EAST  -location [expr $start + 11*$pitch] "pad_tspi_mosi_o"  ; # pin no: 12
+place_pad -row IO_EAST  -location [expr $start + 12*$pitch] "pad_tspi_miso_i"  ; # pin no: 13
+place_pad -row IO_EAST  -location [expr $start + 13*$pitch] "pad_tspi_cs_no"   ; # pin no: 14
 place_pad -row IO_EAST  -location [expr $start + 14*$pitch] "pad_vss2"         ; # pin no: 15
 place_pad -row IO_EAST  -location [expr $start + 15*$pitch] "pad_vdd2"         ; # pin no: 16
 
