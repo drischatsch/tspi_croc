@@ -1,0 +1,7 @@
+squashfs-root/
+chiffre_tm.gds
+chiffre_logo.gds
+chiffre_chip.gds.gz
+meerkat_design.py
+chiffre_logo.svg
+.venv/
