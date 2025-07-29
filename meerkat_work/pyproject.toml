@@ -1,0 +1,9 @@
+[project]
+name = "meerkat-work"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "gdspy>=1.6.13",
+    "img2pdf>=0.6.1",
+    "pillow>=11.3.0",
+]
