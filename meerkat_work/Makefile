@@ -5,7 +5,7 @@ ARTISTIC_DIR ?= $(shell pwd)/artistic
 
 PYTHON ?= oseda ./.venv/bin/python3
 
-all: $(IC_NAME)_chip.gds.gz render
+all: $(IC_NAME)_chip.gds render
 
 $(IC_NAME)_tm.gds: $(INPUT_GDS)
 	$(PYTHON) $(ARTISTIC_DIR)/scripts/meerkat_interface.py \
@@ -31,6 +31,9 @@ $(IC_NAME)_logo.gds: $(IC_NAME)_tm.gds
 
 $(IC_NAME)_chip.gds.gz: $(IC_NAME)_logo.gds
 	klayout -zz -rm $(ARTISTIC_DIR)/scripts/merge_logo.py
+
+$(IC_NAME)_chip.gds: $(IC_NAME)_chip.gds.gz
+	gzip -d $(IC_NAME)_chip.gds.gz
 
 render: $(IC_NAME)_chip.gds.gz
 	mkdir -p /dev/shm/renderics

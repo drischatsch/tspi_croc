@@ -2,6 +2,7 @@ squashfs-root/
 chiffre_tm.gds
 chiffre_logo.gds
 chiffre_chip.gds.gz
+chiffre_chip.gds
 meerkat_design.py
 chiffre_logo.svg
 .venv/
