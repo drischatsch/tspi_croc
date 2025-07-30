@@ -82,3 +82,6 @@
 /yosys/out
 
 *.zip
+!submission_290725.zip
+
+submit/

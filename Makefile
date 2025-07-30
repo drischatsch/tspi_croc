@@ -189,6 +189,8 @@ submit:
 	@cp klayout/croc_chip.gds submit/
 	@echo " - sw/"
 	@cp -r sw/ submit/
+	@echo " - meerkat_work/chiffre_chip.gds.gz"
+	@cp meerkat_work/chiffre_chip.gds.gz submit/
 	@zip -r submission.zip submit
 	@echo "Submission archive created: croc_chip_submission.zip"
 

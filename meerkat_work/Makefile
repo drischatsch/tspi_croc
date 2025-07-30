@@ -1,9 +1,9 @@
 IC_NAME      ?= chiffre
 INPUT_IMAGE  ?= chiffre_logo.png
-INPUT_GDS    ?= ../klayout/croc_chip.gds
+INPUT_GDS    ?= ../submit/croc_chip.gds
 ARTISTIC_DIR ?= $(shell pwd)/artistic
 
-PYTHON ?= oseda ./.venv/bin/python3
+PYTHON ?= python3
 
 all: $(IC_NAME)_chip.gds render
 
@@ -21,7 +21,7 @@ $(IC_NAME)_tm.gds: $(INPUT_GDS)
 $(IC_NAME)_logo.gds: $(IC_NAME)_tm.gds
 	convert $(INPUT_IMAGE) -remap pattern:gray50 mono_$(INPUT_IMAGE)
 	$(PYTHON) $(ARTISTIC_DIR)/scripts/meerkat.py \
-		-m "161,162,150,149" \
+		-m "111,112,200,199" \
 	    -i mono_$(INPUT_IMAGE) \
 	    -g $(IC_NAME)_tm.gds \
 		-l 134 \
